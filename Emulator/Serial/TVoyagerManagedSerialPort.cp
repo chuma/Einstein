@@ -414,7 +414,7 @@ TVoyagerManagedSerialPort::FindPipeNames()
 	char *end = path + strlen(path);
 
 	// crete the file path to the sending and receiving node
-	strcpy(end, "/Einstein Emulator");
+	strcpy(end, "/Einstein Platform");
 	if (access(path, S_IRUSR|S_IWUSR|S_IXUSR)==-1) {
 		if (mkdir(path, S_IRUSR|S_IWUSR|S_IXUSR)==-1) {
 			printf("***** Error creating named pipe directory %s - %s (%d).\n", path, strerror(errno), errno);
@@ -423,12 +423,12 @@ TVoyagerManagedSerialPort::FindPipeNames()
 
 	// create the name for the transmitting pipe
 	// FIXME: "Einstein Platform"
-	strcpy(end, "/Einstein Emulator/ExtrSerPortSend");
+	strcpy(end, "/Einstein Platform/ExtrSerPortSend");
 	if (!mTxPortName)
 		mTxPortName = strdup(path);
 
 	// create the name for the receiving pipe
-	strcpy(end, "/Einstein Emulator/ExtrSerPortRecv");
+	strcpy(end, "/Einstein Platform/ExtrSerPortRecv");
 	if (!mRxPortName)
 		mRxPortName = strdup(path);
 }
@@ -883,7 +883,8 @@ TVoyagerManagedSerialPort::HandleDMA()
 		FD_SET(mRxPort, &readSet);
 		if (needTimer) {
 			timeout.tv_sec = 0;
-			timeout.tv_usec = 260; // one byte at 38400bps serial port speed
+//			timeout.tv_usec = 260; // one byte at 38400bps serial port speed
+			timeout.tv_usec = 26; // one byte at 38400bps serial port speed
 		}
 		/*int s =*/ select(maxFD+1, &readSet, 0L, 0L, needTimer ? &timeout : 0L);
 
@@ -924,7 +925,8 @@ TVoyagerManagedSerialPort::HandleDMA()
 			// read bytes that come in through the serial port
 			KUInt8 buf[1026];
 			int n = -1;
-			usleep(100000); // 1/10th of a second
+			usleep(10000); // 1/100th of a second
+//			usleep(100000); // 1/10th of a second
 			for (int j=2; j>0; j--) {
 				// FIXME: reading 1024 bytes will overflow the buffer
 				// FIXME: reading less bytes must make sure that the next select() call triggers on data left in the buffer

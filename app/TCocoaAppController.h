@@ -32,6 +32,7 @@
 #import "Emulator/Screen/CocoaEmulatorApp.h"
 #import "TCocoaROMDumperController.h"
 #import "TCocoaSetupController.h"
+#import "TCocoaIDEController.h"
 #import "TCocoaMonitorController.h"
 
 class TBufferLog;
@@ -59,6 +60,7 @@ class TFileManager;
 	IBOutlet NSMenu* mMenuBar;
 	IBOutlet TCocoaSetupController* mSetupController;
 	IBOutlet TCocoaROMDumperController* mROMDumperController;
+	IBOutlet TCocoaIDEController* mIDEController;
 	IBOutlet TCocoaMonitorController* mMonitorController;
 	IBOutlet NSUserDefaultsController* mUserDefaultsController;
 	
@@ -114,6 +116,7 @@ class TFileManager;
 - (IBAction)powerButton:(id)sender;
 - (IBAction)backlightButton:(id)sender;
 - (IBAction)networkButton:(id)sender;
+- (IBAction)showIDE:(id)sender;
 - (IBAction)showMonitor:(id)sender;
 
 // AppleScript

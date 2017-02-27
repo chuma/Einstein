@@ -215,6 +215,12 @@
 		C962429711B69A9D00EE66F3 /* TUsermodeNetwork.cp in Sources */ = {isa = PBXBuildFile; fileRef = C962429511B69A9D00EE66F3 /* TUsermodeNetwork.cp */; };
 		C96242A011B6A20A00EE66F3 /* TNetworkManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C962429E11B6A20A00EE66F3 /* TNetworkManager.cp */; };
 		C965D4011970A47000348893 /* TJITGenericRetargetMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C965D3FF1970A47000348893 /* TJITGenericRetargetMap.cpp */; };
+		C976B19D1E64979A0037B6B2 /* TCocoaIDEController.m in Sources */ = {isa = PBXBuildFile; fileRef = C976B19C1E64979A0037B6B2 /* TCocoaIDEController.m */; };
+		C976B19E1E64979A0037B6B2 /* TCocoaIDEController.m in Sources */ = {isa = PBXBuildFile; fileRef = C976B19C1E64979A0037B6B2 /* TCocoaIDEController.m */; };
+		C976B1A21E64AD960037B6B2 /* toolbar_item_play.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A01E64AD960037B6B2 /* toolbar_item_play.png */; };
+		C976B1A31E64AD960037B6B2 /* toolbar_item_play.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A01E64AD960037B6B2 /* toolbar_item_play.png */; };
+		C976B1A41E64AD960037B6B2 /* toolbar_item_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A11E64AD960037B6B2 /* toolbar_item_stop.png */; };
+		C976B1A51E64AD960037B6B2 /* toolbar_item_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A11E64AD960037B6B2 /* toolbar_item_stop.png */; };
 		C98AB2431A351D61001BB1CD /* main.cp in Sources */ = {isa = PBXBuildFile; fileRef = C98AB2411A351D61001BB1CD /* main.cp */; };
 		C98AB2441A351D61001BB1CD /* MemSnap.cp in Sources */ = {isa = PBXBuildFile; fileRef = C98AB2421A351D61001BB1CD /* MemSnap.cp */; };
 		C98AB2471A351E16001BB1CD /* TMonitorCore.cp in Sources */ = {isa = PBXBuildFile; fileRef = DA6F86421A34FBB7006BC81E /* TMonitorCore.cp */; };
@@ -734,6 +740,10 @@
 		C962429F11B6A20A00EE66F3 /* TNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = TNetworkManager.h; path = Network/TNetworkManager.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 		C965D3FF1970A47000348893 /* TJITGenericRetargetMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TJITGenericRetargetMap.cpp; sourceTree = "<group>"; };
 		C965D4001970A47000348893 /* TJITGenericRetargetMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJITGenericRetargetMap.h; sourceTree = "<group>"; };
+		C976B19C1E64979A0037B6B2 /* TCocoaIDEController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCocoaIDEController.m; sourceTree = "<group>"; };
+		C976B19F1E6497BC0037B6B2 /* TCocoaIDEController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCocoaIDEController.h; sourceTree = "<group>"; };
+		C976B1A01E64AD960037B6B2 /* toolbar_item_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_item_play.png; sourceTree = "<group>"; };
+		C976B1A11E64AD960037B6B2 /* toolbar_item_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_item_stop.png; sourceTree = "<group>"; };
 		C97C7E1B124282A600CDCD05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C97C7EA2124283FE00CDCD05 /* MainWindow_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
 		C98AB2371A351D20001BB1CD /* retarget */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = retarget; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1571,6 +1581,8 @@
 				C99E3163111B7346002165EC /* button_power.png */,
 				C99E3164111B7346002165EC /* button_power_on.png */,
 				C99E3165111B7346002165EC /* button_prefs.png */,
+				C976B1A01E64AD960037B6B2 /* toolbar_item_play.png */,
+				C976B1A11E64AD960037B6B2 /* toolbar_item_stop.png */,
 				C99E3166111B7346002165EC /* Einstein.icns */,
 			);
 			name = Icons;
@@ -1724,6 +1736,8 @@
 				C99E33DE111B7C07002165EC /* TCocoaROMDumperController.mm */,
 				C99E33DF111B7C07002165EC /* TCocoaSetupController.h */,
 				C99E33E0111B7C07002165EC /* TCocoaSetupController.mm */,
+				C976B19F1E6497BC0037B6B2 /* TCocoaIDEController.h */,
+				C976B19C1E64979A0037B6B2 /* TCocoaIDEController.m */,
 				F1647FC313198E6A001603BE /* TCocoaMonitorController.h */,
 				F1647FC413198E6A001603BE /* TCocoaMonitorController.mm */,
 				C99E33E1111B7C07002165EC /* TCocoaUserDefaults.h */,
@@ -2406,6 +2420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C99E316A111B7346002165EC /* button_backlight.png in Resources */,
+				C976B1A41E64AD960037B6B2 /* toolbar_item_stop.png in Resources */,
 				C99E316B111B7346002165EC /* button_backlight_on.png in Resources */,
 				C99E316C111B7346002165EC /* button_install.png in Resources */,
 				C99E316D111B7346002165EC /* button_power.png in Resources */,
@@ -2416,6 +2431,7 @@
 				C99E3170111B7346002165EC /* Einstein.icns in Resources */,
 				C99E34CB111B7C08002165EC /* Einstein.sdef in Resources */,
 				DAE9EF031A3B29150095BFAF /* Tests-Info.plist in Resources */,
+				C976B1A21E64AD960037B6B2 /* toolbar_item_play.png in Resources */,
 				C99E377B111C2289002165EC /* Einstein.rex in Resources */,
 				C932824711D0CF0A003B93C3 /* button_network_in.png in Resources */,
 				C932824811D0CF0A003B93C3 /* button_network.png in Resources */,
@@ -2439,6 +2455,7 @@
 				C98AB2D11A351EE6001BB1CD /* unsorted_017.rts in Resources */,
 				C98AB2B91A351EE6001BB1CD /* unsorted_005.rts in Resources */,
 				C95E6040198B76DC004C6CEF /* button_backlight_on.png in Resources */,
+				C976B1A51E64AD960037B6B2 /* toolbar_item_stop.png in Resources */,
 				C95E6041198B76DC004C6CEF /* button_install.png in Resources */,
 				C95E6042198B76DC004C6CEF /* button_power.png in Resources */,
 				C9DB61811A37C42F00E5CC95 /* unsorted_025.rts in Resources */,
@@ -2462,6 +2479,7 @@
 				C95E6046198B76DC004C6CEF /* Einstein.sdef in Resources */,
 				C98AB2D31A351EE6001BB1CD /* unsorted_018.rts in Resources */,
 				C95E6047198B76DC004C6CEF /* Einstein.rex in Resources */,
+				C976B1A31E64AD960037B6B2 /* toolbar_item_play.png in Resources */,
 				C95E6048198B76DC004C6CEF /* button_network_in.png in Resources */,
 				C98AB2C31A351EE6001BB1CD /* unsorted_010.rts in Resources */,
 				C98AB2B51A351EE6001BB1CD /* unsorted_003.rts in Resources */,
@@ -2695,6 +2713,7 @@
 				C99E34F0111B7C08002165EC /* TJITGeneric_Multiply.cp in Sources */,
 				C99E34F2111B7C08002165EC /* TJITGeneric_MultiplyAndAccumulate.cp in Sources */,
 				C99E34F3111B7C08002165EC /* TJITGeneric_Other.cp in Sources */,
+				C976B19D1E64979A0037B6B2 /* TCocoaIDEController.m in Sources */,
 				C99E34F4111B7C08002165EC /* TJITGeneric_SingleDataSwap.cp in Sources */,
 				C99E34F6111B7C08002165EC /* TJITGeneric_SingleDataTransfer.cp in Sources */,
 				C99E34FB111B7C08002165EC /* TJITGeneric_Test.cp in Sources */,
@@ -2826,6 +2845,7 @@
 				C95E6074198B76DC004C6CEF /* TVirtualizedCalls.cp in Sources */,
 				C95E6075198B76DC004C6CEF /* TATACard.cp in Sources */,
 				C98AB2D41A351EE6001BB1CD /* unsorted_019.cp in Sources */,
+				C976B19E1E64979A0037B6B2 /* TCocoaIDEController.m in Sources */,
 				DA4BA4731A3A3B78002BDB80 /* TNullScreenManager.cp in Sources */,
 				C95E6076198B76DC004C6CEF /* TLinearCard.cp in Sources */,
 				C95E6077198B76DC004C6CEF /* TPCMCIACard.cp in Sources */,

@@ -202,6 +202,11 @@ static TCocoaAppController* gInstance = nil;
 {
 	NSUserDefaults *defaults = [mUserDefaultsController defaults];
 	
+	if ( [defaults boolForKey:kOpenIDEAtLaunch] )
+	{
+		[self showIDE:self];
+	}
+
 	if ( [defaults boolForKey:kOpenMonitorAtLaunch] )
 	{
 		[self showMonitor:self];
@@ -446,9 +451,6 @@ static TCocoaAppController* gInstance = nil;
 	
 	mMonitor = new TMacMonitor(mMonitorLog, mEmulator, mSymbolList, theDataPath.UTF8String);
 	[mMonitorController setMonitor:mMonitor];
-	
-	// FIXME: delete this to keep the Monitor closed
-	//[mMonitorController showWindow:self];
 	
 	// Close the window.
 	[mSetupController closeSetupWindow];
@@ -887,6 +889,12 @@ static TCocoaAppController* gInstance = nil;
 	{
 		[self setupToolbar: inWindow];
 	}
+}
+
+
+- (IBAction)showIDE:(id)sender
+{
+	[mIDEController showWindow:self];
 }
 
 
