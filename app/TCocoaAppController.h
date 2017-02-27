@@ -32,7 +32,7 @@
 #import "Emulator/Screen/CocoaEmulatorApp.h"
 #import "TCocoaROMDumperController.h"
 #import "TCocoaSetupController.h"
-#import "TCocoaIDEController.h"
+#import "TCocoaWorkshopController.h"
 #import "TCocoaMonitorController.h"
 
 class TBufferLog;
@@ -43,9 +43,11 @@ class TROMImage;
 class TEmulator;
 class TPlatformManager;
 class TLog;
+class TMacWorkshop;
 class TMacMonitor;
 class TSymbolList;
 class TFileManager;
+class TDevEnv;
 
 ///
 /// Protocol pour le contr™leur de l'application Einstein.app.
@@ -60,7 +62,7 @@ class TFileManager;
 	IBOutlet NSMenu* mMenuBar;
 	IBOutlet TCocoaSetupController* mSetupController;
 	IBOutlet TCocoaROMDumperController* mROMDumperController;
-	IBOutlet TCocoaIDEController* mIDEController;
+	IBOutlet TCocoaWorkshopController* mWorkshopController;
 	IBOutlet TCocoaMonitorController* mMonitorController;
 	IBOutlet NSUserDefaultsController* mUserDefaultsController;
 	
@@ -80,6 +82,7 @@ class TFileManager;
 	TPlatformManager*	mPlatformManager;
 	TFileManager*       mFileManager;
     TLog*				mLog;
+	TMacWorkshop*		mWorkshop;
 	TMacMonitor*		mMonitor;
 	TBufferLog*			mMonitorLog;
 	TSymbolList*		mSymbolList;
@@ -116,7 +119,7 @@ class TFileManager;
 - (IBAction)powerButton:(id)sender;
 - (IBAction)backlightButton:(id)sender;
 - (IBAction)networkButton:(id)sender;
-- (IBAction)showIDE:(id)sender;
+- (IBAction)showWorkshop:(id)sender;
 - (IBAction)showMonitor:(id)sender;
 
 // AppleScript

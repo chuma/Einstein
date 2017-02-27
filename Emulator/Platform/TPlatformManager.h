@@ -217,6 +217,22 @@ public:
 				KUInt32 inSize,
 				const KUInt8* inData );
 
+	///
+	/// Wait for a log event
+	/// Don't free the resulting string.
+	///
+	const char *WaitForLogEvent(double timeout);
+
+	///
+	/// Clear log event
+	///
+	void ClearLogEvent();
+
+	///
+	/// Set log event
+	///
+	void SetLogEvent(const char *message);
+
 private:
 	struct SBuffer {
 		KUInt32			fID;
@@ -266,6 +282,8 @@ private:
 	KUInt32				mQueueLockCount;	///< Lock count for the queue.
 	TMutex*				mMutex;				///< Mutex of the queue.
 	char*				mDocDir;			///< Directory on host containing all kinds of documents
+	char*				mLastLogMessage;	///< Result for WaitForLogEvent
+	char				mLastLogMsg[512];	///< Result for WaitForLogEvent
 };
 
 #endif

@@ -49,6 +49,8 @@
 #include "Emulator/Log/TBufferLog.h"
 #include "Emulator/Log/TStdOutLog.h"
 
+#import "Workshop/TMacWorkshop.h"
+
 #import "Monitor/TMacMonitor.h"
 #import "Monitor/TSymbolList.h"
 
@@ -202,9 +204,9 @@ static TCocoaAppController* gInstance = nil;
 {
 	NSUserDefaults *defaults = [mUserDefaultsController defaults];
 	
-	if ( [defaults boolForKey:kOpenIDEAtLaunch] )
+	if ( [defaults boolForKey:kOpenWorkshopAtLaunch] )
 	{
-		[self showIDE:self];
+		[self showWorkshop:self];
 	}
 
 	if ( [defaults boolForKey:kOpenMonitorAtLaunch] )
@@ -448,7 +450,10 @@ static TCocoaAppController* gInstance = nil;
 #else
 	mSymbolList = NULL;
 #endif
-	
+
+	mWorkshop = new TMacWorkshop(mEmulator);
+	[mWorkshopController setWorkshop:mWorkshop];
+
 	mMonitor = new TMacMonitor(mMonitorLog, mEmulator, mSymbolList, theDataPath.UTF8String);
 	[mMonitorController setMonitor:mMonitor];
 	
@@ -892,9 +897,9 @@ static TCocoaAppController* gInstance = nil;
 }
 
 
-- (IBAction)showIDE:(id)sender
+- (IBAction)showWorkshop:(id)sender
 {
-	[mIDEController showWindow:self];
+	[mWorkshopController showWindow:self];
 }
 
 

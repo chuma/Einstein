@@ -215,12 +215,16 @@
 		C962429711B69A9D00EE66F3 /* TUsermodeNetwork.cp in Sources */ = {isa = PBXBuildFile; fileRef = C962429511B69A9D00EE66F3 /* TUsermodeNetwork.cp */; };
 		C96242A011B6A20A00EE66F3 /* TNetworkManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C962429E11B6A20A00EE66F3 /* TNetworkManager.cp */; };
 		C965D4011970A47000348893 /* TJITGenericRetargetMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C965D3FF1970A47000348893 /* TJITGenericRetargetMap.cpp */; };
-		C976B19D1E64979A0037B6B2 /* TCocoaIDEController.m in Sources */ = {isa = PBXBuildFile; fileRef = C976B19C1E64979A0037B6B2 /* TCocoaIDEController.m */; };
-		C976B19E1E64979A0037B6B2 /* TCocoaIDEController.m in Sources */ = {isa = PBXBuildFile; fileRef = C976B19C1E64979A0037B6B2 /* TCocoaIDEController.m */; };
+		C976B19D1E64979A0037B6B2 /* TCocoaWorkshopController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C976B19C1E64979A0037B6B2 /* TCocoaWorkshopController.mm */; };
+		C976B19E1E64979A0037B6B2 /* TCocoaWorkshopController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C976B19C1E64979A0037B6B2 /* TCocoaWorkshopController.mm */; };
 		C976B1A21E64AD960037B6B2 /* toolbar_item_play.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A01E64AD960037B6B2 /* toolbar_item_play.png */; };
 		C976B1A31E64AD960037B6B2 /* toolbar_item_play.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A01E64AD960037B6B2 /* toolbar_item_play.png */; };
 		C976B1A41E64AD960037B6B2 /* toolbar_item_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A11E64AD960037B6B2 /* toolbar_item_stop.png */; };
 		C976B1A51E64AD960037B6B2 /* toolbar_item_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A11E64AD960037B6B2 /* toolbar_item_stop.png */; };
+		C976B1AE1E64BA750037B6B2 /* TWorkshop.cp in Sources */ = {isa = PBXBuildFile; fileRef = C976B1AC1E64BA750037B6B2 /* TWorkshop.cp */; };
+		C976B1AF1E64BA750037B6B2 /* TWorkshop.cp in Sources */ = {isa = PBXBuildFile; fileRef = C976B1AC1E64BA750037B6B2 /* TWorkshop.cp */; };
+		C976B1B11E64BBDF0037B6B2 /* TMacWorkshop.mm in Sources */ = {isa = PBXBuildFile; fileRef = C976B1B01E64BBDF0037B6B2 /* TMacWorkshop.mm */; };
+		C976B1B21E64BBDF0037B6B2 /* TMacWorkshop.mm in Sources */ = {isa = PBXBuildFile; fileRef = C976B1B01E64BBDF0037B6B2 /* TMacWorkshop.mm */; };
 		C98AB2431A351D61001BB1CD /* main.cp in Sources */ = {isa = PBXBuildFile; fileRef = C98AB2411A351D61001BB1CD /* main.cp */; };
 		C98AB2441A351D61001BB1CD /* MemSnap.cp in Sources */ = {isa = PBXBuildFile; fileRef = C98AB2421A351D61001BB1CD /* MemSnap.cp */; };
 		C98AB2471A351E16001BB1CD /* TMonitorCore.cp in Sources */ = {isa = PBXBuildFile; fileRef = DA6F86421A34FBB7006BC81E /* TMonitorCore.cp */; };
@@ -740,10 +744,14 @@
 		C962429F11B6A20A00EE66F3 /* TNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = TNetworkManager.h; path = Network/TNetworkManager.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 		C965D3FF1970A47000348893 /* TJITGenericRetargetMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TJITGenericRetargetMap.cpp; sourceTree = "<group>"; };
 		C965D4001970A47000348893 /* TJITGenericRetargetMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJITGenericRetargetMap.h; sourceTree = "<group>"; };
-		C976B19C1E64979A0037B6B2 /* TCocoaIDEController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCocoaIDEController.m; sourceTree = "<group>"; };
-		C976B19F1E6497BC0037B6B2 /* TCocoaIDEController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCocoaIDEController.h; sourceTree = "<group>"; };
+		C976B19C1E64979A0037B6B2 /* TCocoaWorkshopController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TCocoaWorkshopController.mm; sourceTree = "<group>"; };
+		C976B19F1E6497BC0037B6B2 /* TCocoaWorkshopController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCocoaWorkshopController.h; sourceTree = "<group>"; };
 		C976B1A01E64AD960037B6B2 /* toolbar_item_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_item_play.png; sourceTree = "<group>"; };
 		C976B1A11E64AD960037B6B2 /* toolbar_item_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_item_stop.png; sourceTree = "<group>"; };
+		C976B1AC1E64BA750037B6B2 /* TWorkshop.cp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TWorkshop.cp; path = ../../Workshop/TWorkshop.cp; sourceTree = "<group>"; };
+		C976B1AD1E64BA750037B6B2 /* TWorkshop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWorkshop.h; path = ../../Workshop/TWorkshop.h; sourceTree = "<group>"; };
+		C976B1B01E64BBDF0037B6B2 /* TMacWorkshop.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TMacWorkshop.mm; path = ../../Workshop/TMacWorkshop.mm; sourceTree = "<group>"; };
+		C976B1B31E64BBFB0037B6B2 /* TMacWorkshop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TMacWorkshop.h; path = ../../Workshop/TMacWorkshop.h; sourceTree = "<group>"; };
 		C97C7E1B124282A600CDCD05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C97C7EA2124283FE00CDCD05 /* MainWindow_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow_iPad.xib; sourceTree = "<group>"; };
 		C98AB2371A351D20001BB1CD /* retarget */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = retarget; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1399,6 +1407,17 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
+		C976B1AB1E64BA490037B6B2 /* Workshop */ = {
+			isa = PBXGroup;
+			children = (
+				C976B1B01E64BBDF0037B6B2 /* TMacWorkshop.mm */,
+				C976B1B31E64BBFB0037B6B2 /* TMacWorkshop.h */,
+				C976B1AC1E64BA750037B6B2 /* TWorkshop.cp */,
+				C976B1AD1E64BA750037B6B2 /* TWorkshop.h */,
+			);
+			name = Workshop;
+			sourceTree = "<group>";
+		};
 		C97C7CB81242827600CDCD05 /* iOS Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1556,6 +1575,7 @@
 				C99E33CF111B7C07002165EC /* Mac OS X */,
 				C9B4AA2B123D474800D8D2C7 /* iOS */,
 				C99E33EC111B7C07002165EC /* Emulator */,
+				C976B1AB1E64BA490037B6B2 /* Workshop */,
 				C99E3174111B73A1002165EC /* Monitor */,
 				C98AB24C1A351EE6001BB1CD /* Newt */,
 			);
@@ -1736,8 +1756,8 @@
 				C99E33DE111B7C07002165EC /* TCocoaROMDumperController.mm */,
 				C99E33DF111B7C07002165EC /* TCocoaSetupController.h */,
 				C99E33E0111B7C07002165EC /* TCocoaSetupController.mm */,
-				C976B19F1E6497BC0037B6B2 /* TCocoaIDEController.h */,
-				C976B19C1E64979A0037B6B2 /* TCocoaIDEController.m */,
+				C976B19F1E6497BC0037B6B2 /* TCocoaWorkshopController.h */,
+				C976B19C1E64979A0037B6B2 /* TCocoaWorkshopController.mm */,
 				F1647FC313198E6A001603BE /* TCocoaMonitorController.h */,
 				F1647FC413198E6A001603BE /* TCocoaMonitorController.mm */,
 				C99E33E1111B7C07002165EC /* TCocoaUserDefaults.h */,
@@ -2713,12 +2733,13 @@
 				C99E34F0111B7C08002165EC /* TJITGeneric_Multiply.cp in Sources */,
 				C99E34F2111B7C08002165EC /* TJITGeneric_MultiplyAndAccumulate.cp in Sources */,
 				C99E34F3111B7C08002165EC /* TJITGeneric_Other.cp in Sources */,
-				C976B19D1E64979A0037B6B2 /* TCocoaIDEController.m in Sources */,
+				C976B19D1E64979A0037B6B2 /* TCocoaWorkshopController.mm in Sources */,
 				C99E34F4111B7C08002165EC /* TJITGeneric_SingleDataSwap.cp in Sources */,
 				C99E34F6111B7C08002165EC /* TJITGeneric_SingleDataTransfer.cp in Sources */,
 				C99E34FB111B7C08002165EC /* TJITGeneric_Test.cp in Sources */,
 				C99E34FD111B7C08002165EC /* TJITGenericPage.cp in Sources */,
 				C99E3503111B7C08002165EC /* TJITCache.cp in Sources */,
+				C976B1B11E64BBDF0037B6B2 /* TMacWorkshop.mm in Sources */,
 				C99E3504111B7C08002165EC /* TJITPage.cp in Sources */,
 				C99E3507111B7C08002165EC /* TFileLog.cp in Sources */,
 				C99E3508111B7C08002165EC /* TLog.cp in Sources */,
@@ -2757,6 +2778,7 @@
 				C99E352D111B7C08002165EC /* TFlash.cp in Sources */,
 				C99E352E111B7C08002165EC /* TInterruptManager.cp in Sources */,
 				C99E352F111B7C08002165EC /* TMemory.cp in Sources */,
+				C976B1AE1E64BA750037B6B2 /* TWorkshop.cp in Sources */,
 				C99E3530111B7C08002165EC /* TMMU.cp in Sources */,
 				C99E3531111B7C08002165EC /* TNativePrimitives.cp in Sources */,
 				C932C4C211A1AB5D00F6A7E4 /* TNE2000Card.cp in Sources */,
@@ -2844,14 +2866,16 @@
 				C98AB2B81A351EE6001BB1CD /* unsorted_005.cp in Sources */,
 				C95E6074198B76DC004C6CEF /* TVirtualizedCalls.cp in Sources */,
 				C95E6075198B76DC004C6CEF /* TATACard.cp in Sources */,
+				C976B1B21E64BBDF0037B6B2 /* TMacWorkshop.mm in Sources */,
 				C98AB2D41A351EE6001BB1CD /* unsorted_019.cp in Sources */,
-				C976B19E1E64979A0037B6B2 /* TCocoaIDEController.m in Sources */,
+				C976B19E1E64979A0037B6B2 /* TCocoaWorkshopController.mm in Sources */,
 				DA4BA4731A3A3B78002BDB80 /* TNullScreenManager.cp in Sources */,
 				C95E6076198B76DC004C6CEF /* TLinearCard.cp in Sources */,
 				C95E6077198B76DC004C6CEF /* TPCMCIACard.cp in Sources */,
 				C95E6078198B76DC004C6CEF /* TPCMCIAController.cp in Sources */,
 				C95E6079198B76DC004C6CEF /* TPlatformManager.cp in Sources */,
 				C95E607A198B76DC004C6CEF /* TAIFFile.cp in Sources */,
+				C976B1AF1E64BA750037B6B2 /* TWorkshop.cp in Sources */,
 				C95E607B198B76DC004C6CEF /* TAIFROMImageWithREXes.cp in Sources */,
 				C98AB2D01A351EE6001BB1CD /* unsorted_017.cp in Sources */,
 				C95E607C198B76DC004C6CEF /* TFlatROMImage.cp in Sources */,

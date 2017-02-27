@@ -70,7 +70,8 @@ TPlatformManager::TPlatformManager(
 		mPowerOn( true ),
 		mQueueLockCount( 0 ),
 		mMutex( nil ),
-		mDocDir( nil )
+		mDocDir( nil ),
+		mLastLogMessage( nil )
 {
 	mEventQueue = (SEvent*) ::malloc( sizeof(SEvent) * mEventQueueSize );
 	mBufferQueue = (SBuffer*) ::malloc( sizeof(SBuffer) * mBufferQueueSize );
@@ -332,17 +333,21 @@ void
 TPlatformManager::SendNetworkCardEvent( void )
 {
 	static TNE2000Card *theCard = NULL;
+	static bool inserted = false;
 
-	// FIXME: Change check mark in Menu.
+	// FIXME: Change check mark in Menu. Change icon in toolbar.
 	if (mMemory) {
 		TPCMCIAController *theController = mMemory->GetPCMCIAController(0);
 		if (theController) {
 			if (theCard==0L) {
 				theCard = new TNE2000Card();
+			}
+			if (!inserted) {
 				theController->InsertCard(theCard);
+				inserted = true;
 			} else {
 				theController->RemoveCard();
-				theCard = NULL;
+				inserted = false;
 			}
 		}
 	}
@@ -667,6 +672,49 @@ TPlatformManager::SetDocDir(const char *inDocDir)
 {
 	if (mDocDir) ::free(mDocDir);
 	mDocDir = strdup(inDocDir);
+}
+
+
+// -------------------------------------------------------------------------- //
+//  * RaisePlatformInterrupt()
+// -------------------------------------------------------------------------- //
+const char*
+TPlatformManager::WaitForLogEvent(double timeout)
+{
+	int n = (int)(timeout*10)+1;
+	for ( ; n>0 ; --n ) {
+		if (mLastLogMessage) break;
+		usleep(100000);
+	}
+	return mLastLogMessage;
+}
+
+
+// -------------------------------------------------------------------------- //
+//  * ClearLogEvent()
+// -------------------------------------------------------------------------- //
+void
+TPlatformManager::ClearLogEvent()
+{
+	mLastLogMessage = 0L;
+}
+
+
+// -------------------------------------------------------------------------- //
+//  * SetLogEvent()
+// -------------------------------------------------------------------------- //
+void
+TPlatformManager::SetLogEvent(const char *message)
+{
+	if (message && mLastLogMessage==0L) {
+		int n = (int)strlen(message);
+		if (n>510) {
+			n = 510;
+		}
+		memcpy(mLastLogMsg, message, n);
+		mLastLogMsg[n] = 0;
+		mLastLogMessage = mLastLogMsg;
+	}
 }
 
 

@@ -266,6 +266,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem title="Zoom" id="239">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="performZoom:" target="-1" id="240"/>
                                 </connections>
@@ -274,19 +275,21 @@
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Bring All to Front" id="5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="arrangeInFront:" target="-1" id="39"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="584"/>
                             <menuItem title="Dump ROM..." id="371">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="makeKeyAndOrderFront:" target="372" id="407"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="IDE" keyEquivalent="i" id="wQG-Xb-wJ1">
+                            <menuItem title="Workshop" keyEquivalent="3" id="wQG-Xb-wJ1">
                                 <connections>
-                                    <action selector="showWindow:" target="tmY-N1-rRp" id="dI2-uQ-cAR"/>
+                                    <action selector="showWindow:" target="ICT-cd-zh3" id="qgZ-TP-Lzd"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Monitor" keyEquivalent="m" id="585">
@@ -896,12 +899,13 @@ DQ
                 <outlet property="mROMDumperController" destination="398" id="408"/>
                 <outlet property="mSetupController" destination="419" id="426"/>
                 <outlet property="mUserDefaultsController" destination="436" id="520"/>
+                <outlet property="mWorkshopController" destination="ICT-cd-zh3" id="tVG-3b-nw8"/>
             </connections>
         </customObject>
-        <customObject id="tmY-N1-rRp" userLabel="TCocoaIDEController" customClass="TCocoaIDEController">
+        <customObject id="ICT-cd-zh3" userLabel="TCocoaWorkshopController" customClass="TCocoaWorkshopController">
             <connections>
-                <outlet property="compileAndRunButton" destination="QnT-C5-2YM" id="Szd-Tj-FL8"/>
-                <outlet property="window" destination="cGe-tu-JGr" id="bsV-uI-4Na"/>
+                <outlet property="compileAndRunToolbarItem" destination="QnT-C5-2YM" id="SjM-FT-WGE"/>
+                <outlet property="window" destination="cGe-tu-JGr" id="EHp-uo-h8I"/>
             </connections>
         </customObject>
         <customObject id="580" userLabel="TCocoaMonitorController" customClass="TCocoaMonitorController">
@@ -940,7 +944,7 @@ DQ
             </connections>
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="436" userLabel="Shared Defaults"/>
-        <window title="IDE Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="IDEWindow" animationBehavior="default" id="cGe-tu-JGr" userLabel="Developer Window">
+        <window title="Newton Script Workshop" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="WorkshopWindow" animationBehavior="default" id="cGe-tu-JGr" userLabel="Newton Script Workshop">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="158" width="1024" height="512"/>
@@ -1143,7 +1147,7 @@ DQ
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="84731258-069E-41DA-B145-389EF31FCDD2" label="Run" paletteLabel="Run" tag="-1" image="toolbar_item_play" id="QnT-C5-2YM" userLabel="Run">
                         <connections>
-                            <action selector="compileAndRun:" target="tmY-N1-rRp" id="wCU-Ee-psG"/>
+                            <action selector="compileAndRun:" target="ICT-cd-zh3" id="0aM-sb-VhV"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E7318904-36D7-4B9B-95D8-73C489D33A1F" label="Stop" paletteLabel="Stop" tag="-1" image="toolbar_item_stop" id="1Ez-f0-AZq" userLabel="Stop"/>

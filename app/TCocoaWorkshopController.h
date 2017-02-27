@@ -1,23 +1,23 @@
 //
-//  TCocoaMonitorController.h
+//  TCocoaWorkshopController.h
 //  Einstein
 //
-//  Created by Steven Frank on 2/26/11.
+//  Created by Matthias Melcher on 2/27/2017.
 //
 
 #import <Cocoa/Cocoa.h>
 
-//class TMacMonitor;
+class TMacWorkshop;
 //@class TMacMonitorView;
 
-@interface TCocoaIDEController : NSWindowController <NSTextFieldDelegate, NSWindowDelegate>
+@interface TCocoaWorkshopController : NSWindowController <NSTextFieldDelegate, NSWindowDelegate>
 {
 //	IBOutlet TMacMonitorView* view;
-	IBOutlet NSToolbarItem* compileAndRunButton;
+	IBOutlet NSToolbarItem* compileAndRunToolbarItem;
 //	IBOutlet NSButton* stepIntoButton;
 //	IBOutlet NSButton* stepOverButton;
 
-//	TMacMonitor* monitor;
+	TMacWorkshop* workshop;
 }
 
 //- (void)update;
@@ -29,6 +29,6 @@
 //- (IBAction)stepOver:(id)sender;
 //
 //- (void)executeCommand:(NSString*)command;
-//- (void)setMonitor:(TMacMonitor*)inMonitor;
+- (void)setWorkshop:(TMacWorkshop*)inWorkshop;
 
 @end

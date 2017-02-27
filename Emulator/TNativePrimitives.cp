@@ -935,12 +935,14 @@ TNativePrimitives::ExecutePlatformDriverNative( KUInt32 inInstruction )
 				KUInt32 amount = sizeof(theLine);
 				(void) mMemory->FastReadString(theAddress, &amount, theLine);
 				mLog->LogLine( theLine );
+				mPlatformManager->SetLogEvent(theLine);
 			} else {
 				KUInt32 theAddress = mProcessor->GetRegister( 1 );
 				char theLine[512];
 				KUInt32 amount = sizeof(theLine);
 				(void) mMemory->FastReadString(theAddress, &amount, theLine);
 				printf("Log: %s\n", theLine);
+				mPlatformManager->SetLogEvent(theLine);
 			}
 			break;
 

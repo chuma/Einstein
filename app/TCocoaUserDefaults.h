@@ -54,7 +54,7 @@
 #define kDontShowAtStartupKey		@"DontShowAtStartup"
 #define kEnableListenersKey			@"EnableListeners"
 
-#define kOpenIDEAtLaunch			@"OpenIDEAtLaunch"
+#define kOpenWorkshopAtLaunch		@"OpenWorkshopAtLaunch"
 
 #define kOpenMonitorAtLaunch		@"OpenMonitorAtLaunch"
 
