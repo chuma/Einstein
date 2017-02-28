@@ -1,0 +1,16 @@
+#!newt
+
+Require("protoFILE");
+
+
+foreach path in _ARGV_ do
+begin
+	file := {_proto: @protoFILE};
+
+	file:open(path, "r");
+	while line := file:gets() do print(line);
+	file:close();
+end;
+
+
+true;
