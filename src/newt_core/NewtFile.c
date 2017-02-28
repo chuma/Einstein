@@ -780,7 +780,7 @@ newtRef NsLoadBinary(newtRefArg rcvr, newtRefArg r)
         size_t size = ftell(f);
         fseek(f, 0, SEEK_SET);
         uint8_t *data = (uint8_t*)malloc(size);
-        int err = fread(data, size, 1, f);
+        /* int err = */ fread(data, size, 1, f);
         fclose(f);
         return NewtMakeBinary(NSSYM(data), data, size, false); 
     } else {

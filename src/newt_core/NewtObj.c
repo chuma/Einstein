@@ -1155,10 +1155,16 @@ bool NewtRefIsRegex(newtRefArg r)
 
 void * NewtRefToAddress(newtRefArg r)
 {
-	if (NewtRefIsInteger(r))
+   if (NewtRefIsInteger(r)) {
+#if __x86_64__
+      uint32_t v = (((uint32_t)NewtRefToInteger(r)) << NOBJ_ADDR_SHIFT);
+      return (void*)NewtShortToLongPointer( v<<2 );
+#else
 		return (void *)(((uint32_t)NewtRefToInteger(r)) << NOBJ_ADDR_SHIFT);
-	else
+#endif
+   } else {
 		return NULL;
+   }
 }
 
 
@@ -1850,7 +1856,12 @@ newtRef NewtSetLength(newtRefArg r, uint32_t n)
 
 newtRef NewtMakeAddress(void * addr)
 {
+#if __x86_64__
+   uint32_t p = NewtLongToShortPointer(addr);
+   return NewtMakeInteger((p>>2) >> NOBJ_ADDR_SHIFT);
+#else
 	return NewtMakeInteger(((uint32_t)addr) >> NOBJ_ADDR_SHIFT);
+#endif
 }
 
 
@@ -4384,3 +4395,67 @@ newtRef NewtGetEnv(const char * s)
 	else
 		return kNewtRefUnbind;
 }
+
+
+#if 0
+#pragma mark -
+#endif
+/*------------------------------------------------------------------------*/
+
+#if __x86_64__
+
+static const uint32_t LUTSize = 16384;
+
+uintptr_t LUT[LUTSize] = { 0 };
+
+
+uintptr_t NewtShortToLongPointer(uint32_t ix)
+{
+//   printf("Short to long for %u\n", ix);
+   if (ix&3) {
+      fprintf(stderr, "ERROR: pointer conversion failed - index must be modulo 4\n");
+      exit(0);
+   }
+   ix = ix>>2;
+   if (ix==0) return 0;
+   if (ix<LUTSize) {
+      uintptr_t p = LUT[ix];
+      if (p==0) {
+         fprintf(stderr, "ERROR: pointer conversion failed - can't be null pointer\n");
+         exit(0);
+      } else {
+//         printf("  Found 0x%016lx\n", p);
+         return p;
+      }
+   } else {
+      fprintf(stderr, "ERROR: pointer conversion failed - invalid short pointer\n");
+      exit(0);
+   }
+   return 0;
+}
+
+
+uint32_t NewtLongToShortPointer(uintptr_t p)
+{
+//   printf("Long to short for 0x%016lx\n", p);
+   int i;
+   if (p==0) return 0;
+   for (i=1; i<LUTSize; i++) {
+      uintptr_t t = LUT[i];
+      if (t==p) {
+//         printf("  Found %u\n", i<<2);
+         return i<<2;
+      } else if (t==0) {
+//         printf("  Generated %u\n", i<<2);
+         LUT[i] = p;
+         return i<<2;
+      }
+   }
+   fprintf(stderr, "ERROR: pointer conversion failed - pointer LUT overflow\n");
+   exit(0);
+}
+
+#endif
+
+
+

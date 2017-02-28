@@ -24,7 +24,7 @@ begin
 end;
 
 
-for y := 2004 to 2010 do
+for y := 2004 to 2020 do
 begin
 	print(paramStr("^0/^1/^2\n", easter(y)));
 end;
