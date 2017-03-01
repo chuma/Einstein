@@ -49,7 +49,9 @@
 #include "Emulator/Log/TBufferLog.h"
 #include "Emulator/Log/TStdOutLog.h"
 
+#if EINSTEIN_HAS_WORKSHOP
 #import "Workshop/TMacWorkshop.h"
+#endif
 
 #import "Monitor/TMacMonitor.h"
 #import "Monitor/TSymbolList.h"
@@ -203,11 +205,13 @@ static TCocoaAppController* gInstance = nil;
 - (void)awakeFromNib
 {
 	NSUserDefaults *defaults = [mUserDefaultsController defaults];
-	
+
+#if EINSTEIN_HAS_WORKSHOP
 	if ( [defaults boolForKey:kOpenWorkshopAtLaunch] )
 	{
 		[self showWorkshop:self];
 	}
+#endif
 
 	if ( [defaults boolForKey:kOpenMonitorAtLaunch] )
 	{
@@ -451,8 +455,10 @@ static TCocoaAppController* gInstance = nil;
 	mSymbolList = NULL;
 #endif
 
+#if EINSTEIN_HAS_WORKSHOP
 	mWorkshop = new TMacWorkshop(mEmulator);
 	[mWorkshopController setWorkshop:mWorkshop];
+#endif
 
 	mMonitor = new TMacMonitor(mMonitorLog, mEmulator, mSymbolList, theDataPath.UTF8String);
 	[mMonitorController setMonitor:mMonitor];
@@ -897,10 +903,12 @@ static TCocoaAppController* gInstance = nil;
 }
 
 
+#if EINSTEIN_HAS_WORKSHOP
 - (IBAction)showWorkshop:(id)sender
 {
 	[mWorkshopController showWindow:self];
 }
+#endif
 
 
 - (IBAction)showMonitor:(id)sender

@@ -32,8 +32,11 @@
 #import "Emulator/Screen/CocoaEmulatorApp.h"
 #import "TCocoaROMDumperController.h"
 #import "TCocoaSetupController.h"
-#import "TCocoaWorkshopController.h"
 #import "TCocoaMonitorController.h"
+
+#if EINSTEIN_HAS_WORKSHOP
+#import "TCocoaWorkshopController.h"
+#endif
 
 class TBufferLog;
 class TNetworkManager;
@@ -43,11 +46,14 @@ class TROMImage;
 class TEmulator;
 class TPlatformManager;
 class TLog;
-class TMacWorkshop;
 class TMacMonitor;
 class TSymbolList;
 class TFileManager;
 class TDevEnv;
+
+#if EINSTEIN_HAS_WORKSHOP
+class TMacWorkshop;
+#endif
 
 ///
 /// Protocol pour le contr™leur de l'application Einstein.app.
@@ -62,10 +68,13 @@ class TDevEnv;
 	IBOutlet NSMenu* mMenuBar;
 	IBOutlet TCocoaSetupController* mSetupController;
 	IBOutlet TCocoaROMDumperController* mROMDumperController;
-	IBOutlet TCocoaWorkshopController* mWorkshopController;
 	IBOutlet TCocoaMonitorController* mMonitorController;
 	IBOutlet NSUserDefaultsController* mUserDefaultsController;
-	
+
+#if EINSTEIN_HAS_WORKSHOP
+	IBOutlet TCocoaWorkshopController* mWorkshopController;
+#endif
+
 	CocoaScreenProxy*	mProxy;
 	
 	Boolean				mQuit;
@@ -82,11 +91,14 @@ class TDevEnv;
 	TPlatformManager*	mPlatformManager;
 	TFileManager*       mFileManager;
     TLog*				mLog;
-	TMacWorkshop*		mWorkshop;
 	TMacMonitor*		mMonitor;
 	TBufferLog*			mMonitorLog;
 	TSymbolList*		mSymbolList;
-	
+
+#if EINSTEIN_HAS_WORKSHOP
+	TMacWorkshop*		mWorkshop;
+#endif
+
 	NSToolbarItem*		mToolbarPowerItem;
 	NSImage*			mToolbarPowerOnImage;
 	NSImage*			mToolbarPowerOffImage;
@@ -119,8 +131,11 @@ class TDevEnv;
 - (IBAction)powerButton:(id)sender;
 - (IBAction)backlightButton:(id)sender;
 - (IBAction)networkButton:(id)sender;
-- (IBAction)showWorkshop:(id)sender;
 - (IBAction)showMonitor:(id)sender;
+
+#if EINSTEIN_HAS_WORKSHOP
+- (IBAction)showWorkshop:(id)sender;
+#endif
 
 // AppleScript
 - (id)commandInstallPackage:(NSURL*)inFileURL;
