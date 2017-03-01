@@ -289,6 +289,129 @@
 		C98AB2DD1A351EE6001BB1CD /* unsorted_023.rts in Resources */ = {isa = PBXBuildFile; fileRef = C98AB2A31A351EE6001BB1CD /* unsorted_023.rts */; };
 		C98AB2DE1A351EE6001BB1CD /* unsorted_024.cp in Sources */ = {isa = PBXBuildFile; fileRef = C98AB2A41A351EE6001BB1CD /* unsorted_024.cp */; };
 		C98AB2DF1A351EE6001BB1CD /* unsorted_024.rts in Resources */ = {isa = PBXBuildFile; fileRef = C98AB2A61A351EE6001BB1CD /* unsorted_024.rts */; };
+		C99886921E676C4400BCE585 /* button_backlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3160111B7346002165EC /* button_backlight.png */; };
+		C99886931E676C4400BCE585 /* toolbar_item_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A11E64AD960037B6B2 /* toolbar_item_stop.png */; };
+		C99886941E676C4400BCE585 /* button_backlight_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3161111B7346002165EC /* button_backlight_on.png */; };
+		C99886951E676C4400BCE585 /* button_install.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3162111B7346002165EC /* button_install.png */; };
+		C99886961E676C4400BCE585 /* button_power.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3163111B7346002165EC /* button_power.png */; };
+		C99886971E676C4400BCE585 /* TCocoaListenerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C2423C1E3167B700D074C6 /* TCocoaListenerWindow.xib */; };
+		C99886981E676C4400BCE585 /* Einstein.xib in Resources */ = {isa = PBXBuildFile; fileRef = F115FF111A2EA415001F3D65 /* Einstein.xib */; };
+		C99886991E676C4400BCE585 /* button_power_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3164111B7346002165EC /* button_power_on.png */; };
+		C998869A1E676C4400BCE585 /* button_prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3165111B7346002165EC /* button_prefs.png */; };
+		C998869B1E676C4400BCE585 /* Einstein.icns in Resources */ = {isa = PBXBuildFile; fileRef = C99E3166111B7346002165EC /* Einstein.icns */; };
+		C998869C1E676C4400BCE585 /* Einstein.sdef in Resources */ = {isa = PBXBuildFile; fileRef = C99E33D4111B7C07002165EC /* Einstein.sdef */; };
+		C998869D1E676C4400BCE585 /* Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAE9EF021A3B29150095BFAF /* Tests-Info.plist */; };
+		C998869E1E676C4400BCE585 /* toolbar_item_play.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A01E64AD960037B6B2 /* toolbar_item_play.png */; };
+		C998869F1E676C4400BCE585 /* Einstein.rex in Resources */ = {isa = PBXBuildFile; fileRef = C99E377A111C2289002165EC /* Einstein.rex */; };
+		C99886A01E676C4400BCE585 /* button_network_in.png in Resources */ = {isa = PBXBuildFile; fileRef = C932824511D0CF0A003B93C3 /* button_network_in.png */; };
+		C99886A11E676C4400BCE585 /* button_network.png in Resources */ = {isa = PBXBuildFile; fileRef = C932824611D0CF0A003B93C3 /* button_network.png */; };
+		C99886A31E676C4400BCE585 /* TMonitor.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3175111B73A1002165EC /* TMonitor.cp */; };
+		C99886A41E676C4400BCE585 /* TSymbolList.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3177111B73A1002165EC /* TSymbolList.cp */; };
+		C99886A51E676C4400BCE585 /* UDisasm.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3179111B73A1002165EC /* UDisasm.cp */; settings = {COMPILER_FLAGS = "-Wno-format-security"; }; };
+		C99886A61E676C4400BCE585 /* TCondVar.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E333F111B7570002165EC /* TCondVar.cp */; };
+		C99886A71E676C4400BCE585 /* TJITGenericRetarget.cp in Sources */ = {isa = PBXBuildFile; fileRef = C9CEB43D19601CA3002198A7 /* TJITGenericRetarget.cp */; };
+		C99886A81E676C4400BCE585 /* TMutex.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3341111B7570002165EC /* TMutex.cp */; };
+		C99886A91E676C4400BCE585 /* TThread.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3343111B7570002165EC /* TThread.cp */; };
+		C99886AA1E676C4400BCE585 /* einstein.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E33D1111B7C07002165EC /* einstein.mm */; };
+		C99886AB1E676C4400BCE585 /* EinsteinDoNewtonScriptCommand.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E33D6111B7C07002165EC /* EinsteinDoNewtonScriptCommand.mm */; };
+		C99886AC1E676C4400BCE585 /* EinsteinInstallPackageCommand.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E33D8111B7C07002165EC /* EinsteinInstallPackageCommand.mm */; };
+		C99886AD1E676C4400BCE585 /* TCocoaAppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E33DC111B7C07002165EC /* TCocoaAppController.mm */; };
+		C99886AE1E676C4400BCE585 /* TJITGenericRetargetMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C965D3FF1970A47000348893 /* TJITGenericRetargetMap.cpp */; };
+		C99886AF1E676C4400BCE585 /* TCocoaROMDumperController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E33DE111B7C07002165EC /* TCocoaROMDumperController.mm */; };
+		C99886B01E676C4400BCE585 /* TNullScreenManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = DA4BA46E1A3A3B78002BDB80 /* TNullScreenManager.cp */; };
+		C99886B11E676C4400BCE585 /* TCocoaSetupController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E33E0111B7C07002165EC /* TCocoaSetupController.mm */; };
+		C99886B21E676C4400BCE585 /* THostInfo.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E33F0111B7C07002165EC /* THostInfo.cp */; };
+		C99886B31E676C4400BCE585 /* TJITGeneric.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E340F111B7C07002165EC /* TJITGeneric.cp */; };
+		C99886B41E676C4400BCE585 /* TJITGeneric_BlockDataTransfer.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3411111B7C07002165EC /* TJITGeneric_BlockDataTransfer.cp */; };
+		C99886B51E676C4400BCE585 /* TCocoaPathHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = F19F1C281E5B574000E8C9BE /* TCocoaPathHelper.mm */; };
+		C99886B61E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3413111B7C07002165EC /* TJITGeneric_DataProcessingPSRTransfer.cp */; };
+		C99886B71E676C4400BCE585 /* TPathHelper.cp in Sources */ = {isa = PBXBuildFile; fileRef = F1E2C2A11E5B5D7A0074F2D3 /* TPathHelper.cp */; };
+		C99886B81E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_ArithmeticOp.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3415111B7C07002165EC /* TJITGeneric_DataProcessingPSRTransfer_ArithmeticOp.cp */; };
+		C99886B91E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_LogicalOp.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E341A111B7C07002165EC /* TJITGeneric_DataProcessingPSRTransfer_LogicalOp.cp */; };
+		C99886BA1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MoveOp.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E341E111B7C07002165EC /* TJITGeneric_DataProcessingPSRTransfer_MoveOp.cp */; };
+		C99886BB1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MRS.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3422111B7C07002165EC /* TJITGeneric_DataProcessingPSRTransfer_MRS.cp */; };
+		C99886BC1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MSR.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3426111B7C07002165EC /* TJITGeneric_DataProcessingPSRTransfer_MSR.cp */; };
+		C99886BD1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_TestOp.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E342A111B7C07002165EC /* TJITGeneric_DataProcessingPSRTransfer_TestOp.cp */; };
+		C99886BE1E676C4400BCE585 /* TJITGenericROMPatch.cp in Sources */ = {isa = PBXBuildFile; fileRef = DA52C88F1A409164008A17D0 /* TJITGenericROMPatch.cp */; };
+		C99886BF1E676C4400BCE585 /* TJITGeneric_Multiply.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3435111B7C07002165EC /* TJITGeneric_Multiply.cp */; };
+		C99886C01E676C4400BCE585 /* TJITGeneric_MultiplyAndAccumulate.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3439111B7C07002165EC /* TJITGeneric_MultiplyAndAccumulate.cp */; };
+		C99886C11E676C4400BCE585 /* TJITGeneric_Other.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E343B111B7C07002165EC /* TJITGeneric_Other.cp */; };
+		C99886C21E676C4400BCE585 /* TCocoaWorkshopController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C976B19C1E64979A0037B6B2 /* TCocoaWorkshopController.mm */; };
+		C99886C31E676C4400BCE585 /* TJITGeneric_SingleDataSwap.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E343D111B7C07002165EC /* TJITGeneric_SingleDataSwap.cp */; };
+		C99886C41E676C4400BCE585 /* TJITGeneric_SingleDataTransfer.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3441111B7C07002165EC /* TJITGeneric_SingleDataTransfer.cp */; };
+		C99886C51E676C4400BCE585 /* TJITGeneric_Test.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E344A111B7C07002165EC /* TJITGeneric_Test.cp */; };
+		C99886C61E676C4400BCE585 /* TJITGenericPage.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E344E111B7C07002165EC /* TJITGenericPage.cp */; };
+		C99886C71E676C4400BCE585 /* TJITCache.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3459111B7C07002165EC /* TJITCache.cp */; };
+		C99886C81E676C4400BCE585 /* TMacWorkshop.mm in Sources */ = {isa = PBXBuildFile; fileRef = C976B1B01E64BBDF0037B6B2 /* TMacWorkshop.mm */; };
+		C99886C91E676C4400BCE585 /* TJITPage.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E345B111B7C07002165EC /* TJITPage.cp */; };
+		C99886CA1E676C4400BCE585 /* TFileLog.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3462111B7C07002165EC /* TFileLog.cp */; };
+		C99886CB1E676C4400BCE585 /* TLog.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3464111B7C07002165EC /* TLog.cp */; };
+		C99886CC1E676C4400BCE585 /* TFileManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = F156B80F1CFA48B0004661E8 /* TFileManager.cp */; };
+		C99886CD1E676C4400BCE585 /* TMonitorCore.cp in Sources */ = {isa = PBXBuildFile; fileRef = DA6F86421A34FBB7006BC81E /* TMonitorCore.cp */; };
+		C99886CE1E676C4400BCE585 /* TStdOutLog.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3466111B7C07002165EC /* TStdOutLog.cp */; };
+		C99886CF1E676C4400BCE585 /* TVirtualizedCalls.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E346C111B7C07002165EC /* TVirtualizedCalls.cp */; };
+		C99886D01E676C4400BCE585 /* TATACard.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3470111B7C07002165EC /* TATACard.cp */; };
+		C99886D11E676C4400BCE585 /* UJITGenericRetargetSupport.cp in Sources */ = {isa = PBXBuildFile; fileRef = DA52C8A11A409C18008A17D0 /* UJITGenericRetargetSupport.cp */; };
+		C99886D21E676C4400BCE585 /* TLinearCard.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3472111B7C07002165EC /* TLinearCard.cp */; };
+		C99886D31E676C4400BCE585 /* TPCMCIACard.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3474111B7C07002165EC /* TPCMCIACard.cp */; };
+		C99886D41E676C4400BCE585 /* TPCMCIAController.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3476111B7C07002165EC /* TPCMCIAController.cp */; };
+		C99886D51E676C4400BCE585 /* TPlatformManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E347B111B7C07002165EC /* TPlatformManager.cp */; };
+		C99886D61E676C4400BCE585 /* TObjCBridgeCalls.mm in Sources */ = {isa = PBXBuildFile; fileRef = F150BC3B1CF630CC0077CDB7 /* TObjCBridgeCalls.mm */; };
+		C99886D71E676C4400BCE585 /* TAIFFile.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E347E111B7C08002165EC /* TAIFFile.cp */; };
+		C99886D81E676C4400BCE585 /* TAIFROMImageWithREXes.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3480111B7C08002165EC /* TAIFROMImageWithREXes.cp */; };
+		C99886D91E676C4400BCE585 /* TFlatROMImage.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3482111B7C08002165EC /* TFlatROMImage.cp */; };
+		C99886DA1E676C4400BCE585 /* TFlatROMImageWithREX.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3484111B7C08002165EC /* TFlatROMImageWithREX.cp */; };
+		C99886DB1E676C4400BCE585 /* TROMImage.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3486111B7C08002165EC /* TROMImage.cp */; };
+		C99886DC1E676C4400BCE585 /* CocoaScreenProxy.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E3490111B7C08002165EC /* CocoaScreenProxy.mm */; };
+		C99886DD1E676C4400BCE585 /* TCocoaPowerButtonNSView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E3492111B7C08002165EC /* TCocoaPowerButtonNSView.mm */; };
+		C99886DE1E676C4400BCE585 /* TCocoaScreenGlue.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E3494111B7C08002165EC /* TCocoaScreenGlue.mm */; };
+		C99886DF1E676C4400BCE585 /* TCocoaScreenManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E3495111B7C08002165EC /* TCocoaScreenManager.mm */; };
+		C99886E01E676C4400BCE585 /* TCocoaScreenView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99E3498111B7C08002165EC /* TCocoaScreenView.mm */; };
+		C99886E11E676C4400BCE585 /* TScreenManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E349D111B7C08002165EC /* TScreenManager.cp */; };
+		C99886E21E676C4400BCE585 /* TVirtualizedCallsPatches.cp in Sources */ = {isa = PBXBuildFile; fileRef = DA52C8981A40935B008A17D0 /* TVirtualizedCallsPatches.cp */; };
+		C99886E31E676C4400BCE585 /* TVoyagerSerialPort.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34A7111B7C08002165EC /* TVoyagerSerialPort.cp */; };
+		C99886E41E676C4400BCE585 /* TBufferedSoundManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34AA111B7C08002165EC /* TBufferedSoundManager.cp */; };
+		C99886E51E676C4400BCE585 /* TCoreAudioSoundManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34AC111B7C08002165EC /* TCoreAudioSoundManager.cp */; };
+		C99886E61E676C4400BCE585 /* TNullSoundManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34AE111B7C08002165EC /* TNullSoundManager.cp */; };
+		C99886E71E676C4400BCE585 /* TSoundManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34B2111B7C08002165EC /* TSoundManager.cp */; };
+		C99886E81E676C4400BCE585 /* TVoyagerManagedSerialPort.cp in Sources */ = {isa = PBXBuildFile; fileRef = C945F6711E53180C002505E9 /* TVoyagerManagedSerialPort.cp */; };
+		C99886E91E676C4400BCE585 /* TARMProcessor.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34B6111B7C08002165EC /* TARMProcessor.cp */; };
+		C99886EA1E676C4400BCE585 /* TDMAManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34B8111B7C08002165EC /* TDMAManager.cp */; };
+		C99886EB1E676C4400BCE585 /* TEmulator.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34BA111B7C08002165EC /* TEmulator.cp */; };
+		C99886EC1E676C4400BCE585 /* TFlash.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34BC111B7C08002165EC /* TFlash.cp */; };
+		C99886ED1E676C4400BCE585 /* TInterruptManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34BF111B7C08002165EC /* TInterruptManager.cp */; };
+		C99886EE1E676C4400BCE585 /* TMemory.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34C1111B7C08002165EC /* TMemory.cp */; };
+		C99886EF1E676C4400BCE585 /* TWorkshop.cp in Sources */ = {isa = PBXBuildFile; fileRef = C976B1AC1E64BA750037B6B2 /* TWorkshop.cp */; };
+		C99886F01E676C4400BCE585 /* TMMU.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34C4111B7C08002165EC /* TMMU.cp */; };
+		C99886F11E676C4400BCE585 /* TNativePrimitives.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E34C6111B7C08002165EC /* TNativePrimitives.cp */; };
+		C99886F21E676C4400BCE585 /* TNE2000Card.cp in Sources */ = {isa = PBXBuildFile; fileRef = C932C4C011A1AB5D00F6A7E4 /* TNE2000Card.cp */; };
+		C99886F31E676C4400BCE585 /* TUsermodeNetwork.cp in Sources */ = {isa = PBXBuildFile; fileRef = C962429511B69A9D00EE66F3 /* TUsermodeNetwork.cp */; };
+		C99886F41E676C4400BCE585 /* TNetworkManager.cp in Sources */ = {isa = PBXBuildFile; fileRef = C962429E11B6A20A00EE66F3 /* TNetworkManager.cp */; };
+		C99886F51E676C4400BCE585 /* TTapNetwork.cp in Sources */ = {isa = PBXBuildFile; fileRef = DA0D943E11B9A12D00835522 /* TTapNetwork.cp */; };
+		C99886F61E676C4400BCE585 /* TBufferLog.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3460111B7C07002165EC /* TBufferLog.cp */; };
+		C99886F71E676C4400BCE585 /* TCocoaMonitorController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F1647FC413198E6A001603BE /* TCocoaMonitorController.mm */; };
+		C99886F81E676C4400BCE585 /* TMacMonitor.mm in Sources */ = {isa = PBXBuildFile; fileRef = F164801813199758001603BE /* TMacMonitor.mm */; };
+		C99886F91E676C4400BCE585 /* UUTF16CStr.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E334F111B7570002165EC /* UUTF16CStr.cp */; };
+		C99886FA1E676C4400BCE585 /* UUTF16Conv.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E334D111B7570002165EC /* UUTF16Conv.cp */; };
+		C99886FB1E676C4400BCE585 /* TStream.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3333111B7570002165EC /* TStream.cp */; };
+		C99886FC1E676C4400BCE585 /* TFileStream.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3330111B7570002165EC /* TFileStream.cp */; };
+		C99886FD1E676C4400BCE585 /* TCircleBuffer.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3321111B7570002165EC /* TCircleBuffer.cp */; };
+		C99886FE1E676C4400BCE585 /* TMappedFile.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3324111B7570002165EC /* TMappedFile.cp */; };
+		C99886FF1E676C4400BCE585 /* TCocoaListenerWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = F156B8151CFA48BD004661E8 /* TCocoaListenerWindow.mm */; };
+		C99887001E676C4400BCE585 /* TError.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E32B6111B7570002165EC /* TError.cp */; };
+		C99887011E676C4400BCE585 /* TMacMonitorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = F119E9BC1B41FA0D00192514 /* TMacMonitorView.mm */; };
+		C99887021E676C4400BCE585 /* TException.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E32BF111B7570002165EC /* TException.cp */; };
+		C99887031E676C4400BCE585 /* TIOException.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E32BD111B7570002165EC /* TIOException.cp */; };
+		C99887041E676C4400BCE585 /* TCocoaFileManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = F156B8131CFA48BD004661E8 /* TCocoaFileManager.mm */; };
+		C99887051E676C4400BCE585 /* TMemError.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E32B8111B7570002165EC /* TMemError.cp */; };
+		C99887061E676C4400BCE585 /* TEOFException.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E32BB111B7570002165EC /* TEOFException.cp */; };
+		C99887071E676C4400BCE585 /* TJITPerformance.cp in Sources */ = {isa = PBXBuildFile; fileRef = C9BE33CF133E64F60052EA2F /* TJITPerformance.cp */; };
+		C99887081E676C4400BCE585 /* TFiber.cp in Sources */ = {isa = PBXBuildFile; fileRef = C9D54E1315FA23E700D91131 /* TFiber.cp */; };
+		C998870A1E676C4400BCE585 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		C998870B1E676C4400BCE585 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99E36FD111C18A8002165EC /* CoreAudio.framework */; };
+		C998870C1E676C4400BCE585 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99E3703111C18D2002165EC /* AddressBook.framework */; };
+		C998870D1E676C4400BCE585 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99E3705111C18D2002165EC /* AudioUnit.framework */; };
+		C998870E1E676C4400BCE585 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99E374F111C1F0E002165EC /* Carbon.framework */; };
 		C99E316A111B7346002165EC /* button_backlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3160111B7346002165EC /* button_backlight.png */; };
 		C99E316B111B7346002165EC /* button_backlight_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3161111B7346002165EC /* button_backlight_on.png */; };
 		C99E316C111B7346002165EC /* button_install.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3162111B7346002165EC /* button_install.png */; };
@@ -846,6 +969,8 @@
 		C98AB2A61A351EE6001BB1CD /* unsorted_024.rts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unsorted_024.rts; sourceTree = "<group>"; };
 		C9956719123F71D2009A5668 /* TIOSScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TIOSScreenManager.h; sourceTree = "<group>"; tabWidth = 4; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C995672B123F793D009A5668 /* TIOSScreenManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = TIOSScreenManager.mm; sourceTree = "<group>"; tabWidth = 4; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C99887131E676C4400BCE585 /* EinsteinWorkshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EinsteinWorkshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C99887141E676C4400BCE585 /* Einstein copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Einstein copy2-Info.plist"; path = "/Users/matt/dev/EinsteinPguyotGit/_Build_/Xcode/Einstein copy2-Info.plist"; sourceTree = "<absolute>"; };
 		C99E315A111B7331002165EC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Resources/Info.plist; sourceTree = SOURCE_ROOT; };
 		C99E3160111B7346002165EC /* button_backlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_backlight.png; sourceTree = "<group>"; };
 		C99E3161111B7346002165EC /* button_backlight_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_backlight_on.png; sourceTree = "<group>"; };
@@ -1287,6 +1412,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C99887091E676C4400BCE585 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C998870A1E676C4400BCE585 /* Cocoa.framework in Frameworks */,
+				C998870B1E676C4400BCE585 /* CoreAudio.framework in Frameworks */,
+				C998870C1E676C4400BCE585 /* AddressBook.framework in Frameworks */,
+				C998870D1E676C4400BCE585 /* AudioUnit.framework in Frameworks */,
+				C998870E1E676C4400BCE585 /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA4BA4021A3A0153002BDB80 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1346,6 +1483,7 @@
 				C98AB2371A351D20001BB1CD /* retarget */,
 				DA4FF0691A35E73900092B5A /* EinsteinTests.xctest */,
 				DA4BA4051A3A0153002BDB80 /* CLITest */,
+				C99887131E676C4400BCE585 /* EinsteinWorkshop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1367,6 +1505,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				C99887141E676C4400BCE585 /* Einstein copy2-Info.plist */,
 			);
 			indentWidth = 4;
 			name = Einstein;
@@ -2342,6 +2481,24 @@
 			productReference = C98AB2371A351D20001BB1CD /* retarget */;
 			productType = "com.apple.product-type.tool";
 		};
+		C99886901E676C4400BCE585 /* EinsteinWorkshop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C998870F1E676C4400BCE585 /* Build configuration list for PBXNativeTarget "EinsteinWorkshop" */;
+			buildPhases = (
+				C99886911E676C4400BCE585 /* Resources */,
+				C99886A21E676C4400BCE585 /* Sources */,
+				C99887091E676C4400BCE585 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EinsteinWorkshop;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Einstein;
+			productReference = C99887131E676C4400BCE585 /* EinsteinWorkshop.app */;
+			productType = "com.apple.product-type.application";
+		};
 		DA4BA4041A3A0153002BDB80 /* CLITest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA4BA40C1A3A0153002BDB80 /* Build configuration list for PBXNativeTarget "CLITest" */;
@@ -2409,6 +2566,7 @@
 			projectRoot = ../../..;
 			targets = (
 				8D1107260486CEB800E47090 /* Einstein */,
+				C99886901E676C4400BCE585 /* EinsteinWorkshop */,
 				2389E9371A1E4D4A0001A8C5 /* iOSEinstein */,
 				C95E603C198B76DC004C6CEF /* EinsteinDev (Matthias) */,
 				C98AB2361A351D20001BB1CD /* retarget */,
@@ -2506,6 +2664,29 @@
 				C95E6049198B76DC004C6CEF /* button_network.png in Resources */,
 				C98AB2DB1A351EE6001BB1CD /* unsorted_022.rts in Resources */,
 				C98AB2CB1A351EE6001BB1CD /* unsorted_014.rts in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C99886911E676C4400BCE585 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C99886921E676C4400BCE585 /* button_backlight.png in Resources */,
+				C99886931E676C4400BCE585 /* toolbar_item_stop.png in Resources */,
+				C99886941E676C4400BCE585 /* button_backlight_on.png in Resources */,
+				C99886951E676C4400BCE585 /* button_install.png in Resources */,
+				C99886961E676C4400BCE585 /* button_power.png in Resources */,
+				C99886971E676C4400BCE585 /* TCocoaListenerWindow.xib in Resources */,
+				C99886981E676C4400BCE585 /* Einstein.xib in Resources */,
+				C99886991E676C4400BCE585 /* button_power_on.png in Resources */,
+				C998869A1E676C4400BCE585 /* button_prefs.png in Resources */,
+				C998869B1E676C4400BCE585 /* Einstein.icns in Resources */,
+				C998869C1E676C4400BCE585 /* Einstein.sdef in Resources */,
+				C998869D1E676C4400BCE585 /* Tests-Info.plist in Resources */,
+				C998869E1E676C4400BCE585 /* toolbar_item_play.png in Resources */,
+				C998869F1E676C4400BCE585 /* Einstein.rex in Resources */,
+				C99886A01E676C4400BCE585 /* button_network_in.png in Resources */,
+				C99886A11E676C4400BCE585 /* button_network.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2953,6 +3134,115 @@
 				DA52C89D1A40935B008A17D0 /* TVirtualizedCallsPatches.cp in Sources */,
 				C98AB24B1A351E39001BB1CD /* UDisasm.cp in Sources */,
 				C98AB24A1A351E39001BB1CD /* TSymbolList.cp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C99886A21E676C4400BCE585 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C99886A31E676C4400BCE585 /* TMonitor.cp in Sources */,
+				C99886A41E676C4400BCE585 /* TSymbolList.cp in Sources */,
+				C99886A51E676C4400BCE585 /* UDisasm.cp in Sources */,
+				C99886A61E676C4400BCE585 /* TCondVar.cp in Sources */,
+				C99886A71E676C4400BCE585 /* TJITGenericRetarget.cp in Sources */,
+				C99886A81E676C4400BCE585 /* TMutex.cp in Sources */,
+				C99886A91E676C4400BCE585 /* TThread.cp in Sources */,
+				C99886AA1E676C4400BCE585 /* einstein.mm in Sources */,
+				C99886AB1E676C4400BCE585 /* EinsteinDoNewtonScriptCommand.mm in Sources */,
+				C99886AC1E676C4400BCE585 /* EinsteinInstallPackageCommand.mm in Sources */,
+				C99886AD1E676C4400BCE585 /* TCocoaAppController.mm in Sources */,
+				C99886AE1E676C4400BCE585 /* TJITGenericRetargetMap.cpp in Sources */,
+				C99886AF1E676C4400BCE585 /* TCocoaROMDumperController.mm in Sources */,
+				C99886B01E676C4400BCE585 /* TNullScreenManager.cp in Sources */,
+				C99886B11E676C4400BCE585 /* TCocoaSetupController.mm in Sources */,
+				C99886B21E676C4400BCE585 /* THostInfo.cp in Sources */,
+				C99886B31E676C4400BCE585 /* TJITGeneric.cp in Sources */,
+				C99886B41E676C4400BCE585 /* TJITGeneric_BlockDataTransfer.cp in Sources */,
+				C99886B51E676C4400BCE585 /* TCocoaPathHelper.mm in Sources */,
+				C99886B61E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer.cp in Sources */,
+				C99886B71E676C4400BCE585 /* TPathHelper.cp in Sources */,
+				C99886B81E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_ArithmeticOp.cp in Sources */,
+				C99886B91E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_LogicalOp.cp in Sources */,
+				C99886BA1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MoveOp.cp in Sources */,
+				C99886BB1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MRS.cp in Sources */,
+				C99886BC1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MSR.cp in Sources */,
+				C99886BD1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_TestOp.cp in Sources */,
+				C99886BE1E676C4400BCE585 /* TJITGenericROMPatch.cp in Sources */,
+				C99886BF1E676C4400BCE585 /* TJITGeneric_Multiply.cp in Sources */,
+				C99886C01E676C4400BCE585 /* TJITGeneric_MultiplyAndAccumulate.cp in Sources */,
+				C99886C11E676C4400BCE585 /* TJITGeneric_Other.cp in Sources */,
+				C99886C21E676C4400BCE585 /* TCocoaWorkshopController.mm in Sources */,
+				C99886C31E676C4400BCE585 /* TJITGeneric_SingleDataSwap.cp in Sources */,
+				C99886C41E676C4400BCE585 /* TJITGeneric_SingleDataTransfer.cp in Sources */,
+				C99886C51E676C4400BCE585 /* TJITGeneric_Test.cp in Sources */,
+				C99886C61E676C4400BCE585 /* TJITGenericPage.cp in Sources */,
+				C99886C71E676C4400BCE585 /* TJITCache.cp in Sources */,
+				C99886C81E676C4400BCE585 /* TMacWorkshop.mm in Sources */,
+				C99886C91E676C4400BCE585 /* TJITPage.cp in Sources */,
+				C99886CA1E676C4400BCE585 /* TFileLog.cp in Sources */,
+				C99886CB1E676C4400BCE585 /* TLog.cp in Sources */,
+				C99886CC1E676C4400BCE585 /* TFileManager.cp in Sources */,
+				C99886CD1E676C4400BCE585 /* TMonitorCore.cp in Sources */,
+				C99886CE1E676C4400BCE585 /* TStdOutLog.cp in Sources */,
+				C99886CF1E676C4400BCE585 /* TVirtualizedCalls.cp in Sources */,
+				C99886D01E676C4400BCE585 /* TATACard.cp in Sources */,
+				C99886D11E676C4400BCE585 /* UJITGenericRetargetSupport.cp in Sources */,
+				C99886D21E676C4400BCE585 /* TLinearCard.cp in Sources */,
+				C99886D31E676C4400BCE585 /* TPCMCIACard.cp in Sources */,
+				C99886D41E676C4400BCE585 /* TPCMCIAController.cp in Sources */,
+				C99886D51E676C4400BCE585 /* TPlatformManager.cp in Sources */,
+				C99886D61E676C4400BCE585 /* TObjCBridgeCalls.mm in Sources */,
+				C99886D71E676C4400BCE585 /* TAIFFile.cp in Sources */,
+				C99886D81E676C4400BCE585 /* TAIFROMImageWithREXes.cp in Sources */,
+				C99886D91E676C4400BCE585 /* TFlatROMImage.cp in Sources */,
+				C99886DA1E676C4400BCE585 /* TFlatROMImageWithREX.cp in Sources */,
+				C99886DB1E676C4400BCE585 /* TROMImage.cp in Sources */,
+				C99886DC1E676C4400BCE585 /* CocoaScreenProxy.mm in Sources */,
+				C99886DD1E676C4400BCE585 /* TCocoaPowerButtonNSView.mm in Sources */,
+				C99886DE1E676C4400BCE585 /* TCocoaScreenGlue.mm in Sources */,
+				C99886DF1E676C4400BCE585 /* TCocoaScreenManager.mm in Sources */,
+				C99886E01E676C4400BCE585 /* TCocoaScreenView.mm in Sources */,
+				C99886E11E676C4400BCE585 /* TScreenManager.cp in Sources */,
+				C99886E21E676C4400BCE585 /* TVirtualizedCallsPatches.cp in Sources */,
+				C99886E31E676C4400BCE585 /* TVoyagerSerialPort.cp in Sources */,
+				C99886E41E676C4400BCE585 /* TBufferedSoundManager.cp in Sources */,
+				C99886E51E676C4400BCE585 /* TCoreAudioSoundManager.cp in Sources */,
+				C99886E61E676C4400BCE585 /* TNullSoundManager.cp in Sources */,
+				C99886E71E676C4400BCE585 /* TSoundManager.cp in Sources */,
+				C99886E81E676C4400BCE585 /* TVoyagerManagedSerialPort.cp in Sources */,
+				C99886E91E676C4400BCE585 /* TARMProcessor.cp in Sources */,
+				C99886EA1E676C4400BCE585 /* TDMAManager.cp in Sources */,
+				C99886EB1E676C4400BCE585 /* TEmulator.cp in Sources */,
+				C99886EC1E676C4400BCE585 /* TFlash.cp in Sources */,
+				C99886ED1E676C4400BCE585 /* TInterruptManager.cp in Sources */,
+				C99886EE1E676C4400BCE585 /* TMemory.cp in Sources */,
+				C99886EF1E676C4400BCE585 /* TWorkshop.cp in Sources */,
+				C99886F01E676C4400BCE585 /* TMMU.cp in Sources */,
+				C99886F11E676C4400BCE585 /* TNativePrimitives.cp in Sources */,
+				C99886F21E676C4400BCE585 /* TNE2000Card.cp in Sources */,
+				C99886F31E676C4400BCE585 /* TUsermodeNetwork.cp in Sources */,
+				C99886F41E676C4400BCE585 /* TNetworkManager.cp in Sources */,
+				C99886F51E676C4400BCE585 /* TTapNetwork.cp in Sources */,
+				C99886F61E676C4400BCE585 /* TBufferLog.cp in Sources */,
+				C99886F71E676C4400BCE585 /* TCocoaMonitorController.mm in Sources */,
+				C99886F81E676C4400BCE585 /* TMacMonitor.mm in Sources */,
+				C99886F91E676C4400BCE585 /* UUTF16CStr.cp in Sources */,
+				C99886FA1E676C4400BCE585 /* UUTF16Conv.cp in Sources */,
+				C99886FB1E676C4400BCE585 /* TStream.cp in Sources */,
+				C99886FC1E676C4400BCE585 /* TFileStream.cp in Sources */,
+				C99886FD1E676C4400BCE585 /* TCircleBuffer.cp in Sources */,
+				C99886FE1E676C4400BCE585 /* TMappedFile.cp in Sources */,
+				C99886FF1E676C4400BCE585 /* TCocoaListenerWindow.mm in Sources */,
+				C99887001E676C4400BCE585 /* TError.cp in Sources */,
+				C99887011E676C4400BCE585 /* TMacMonitorView.mm in Sources */,
+				C99887021E676C4400BCE585 /* TException.cp in Sources */,
+				C99887031E676C4400BCE585 /* TIOException.cp in Sources */,
+				C99887041E676C4400BCE585 /* TCocoaFileManager.mm in Sources */,
+				C99887051E676C4400BCE585 /* TMemError.cp in Sources */,
+				C99887061E676C4400BCE585 /* TEOFException.cp in Sources */,
+				C99887071E676C4400BCE585 /* TJITPerformance.cp in Sources */,
+				C99887081E676C4400BCE585 /* TFiber.cp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3642,6 +3932,125 @@
 			};
 			name = Distribution;
 		};
+		C99887101E676C4400BCE585 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/../../app/Einstein_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EINSTEIN_HAS_WORKSHOP,
+					_DEBUG,
+					NO_PORT_AUDIO,
+					NO_X11,
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../",
+					"$(SRCROOT)/../../portaudio/pa_common/",
+					"$(SRCROOT)/../../libffi-osx",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../K/Misc\"",
+					"$(PROJECT_DIR)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PER_ARCH_CFLAGS_i386 = "-DPA_LITTLE_ENDIAN -DWORDS_LITTLEENDIAN=1";
+				PRELINK_LIBS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kallisys.einstein;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		C99887111E676C4400BCE585 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/../../app/Einstein_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EINSTEIN_HAS_WORKSHOP,
+					NO_PORT_AUDIO,
+					NO_X11,
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../",
+					"$(SRCROOT)/../../portaudio/pa_common/",
+					"$(SRCROOT)/../../libffi-osx",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../K/Misc\"",
+					"$(PROJECT_DIR)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PER_ARCH_CFLAGS_i386 = "-DPA_LITTLE_ENDIAN -DWORDS_LITTLEENDIAN=1";
+				PRELINK_LIBS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kallisys.einstein;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		C99887121E676C4400BCE585 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/../../app/Einstein_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EINSTEIN_HAS_WORKSHOP,
+					NO_PORT_AUDIO,
+					NO_X11,
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../",
+					"$(SRCROOT)/../../portaudio/pa_common/",
+					"$(SRCROOT)/../../libffi-osx",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../K/Misc\"",
+					"$(PROJECT_DIR)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PER_ARCH_CFLAGS_i386 = "-DPA_LITTLE_ENDIAN -DWORDS_LITTLEENDIAN=1";
+				PRELINK_LIBS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kallisys.einstein;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Distribution;
+		};
 		C9F9102C12FB780F0061A18D /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4007,6 +4416,16 @@
 				C98AB23C1A351D20001BB1CD /* Debug */,
 				C98AB23D1A351D20001BB1CD /* Release */,
 				C98AB23E1A351D20001BB1CD /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C998870F1E676C4400BCE585 /* Build configuration list for PBXNativeTarget "EinsteinWorkshop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C99887101E676C4400BCE585 /* Debug */,
+				C99887111E676C4400BCE585 /* Release */,
+				C99887121E676C4400BCE585 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
