@@ -4404,9 +4404,19 @@ newtRef NewtGetEnv(const char * s)
 
 #if __x86_64__
 
-static const uint32_t LUTSize = 16384;
+#undef  POINTER_CONVERSION_BY_LUT
+#define POINTER_CONVERSION_BY_HASH_TABLE
 
-uintptr_t LUT[LUTSize] = { 0 };
+
+#ifdef POINTER_CONVERSION_BY_LUT
+/*
+ * This code stores long pointers in a fixed size table. Short pointers are an
+ * index into the table. Converting a short pointer into a lon pointer is
+ * very fast. Converting a long pointer into a short pointer is slow and gets
+ * slower as the lookup table grows.
+ */
+static const uint32_t LUTSize = 16384;
+static uintptr_t LUT[LUTSize] = { 0 };
 
 
 uintptr_t NewtShortToLongPointer(uint32_t ix)
@@ -4421,7 +4431,7 @@ uintptr_t NewtShortToLongPointer(uint32_t ix)
    if (ix<LUTSize) {
       uintptr_t p = LUT[ix];
       if (p==0) {
-         fprintf(stderr, "ERROR: pointer conversion failed - can't be null pointer\n");
+         fprintf(stderr, "ERROR: pointer conversion failed - pointer not yet defined\n");
          exit(0);
       } else {
 //         printf("  Found 0x%016lx\n", p);
@@ -4437,8 +4447,13 @@ uintptr_t NewtShortToLongPointer(uint32_t ix)
 
 uint32_t NewtLongToShortPointer(uintptr_t p)
 {
-//   printf("Long to short for 0x%016lx\n", p);
    int i;
+
+//   printf("Long to short for 0x%016lx\n", p);
+   if (p&3) {
+      fprintf(stderr, "ERROR: pointer conversion failed - pointer must be modulo 4\n");
+      exit(0);
+   }
    if (p==0) return 0;
    for (i=1; i<LUTSize; i++) {
       uintptr_t t = LUT[i];
@@ -4454,6 +4469,125 @@ uint32_t NewtLongToShortPointer(uintptr_t p)
    fprintf(stderr, "ERROR: pointer conversion failed - pointer LUT overflow\n");
    exit(0);
 }
+
+#endif // POINTER_CONVERSION_BY_LUT
+
+
+
+#ifdef POINTER_CONVERSION_BY_HASH_TABLE
+/*
+ * This solution uses a hash table that points to buckets, which are basically 
+ * smaller lookup tables that are much faster to scan.
+ *
+ * The small pointer contains two values: the lower bits are a hash value
+ * created from the long pointer, and the higher bits are an index into the 
+ * bicket.
+ */
+
+static const uint32_t hashBits = 10;
+static const uint32_t hashSize = (1<<(hashBits-1));
+static const uint32_t hashMask  = hashSize-1;
+
+typedef struct {
+   uint32_t nAllocated, nUsed;
+   uintptr_t lut[1];
+} HashBucket;
+
+static HashBucket *hash[hashSize] = { 0 };
+
+#if 0
+static bool fullSearch(uintptr_t p, uint32_t *hashIx, uint32_t *bucketIx)
+{
+   if (p==0) return true;
+   for (int i=0; i<hashSize; i++) {
+      HashBucket *b = hash[i];
+      if (b) {
+         for (int j=0; j<b->nUsed; j++) {
+            if (b->lut[j]==p) {
+               printf("FOUND IT at %d:%d\n", i, j);
+            }
+         }
+      }
+   }
+   return false;
+}
+#endif
+
+uintptr_t NewtShortToLongPointer(uint32_t ix)
+{
+   //   printf("Short to long for %u\n", ix);
+   if (ix&3) {
+      fprintf(stderr, "ERROR: pointer conversion failed - index must be modulo 4\n");
+      exit(0);
+   }
+   ix = ix>>2;
+   if (ix==0) return 0;
+
+   uint32_t hashIx = ix & hashMask;
+   uint32_t bucketIx = ix >> hashBits;
+   HashBucket *bucket = hash[hashIx];
+   if (!bucket) {
+      fprintf(stderr, "ERROR: pointer conversion failed - pointer not yet defined\n");
+      exit(0);
+   }
+   if (bucketIx>=bucket->nUsed) {
+      fprintf(stderr, "ERROR: pointer conversion failed - invalid bucket index\n");
+      exit(0);
+   }
+   return bucket->lut[bucketIx];
+}
+
+
+uint32_t NewtLongToShortPointer(uintptr_t p)
+{
+   int i, n;
+
+   //   printf("Long to short for 0x%016lx\n", p);
+   if (p&3) {
+      fprintf(stderr, "ERROR: pointer conversion failed - pointer must be modulo 4\n");
+      exit(0);
+   }
+   if (p==0) return 0;
+   uint32_t hashIx = (((uint32_t)(p))>>4) & hashMask;
+//   printf("LongToShort: 0x%016lx: hash=%d\n", p, hashIx);
+   HashBucket *bucket = hash[hashIx];
+   // make a bucket if we don't have one yet
+   if (!bucket) {
+//      printf("  Allocating new bucket\n");
+      i = 0;
+      if (hashIx==0) i++;
+      hash[hashIx] = bucket = (HashBucket*)calloc(sizeof(HashBucket)+7*sizeof(uintptr_t), 1);
+      bucket->nAllocated = 8;
+      bucket->nUsed = i+1;
+      bucket->lut[i] = p;
+      return ((i<<hashBits)|(hashIx))<<2;
+   }
+   // find the pointer in the bucket
+   n = bucket->nUsed;
+   for (i=0; i<n; ++i) {
+      if (bucket->lut[i]==p) {
+//         printf("  found at %d:%d\n", hashIx, i);
+         return ((i<<hashBits)|(hashIx))<<2;
+      }
+   }
+//   fullSearch(p, 0L, 0L);
+   // make room for a new pointer in the bucket
+   if (bucket->nUsed == bucket->nAllocated) {
+      if (bucket->nAllocated<32)
+         bucket->nAllocated *=2;
+      else
+         bucket->nAllocated += 32;
+//      printf("  Resizing bucket to %d\n", bucket->nAllocated);
+      hash[hashIx] = bucket = realloc(bucket, sizeof(HashBucket)+(bucket->nAllocated-1)*sizeof(uintptr_t));
+   }
+   // store the pointer at the end of the list
+   i = bucket->nUsed;
+   bucket->lut[i] = p;
+   bucket->nUsed++;
+   return ((i<<hashBits)|(hashIx))<<2;
+}
+
+#endif // POINTER_CONVERSION_BY_HASH_TABLE
 
 #endif
 
