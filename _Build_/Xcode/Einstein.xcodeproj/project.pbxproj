@@ -110,6 +110,7 @@
 		C932C4C211A1AB5D00F6A7E4 /* TNE2000Card.cp in Sources */ = {isa = PBXBuildFile; fileRef = C932C4C011A1AB5D00F6A7E4 /* TNE2000Card.cp */; };
 		C945F6731E53180C002505E9 /* TVoyagerManagedSerialPort.cp in Sources */ = {isa = PBXBuildFile; fileRef = C945F6711E53180C002505E9 /* TVoyagerManagedSerialPort.cp */; };
 		C955C6511E55D06900F0BFFA /* TVoyagerManagedSerialPort.cp in Sources */ = {isa = PBXBuildFile; fileRef = C945F6711E53180C002505E9 /* TVoyagerManagedSerialPort.cp */; };
+		C958F0571E67744B000CA017 /* EinsteinWorkshop.xib in Resources */ = {isa = PBXBuildFile; fileRef = C958F0551E67744B000CA017 /* EinsteinWorkshop.xib */; };
 		C95E603F198B76DC004C6CEF /* button_backlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3160111B7346002165EC /* button_backlight.png */; };
 		C95E6040198B76DC004C6CEF /* button_backlight_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3161111B7346002165EC /* button_backlight_on.png */; };
 		C95E6041198B76DC004C6CEF /* button_install.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3162111B7346002165EC /* button_install.png */; };
@@ -295,7 +296,6 @@
 		C99886951E676C4400BCE585 /* button_install.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3162111B7346002165EC /* button_install.png */; };
 		C99886961E676C4400BCE585 /* button_power.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3163111B7346002165EC /* button_power.png */; };
 		C99886971E676C4400BCE585 /* TCocoaListenerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C2423C1E3167B700D074C6 /* TCocoaListenerWindow.xib */; };
-		C99886981E676C4400BCE585 /* Einstein.xib in Resources */ = {isa = PBXBuildFile; fileRef = F115FF111A2EA415001F3D65 /* Einstein.xib */; };
 		C99886991E676C4400BCE585 /* button_power_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3164111B7346002165EC /* button_power_on.png */; };
 		C998869A1E676C4400BCE585 /* button_prefs.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3165111B7346002165EC /* button_prefs.png */; };
 		C998869B1E676C4400BCE585 /* Einstein.icns in Resources */ = {isa = PBXBuildFile; fileRef = C99E3166111B7346002165EC /* Einstein.icns */; };
@@ -860,6 +860,8 @@
 		C94ADB38123E9ADD00406839 /* iEinsteinView.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = iEinsteinView.mm; path = Classes/iEinsteinView.mm; sourceTree = "<group>"; tabWidth = 4; };
 		C94ADB39123E9ADD00406839 /* iEinsteinViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = iEinsteinViewController.mm; path = Classes/iEinsteinViewController.mm; sourceTree = "<group>"; tabWidth = 4; };
 		C94ADB3E123E9AEC00406839 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		C958F0541E6773EB000CA017 /* macOSEinsteinWorkshop.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = macOSEinsteinWorkshop.plist; path = ../../Resources/macOSEinsteinWorkshop.plist; sourceTree = "<group>"; };
+		C958F0561E67744B000CA017 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ../../Resources/en.lproj/EinsteinWorkshop.xib; sourceTree = "<group>"; };
 		C95E60B7198B76DC004C6CEF /* EinsteinDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EinsteinDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C962429511B69A9D00EE66F3 /* TUsermodeNetwork.cp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TUsermodeNetwork.cp; path = Network/TUsermodeNetwork.cp; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 		C962429611B69A9D00EE66F3 /* TUsermodeNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = TUsermodeNetwork.h; path = Network/TUsermodeNetwork.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
@@ -2364,9 +2366,11 @@
 			isa = PBXGroup;
 			children = (
 				F115FF111A2EA415001F3D65 /* Einstein.xib */,
+				C958F0551E67744B000CA017 /* EinsteinWorkshop.xib */,
 				F1C2423C1E3167B700D074C6 /* TCocoaListenerWindow.xib */,
 				C99E315F111B7346002165EC /* Icons */,
 				C99E315A111B7331002165EC /* Info.plist */,
+				C958F0541E6773EB000CA017 /* macOSEinsteinWorkshop.plist */,
 				C99E377A111C2289002165EC /* Einstein.rex */,
 			);
 			name = "Mac OS X";
@@ -2677,8 +2681,8 @@
 				C99886951E676C4400BCE585 /* button_install.png in Resources */,
 				C99886961E676C4400BCE585 /* button_power.png in Resources */,
 				C99886971E676C4400BCE585 /* TCocoaListenerWindow.xib in Resources */,
-				C99886981E676C4400BCE585 /* Einstein.xib in Resources */,
 				C99886991E676C4400BCE585 /* button_power_on.png in Resources */,
+				C958F0571E67744B000CA017 /* EinsteinWorkshop.xib in Resources */,
 				C998869A1E676C4400BCE585 /* button_prefs.png in Resources */,
 				C998869B1E676C4400BCE585 /* Einstein.icns in Resources */,
 				C998869C1E676C4400BCE585 /* Einstein.sdef in Resources */,
@@ -3429,6 +3433,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C958F0551E67744B000CA017 /* EinsteinWorkshop.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C958F0561E67744B000CA017 /* en */,
+			);
+			name = EinsteinWorkshop.xib;
+			sourceTree = "<group>";
+		};
 		F115FF111A2EA415001F3D65 /* Einstein.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3945,7 +3957,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/../../app/Einstein_Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					EINSTEIN_HAS_WORKSHOP,
+					"EINSTEIN_HAS_WORKSHOP=1",
 					_DEBUG,
 					NO_PORT_AUDIO,
 					NO_X11,
@@ -3956,7 +3968,7 @@
 					"$(SRCROOT)/../../portaudio/pa_common/",
 					"$(SRCROOT)/../../libffi-osx",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/macOSEinsteinWorkshop.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3985,7 +3997,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/../../app/Einstein_Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					EINSTEIN_HAS_WORKSHOP,
+					"EINSTEIN_HAS_WORKSHOP=1",
 					NO_PORT_AUDIO,
 					NO_X11,
 					"$(inherited)",
@@ -3995,7 +4007,7 @@
 					"$(SRCROOT)/../../portaudio/pa_common/",
 					"$(SRCROOT)/../../libffi-osx",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/macOSEinsteinWorkshop.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4024,7 +4036,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/../../app/Einstein_Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					EINSTEIN_HAS_WORKSHOP,
+					"EINSTEIN_HAS_WORKSHOP=1",
 					NO_PORT_AUDIO,
 					NO_X11,
 					"$(inherited)",
@@ -4034,7 +4046,7 @@
 					"$(SRCROOT)/../../portaudio/pa_common/",
 					"$(SRCROOT)/../../libffi-osx",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/macOSEinsteinWorkshop.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
