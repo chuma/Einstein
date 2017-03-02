@@ -15,7 +15,11 @@
 
 
 /* ヘッダファイル */
+#if NEWT0_FOR_EINSTEIN
+#include "Newt0/darwin/config.h"
+#else
 #include "config.h"
+#endif
 
 
 // 未定義の場合はデフォルト値を設定する

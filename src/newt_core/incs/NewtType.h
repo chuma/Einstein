@@ -15,7 +15,11 @@
 
 
 /* ヘッダファイル */
+#if NEWT0_FOR_EINSTEIN
+#include "Newt0/platform.h"
+#else
 #include "platform.h"
+#endif
 
 #if HAVE_STDINT_H
 	#include <stdint.h>

@@ -24,7 +24,12 @@
 #include "NewtParser.h"
 #include "lookup_words.h"
 #include "yacc.h"
+
+#if NEWT0_FOR_EINSTEIN
+#include "Newt0/version.h"
+#else
 #include "version.h"
+#endif
 
 
 /* 定数 */

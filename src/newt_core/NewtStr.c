@@ -12,7 +12,11 @@
 /* ヘッダファイル */
 #include <string.h>
 
+#if NEWT0_FOR_EINSTEIN
+#include "Newt0/darwin/config.h"
+#else
 #include "config.h"
+#endif
 
 #include "NewtCore.h"
 #include "NewtStr.h"

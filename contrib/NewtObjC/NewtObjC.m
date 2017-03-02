@@ -41,7 +41,11 @@
 
 // NEWT/0
 #include "NewtCore.h"
+#if NEWT0_FOR_EINSTEIN
+#include "Newt0/darwin/config.h"
+#else
 #include "config.h"
+#endif
 
 // NewtObjC
 #import "AppKitFunctions.h"

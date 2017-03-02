@@ -13,7 +13,13 @@
 /* ヘッダファイル */
 #include <string.h>
 #include <stdlib.h>
+
+#if NEWT0_FOR_EINSTEIN
+#include "Newt0/darwin/config.h"
+#else
 #include "config.h"
+#endif
+
 #include "lookup_words.h"
 
 

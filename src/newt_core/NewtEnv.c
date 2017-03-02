@@ -14,7 +14,12 @@
 #include <string.h>
 #include <errno.h>
 
+#if NEWT0_FOR_EINSTEIN
+#include "Newt0/version.h"
+#else
 #include "version.h"
+#endif
+
 #include "NewtEnv.h"
 #include "NewtObj.h"
 #include "NewtFns.h"
