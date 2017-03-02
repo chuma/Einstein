@@ -963,6 +963,7 @@
 		C98AB2A41A351EE6001BB1CD /* unsorted_024.cp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unsorted_024.cp; sourceTree = "<group>"; };
 		C98AB2A51A351EE6001BB1CD /* unsorted_024.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unsorted_024.h; sourceTree = "<group>"; };
 		C98AB2A61A351EE6001BB1CD /* unsorted_024.rts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unsorted_024.rts; sourceTree = "<group>"; };
+		C99451431E68A90C00232589 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.txt; path = ../../Workshop/README.txt; sourceTree = "<group>"; };
 		C9956719123F71D2009A5668 /* TIOSScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TIOSScreenManager.h; sourceTree = "<group>"; tabWidth = 4; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C995672B123F793D009A5668 /* TIOSScreenManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = TIOSScreenManager.mm; sourceTree = "<group>"; tabWidth = 4; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C99887131E676C4400BCE585 /* EinsteinWorkshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EinsteinWorkshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1545,6 +1546,7 @@
 		C976B1AB1E64BA490037B6B2 /* Workshop */ = {
 			isa = PBXGroup;
 			children = (
+				C99451431E68A90C00232589 /* README.txt */,
 				C976B1B01E64BBDF0037B6B2 /* TMacWorkshop.mm */,
 				C976B1B31E64BBFB0037B6B2 /* TMacWorkshop.h */,
 				C976B1AC1E64BA750037B6B2 /* TWorkshop.cp */,
