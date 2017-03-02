@@ -16,13 +16,24 @@
 Developer information: Newt/0 is a Git repostory inside a Git repostory. Newt/0
 is maintained as a subtree inside the Workshop directory.
 
+See: https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html
+
 Newt/0 lives as a fork on GitHub. I used this command to link Einstein and Newt:
 	$ git remote add -f newt0 https://github.com/MatthiasWM/NEWT0.git
-$ git merge -s ours --no-commit Bproject/master <2>
-$ git read-tree --prefix=dir-B/ -u Bproject/master <3>
-$ git commit -m "Merge B project as our subdirectory" <4>
 
-$ git pull -s subtree Bproject master <5>
+Prepare to recorde the result as a merge:
+	$ git merge -s ours --no-commit newt0/master
+
+Read "master" branch of Newt/0 to the subdirectory "Workshop":
+	$ git read-tree --prefix=Workshop/ -u newt0/master
+
+Record the merge result
+	$ git commit -m "Merged Newt/0 into the subdirector \"Workshop/\""
+
+Maintain the result with subsequent merges using "subtree"
+	$ git pull -s subtree newt0 master
+
+
 
 
   2. Newt/0 inside Einstein
