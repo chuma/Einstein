@@ -4041,10 +4041,16 @@ void * NewtRefToNativeFn(newtRefArg r)
 
     fn = NcGetSlot(r, NSSYM0(funcPtr));
 
-    if (NewtRefIsInteger(fn))
-        return (void *)NewtRefToInteger(fn);
-    else
+   if (NewtRefIsInteger(fn)) {
+#if __x86_64__
+         uint32_t v = (((uint32_t)NewtRefToInteger(r)));
+         return (void*)NewtShortToLongPointer( v<<2 );
+#else
+         return (void *)NewtRefToInteger(fn);
+#endif
+   } else {
         return NULL;
+   }
 }
 
 
