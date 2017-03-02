@@ -299,6 +299,11 @@
 		C994519D1E68C63800232589 /* NewtPrint.c in Sources */ = {isa = PBXBuildFile; fileRef = C994517E1E68C62200232589 /* NewtPrint.c */; };
 		C994519E1E68C63800232589 /* NewtStr.c in Sources */ = {isa = PBXBuildFile; fileRef = C994517F1E68C62200232589 /* NewtStr.c */; };
 		C994519F1E68C63800232589 /* NewtVM.c in Sources */ = {isa = PBXBuildFile; fileRef = C99451801E68C62200232589 /* NewtVM.c */; };
+		C99451A11E68D15600232589 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C99451A01E68D15600232589 /* libiconv.tbd */; };
+		C99451AB1E68D27C00232589 /* lookup_words.c in Sources */ = {isa = PBXBuildFile; fileRef = C99451A31E68D27000232589 /* lookup_words.c */; };
+		C99451AC1E68D28000232589 /* newt.l in Sources */ = {isa = PBXBuildFile; fileRef = C99451A51E68D27000232589 /* newt.l */; };
+		C99451AD1E68D28400232589 /* newt.y in Sources */ = {isa = PBXBuildFile; fileRef = C99451A61E68D27000232589 /* newt.y */; };
+		C99451B21E68D2BD00232589 /* endian_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = C99451AF1E68D2B800232589 /* endian_utils.c */; };
 		C99886921E676C4400BCE585 /* button_backlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3160111B7346002165EC /* button_backlight.png */; };
 		C99886931E676C4400BCE585 /* toolbar_item_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C976B1A11E64AD960037B6B2 /* toolbar_item_stop.png */; };
 		C99886941E676C4400BCE585 /* button_backlight_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C99E3161111B7346002165EC /* button_backlight_on.png */; };
@@ -1021,6 +1026,14 @@
 		C994517E1E68C62200232589 /* NewtPrint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = NewtPrint.c; path = ../../Workshop/Newt0/src/newt_core/NewtPrint.c; sourceTree = "<group>"; };
 		C994517F1E68C62200232589 /* NewtStr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = NewtStr.c; path = ../../Workshop/Newt0/src/newt_core/NewtStr.c; sourceTree = "<group>"; };
 		C99451801E68C62200232589 /* NewtVM.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = NewtVM.c; path = ../../Workshop/Newt0/src/newt_core/NewtVM.c; sourceTree = "<group>"; };
+		C99451A01E68D15600232589 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		C99451A31E68D27000232589 /* lookup_words.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lookup_words.c; sourceTree = "<group>"; };
+		C99451A41E68D27000232589 /* lookup_words.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lookup_words.h; sourceTree = "<group>"; };
+		C99451A51E68D27000232589 /* newt.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = newt.l; sourceTree = "<group>"; };
+		C99451A61E68D27000232589 /* newt.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; path = newt.y; sourceTree = "<group>"; };
+		C99451A71E68D27000232589 /* yacc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yacc.h; sourceTree = "<group>"; };
+		C99451AF1E68D2B800232589 /* endian_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = endian_utils.c; sourceTree = "<group>"; };
+		C99451B01E68D2B800232589 /* endian_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endian_utils.h; sourceTree = "<group>"; };
 		C9956719123F71D2009A5668 /* TIOSScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TIOSScreenManager.h; sourceTree = "<group>"; tabWidth = 4; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C995672B123F793D009A5668 /* TIOSScreenManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = TIOSScreenManager.mm; sourceTree = "<group>"; tabWidth = 4; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C99887131E676C4400BCE585 /* EinsteinWorkshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EinsteinWorkshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1470,6 +1483,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C99451A11E68D15600232589 /* libiconv.tbd in Frameworks */,
 				C998870A1E676C4400BCE585 /* Cocoa.framework in Frameworks */,
 				C998870B1E676C4400BCE585 /* CoreAudio.framework in Frameworks */,
 				C998870C1E676C4400BCE585 /* AddressBook.framework in Frameworks */,
@@ -1580,6 +1594,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C99451A01E68D15600232589 /* libiconv.tbd */,
 				C97C7CB81242827600CDCD05 /* iOS Frameworks */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
@@ -1603,8 +1618,8 @@
 		C976B1AB1E64BA490037B6B2 /* Workshop */ = {
 			isa = PBXGroup;
 			children = (
-				C99451471E68C5FD00232589 /* Newt0 */,
 				C99451431E68A90C00232589 /* README.txt */,
+				C99451471E68C5FD00232589 /* Newt0 */,
 				C976B1B01E64BBDF0037B6B2 /* TMacWorkshop.mm */,
 				C976B1B31E64BBFB0037B6B2 /* TMacWorkshop.h */,
 				C976B1AC1E64BA750037B6B2 /* TWorkshop.cp */,
@@ -1767,6 +1782,8 @@
 			isa = PBXGroup;
 			children = (
 				C99451481E68C62200232589 /* incs */,
+				C99451A21E68D27000232589 /* parser */,
+				C99451AE1E68D2B800232589 /* utils */,
 				C99451721E68C62200232589 /* NewtBC.c */,
 				C99451731E68C62200232589 /* NewtEnv.c */,
 				C99451741E68C62200232589 /* NewtFile.c */,
@@ -1835,6 +1852,29 @@
 				C994515E1E68C62200232589 /* Objects.h */,
 			);
 			path = Newton;
+			sourceTree = "<group>";
+		};
+		C99451A21E68D27000232589 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				C99451A31E68D27000232589 /* lookup_words.c */,
+				C99451A41E68D27000232589 /* lookup_words.h */,
+				C99451A51E68D27000232589 /* newt.l */,
+				C99451A61E68D27000232589 /* newt.y */,
+				C99451A71E68D27000232589 /* yacc.h */,
+			);
+			name = parser;
+			path = ../../Workshop/Newt0/src/parser;
+			sourceTree = "<group>";
+		};
+		C99451AE1E68D2B800232589 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C99451AF1E68D2B800232589 /* endian_utils.c */,
+				C99451B01E68D2B800232589 /* endian_utils.h */,
+			);
+			name = utils;
+			path = ../../Workshop/Newt0/src/utils;
 			sourceTree = "<group>";
 		};
 		C99E3154111B72C0002165EC /* Sources */ = {
@@ -3294,6 +3334,7 @@
 				C99886B71E676C4400BCE585 /* TPathHelper.cp in Sources */,
 				C99886B81E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_ArithmeticOp.cp in Sources */,
 				C99886B91E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_LogicalOp.cp in Sources */,
+				C99451B21E68D2BD00232589 /* endian_utils.c in Sources */,
 				C99886BA1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MoveOp.cp in Sources */,
 				C99886BB1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MRS.cp in Sources */,
 				C99886BC1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MSR.cp in Sources */,
@@ -3342,6 +3383,7 @@
 				C99886E11E676C4400BCE585 /* TScreenManager.cp in Sources */,
 				C99886E21E676C4400BCE585 /* TVirtualizedCallsPatches.cp in Sources */,
 				C99886E31E676C4400BCE585 /* TVoyagerSerialPort.cp in Sources */,
+				C99451AD1E68D28400232589 /* newt.y in Sources */,
 				C99886E41E676C4400BCE585 /* TBufferedSoundManager.cp in Sources */,
 				C99886E51E676C4400BCE585 /* TCoreAudioSoundManager.cp in Sources */,
 				C99886E61E676C4400BCE585 /* TNullSoundManager.cp in Sources */,
@@ -3368,6 +3410,7 @@
 				C99886F81E676C4400BCE585 /* TMacMonitor.mm in Sources */,
 				C994519B1E68C63800232589 /* NewtParser.c in Sources */,
 				C99886F91E676C4400BCE585 /* UUTF16CStr.cp in Sources */,
+				C99451AC1E68D28000232589 /* newt.l in Sources */,
 				C99886FA1E676C4400BCE585 /* UUTF16Conv.cp in Sources */,
 				C99886FB1E676C4400BCE585 /* TStream.cp in Sources */,
 				C99886FC1E676C4400BCE585 /* TFileStream.cp in Sources */,
@@ -3380,6 +3423,7 @@
 				C99451951E68C63800232589 /* NewtGC.c in Sources */,
 				C99887031E676C4400BCE585 /* TIOException.cp in Sources */,
 				C99887041E676C4400BCE585 /* TCocoaFileManager.mm in Sources */,
+				C99451AB1E68D27C00232589 /* lookup_words.c in Sources */,
 				C99887051E676C4400BCE585 /* TMemError.cp in Sources */,
 				C99887061E676C4400BCE585 /* TEOFException.cp in Sources */,
 				C99887071E676C4400BCE585 /* TJITPerformance.cp in Sources */,
@@ -4105,6 +4149,9 @@
 					"$(SRCROOT)/../../",
 					"$(SRCROOT)/../../portaudio/pa_common/",
 					"$(SRCROOT)/../../libffi-osx",
+					"$(SRCROOT)/../../Workshop/Newt0/src/",
+					"$(SRCROOT)/../../Workshop/Newt0/src/parser/",
+					"$(SRCROOT)/../../Workshop/Newt0/src/newt_core/",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/macOSEinsteinWorkshop.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -4145,6 +4192,9 @@
 					"$(SRCROOT)/../../",
 					"$(SRCROOT)/../../portaudio/pa_common/",
 					"$(SRCROOT)/../../libffi-osx",
+					"$(SRCROOT)/../../Workshop/Newt0/src/",
+					"$(SRCROOT)/../../Workshop/Newt0/src/parser/",
+					"$(SRCROOT)/../../Workshop/Newt0/src/newt_core/",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/macOSEinsteinWorkshop.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -4185,6 +4235,9 @@
 					"$(SRCROOT)/../../",
 					"$(SRCROOT)/../../portaudio/pa_common/",
 					"$(SRCROOT)/../../libffi-osx",
+					"$(SRCROOT)/../../Workshop/Newt0/src/",
+					"$(SRCROOT)/../../Workshop/Newt0/src/parser/",
+					"$(SRCROOT)/../../Workshop/Newt0/src/newt_core/",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/../../Resources/macOSEinsteinWorkshop.plist";
 				INSTALL_PATH = "$(HOME)/Applications";

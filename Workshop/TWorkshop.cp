@@ -89,3 +89,17 @@ void TWorkshop::CompileAndRun()
 
 }
 
+
+/*
+ * Needed by Newt/0
+ */
+extern "C"
+void yyerror(char * s)
+{
+//	if (s[0] && s[1] == ':')
+//		NPSErrorStr(*s, s + 2);
+//	else
+//		NPSErrorStr('E', s);
+}
+
+
