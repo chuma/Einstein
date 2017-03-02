@@ -16,7 +16,11 @@
 
 /* ヘッダファイル */
 #ifdef HAVE_CONFIG_H
-	#include "config.h"
+#if NEWT0_FOR_EINSTEIN
+#include "Newt0/darwin/config.h"
+#else
+#include "config.h"
+#endif
 #endif
 
 
