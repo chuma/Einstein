@@ -307,7 +307,7 @@ void PkgWriteU32(pkg_stream_t *pkg, uint32_t offset, uint32_t v)
 void PgkWriteVarData(pkg_stream_t *pkg, uint32_t offset, newtRefVar frame, newtRefVar sym)
 {
 	newtRef info;
-	uint32_t ix;
+	int32_t ix;
 	
 	PkgWriteU32(pkg, offset, 0);
 
@@ -323,10 +323,10 @@ void PgkWriteVarData(pkg_stream_t *pkg, uint32_t offset, newtRefVar frame, newtR
 #		ifdef HAVE_LIBICONV
 			if (NewtRefIsString(info)) {
 				size_t buflen;
-				char *buf = NewtIconv(pkg->to_utf16, data, size, &buflen);
+				char *buf = NewtIconv(pkg->to_utf16, (char*)data, size, &buflen);
 				if (buf) {
 					size = buflen;
-					data = buf;
+					data = (uint8_t*)buf;
 				}
 			}
 #		endif /* HAVE_LIBICONV */
@@ -444,10 +444,10 @@ newtRef PkgWriteBinary(pkg_stream_t *pkg, newtRefArg obj)
 	} else if (NewtRefIsString(obj)) {
 #		ifdef HAVE_LIBICONV
 			size_t buflen;
-			char *buf = NewtIconv(pkg->to_utf16, data, size, &buflen);
+			char *buf = NewtIconv(pkg->to_utf16, (char*)data, size, &buflen);
 			if (buf) {
 				size = buflen;
-				data = buf;
+				data = (uint8_t*)buf;
 			}
 #		endif /* HAVE_LIBICONV */
 	}
@@ -789,14 +789,14 @@ newtRef PkgReadBinaryObject(pkg_stream_t *pkg, uint32_t p_obj)
 {
 	uint32_t size = PkgReadU32(pkg->data + p_obj) >> 8;
 	newtRef klass, result = kNewtRefNIL;
-	newtRef ins = NSSYM0(instructions);
+	// newtRef ins = NSSYM0(instructions);
 
 	klass = PkgReadRef(pkg, p_obj+8);
 
 	if (klass==kNewtSymbolClass) {
-		result = NewtMakeSymbol(pkg->data + p_obj + 16);
+		result = NewtMakeSymbol((char*)pkg->data + p_obj + 16);
 	} else if (klass==NSSYM0(string)) {
-		char *src = pkg->data + p_obj + 12;
+		char *src = (char*)pkg->data + p_obj + 12;
 		int sze = size-12;
 #		ifdef HAVE_LIBICONV
 			size_t buflen;
@@ -954,7 +954,7 @@ newtRef PkgReadNOSPart(pkg_stream_t *pkg)
 	// verify that we have a correct lead-in 
 	if (PkgReadU32(pkg->part)!=0x00001041 || PkgReadU32(pkg->part+8)!=0x00000002) {
 #		ifdef DEBUG_PKG
-		printf("*** PkgReader: PkgReadPart - unsupported NOS Part intro at %d\n",
+		printf("*** PkgReader: PkgReadPart - unsupported NOS Part intro at %ld\n",
 			pkg->part-pkg->data);
 #		endif
 		return kNewtRefNIL;
@@ -1051,7 +1051,7 @@ newtRef PkgReadVardataString(pkg_stream_t *pkg, pkg_info_ref_t *info_ref)
 	if (info_ref->size==0) {
 		return kNewtRefNIL;
 	} else {
-		char *src = pkg->var_data + ntohs(info_ref->offset);
+		char *src = (char*)pkg->var_data + ntohs(info_ref->offset);
 		int size = ntohs(info_ref->size);
 #		ifdef HAVE_LIBICONV
 			size_t buflen;
@@ -1145,7 +1145,7 @@ newtRef NewtReadPkg(uint8_t * data, size_t size)
 	if (size<sizeof(pkg_header_t))
 		return kNewtRefNIL;
 
-	if (!PkgIsPackage(data))
+	if (!PkgIsPackage((char*)data))
 		return kNewtRefNIL;
 
 	memset(&pkg, 0, sizeof(pkg));

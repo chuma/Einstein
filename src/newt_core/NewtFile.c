@@ -39,7 +39,7 @@
 /* 定数 */
 
 enum {
-	typeScript,
+	typeNewtonScript,
 	typeDylib,
 };
 
@@ -534,7 +534,7 @@ newtRef NcRequire0(newtRefArg r)
 			{NSSTR(__DYLIBSUFFIX__),	typeDylib},
 #endif /* HAVE_DLOPEN */
 
-			{NSSTR(".newt"),			typeScript},
+			{NSSTR(".newt"),			typeNewtonScript},
 		};
 
 		newtRefVar  lib;
