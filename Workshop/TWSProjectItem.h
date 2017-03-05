@@ -24,6 +24,7 @@ public:
 	virtual ~TWSProjectItem();
 	TWSProjectItem *SetName(const char*);
 	const char *GetName();
+	virtual const char *GetIcon() { return "tree_file.png"; }
 	virtual int GetNumChildren() { return 0; }
 	virtual TWSProjectItem *GetChild(int i) { return 0L; }
 	virtual bool CanHaveChildren() { return false; }
@@ -41,6 +42,7 @@ public:
 	virtual ~TWSProjectItemWithChildren();
 	virtual int GetNumChildren();
 	virtual TWSProjectItem *GetChild(int i);
+	virtual const char *GetIcon() { return "tree_folder.png"; }
 	virtual bool CanHaveChildren() { return true; }
 	void AddChild(TWSProjectItem* inChild);
 protected:
@@ -53,6 +55,27 @@ class TWSProject : public TWSProjectItemWithChildren
 public:
 	TWSProject(TWorkshop*);
 	~TWSProject();
+	virtual const char *GetIcon() { return "tree_app.png"; }
+protected:
+};
+
+
+class TWSPackage : public TWSProjectItem
+{
+public:
+	TWSPackage(TWorkshop*);
+	~TWSPackage();
+	virtual const char *GetIcon() { return "tree_pkg.png"; }
+protected:
+};
+
+
+class TWSNewtonScript : public TWSProjectItem
+{
+public:
+	TWSNewtonScript(TWorkshop*);
+	~TWSNewtonScript();
+	virtual const char *GetIcon() { return "tree_nsc.png"; }
 protected:
 };
 

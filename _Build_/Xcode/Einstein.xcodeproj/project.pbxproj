@@ -507,8 +507,8 @@
 		C99F255A1E6A9FFD004055D7 /* tree_file.png in Resources */ = {isa = PBXBuildFile; fileRef = C99F25561E6A9FFD004055D7 /* tree_file.png */; };
 		C99F255B1E6A9FFD004055D7 /* tree_folder.png in Resources */ = {isa = PBXBuildFile; fileRef = C99F25571E6A9FFD004055D7 /* tree_folder.png */; };
 		C99F255C1E6A9FFD004055D7 /* tree_pkg.png in Resources */ = {isa = PBXBuildFile; fileRef = C99F25581E6A9FFD004055D7 /* tree_pkg.png */; };
-		C99F255E1E6AA63A004055D7 /* tree_module.icns in Resources */ = {isa = PBXBuildFile; fileRef = C99F255D1E6AA63A004055D7 /* tree_module.icns */; };
 		C99F25611E6B4E5A004055D7 /* TWSProjectItem.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99F255F1E6B4E5A004055D7 /* TWSProjectItem.cp */; };
+		C99F25631E6C3F2F004055D7 /* tree_nsc.png in Resources */ = {isa = PBXBuildFile; fileRef = C99F25621E6C3F2F004055D7 /* tree_nsc.png */; };
 		C9B4AB88123D674400D8D2C7 /* TBufferLog.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3460111B7C07002165EC /* TBufferLog.cp */; };
 		C9BE33D0133E64F60052EA2F /* TJITPerformance.cp in Sources */ = {isa = PBXBuildFile; fileRef = C9BE33CF133E64F60052EA2F /* TJITPerformance.cp */; };
 		C9CEB43F19601CA3002198A7 /* TJITGenericRetarget.cp in Sources */ = {isa = PBXBuildFile; fileRef = C9CEB43D19601CA3002198A7 /* TJITGenericRetarget.cp */; };
@@ -1280,9 +1280,9 @@
 		C99F25561E6A9FFD004055D7 /* tree_file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree_file.png; sourceTree = "<group>"; };
 		C99F25571E6A9FFD004055D7 /* tree_folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree_folder.png; sourceTree = "<group>"; };
 		C99F25581E6A9FFD004055D7 /* tree_pkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree_pkg.png; sourceTree = "<group>"; };
-		C99F255D1E6AA63A004055D7 /* tree_module.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = tree_module.icns; sourceTree = "<group>"; };
 		C99F255F1E6B4E5A004055D7 /* TWSProjectItem.cp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TWSProjectItem.cp; path = ../../Workshop/TWSProjectItem.cp; sourceTree = "<group>"; };
 		C99F25601E6B4E5A004055D7 /* TWSProjectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWSProjectItem.h; path = ../../Workshop/TWSProjectItem.h; sourceTree = "<group>"; };
+		C99F25621E6C3F2F004055D7 /* tree_nsc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree_nsc.png; sourceTree = "<group>"; };
 		C99FDB7212D40365002FC776 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		C99FDB7312D40365002FC776 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C9B4A5361242E0DE003F7AD5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -1917,9 +1917,9 @@
 		C99E315F111B7346002165EC /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				C99F255D1E6AA63A004055D7 /* tree_module.icns */,
 				C99F25551E6A9FFD004055D7 /* tree_app.png */,
 				C99F25561E6A9FFD004055D7 /* tree_file.png */,
+				C99F25621E6C3F2F004055D7 /* tree_nsc.png */,
 				C99F25571E6A9FFD004055D7 /* tree_folder.png */,
 				C99F25581E6A9FFD004055D7 /* tree_pkg.png */,
 				C932824511D0CF0A003B93C3 /* button_network_in.png */,
@@ -2873,6 +2873,7 @@
 				C99886991E676C4400BCE585 /* button_power_on.png in Resources */,
 				C958F0571E67744B000CA017 /* EinsteinWorkshop.xib in Resources */,
 				C998869A1E676C4400BCE585 /* button_prefs.png in Resources */,
+				C99F25631E6C3F2F004055D7 /* tree_nsc.png in Resources */,
 				C998869B1E676C4400BCE585 /* Einstein.icns in Resources */,
 				C998869C1E676C4400BCE585 /* Einstein.sdef in Resources */,
 				C99F255C1E6A9FFD004055D7 /* tree_pkg.png in Resources */,
@@ -2883,7 +2884,6 @@
 				C99F255A1E6A9FFD004055D7 /* tree_file.png in Resources */,
 				C99886A01E676C4400BCE585 /* button_network_in.png in Resources */,
 				C99886A11E676C4400BCE585 /* button_network.png in Resources */,
-				C99F255E1E6AA63A004055D7 /* tree_module.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

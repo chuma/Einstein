@@ -121,15 +121,26 @@ void TWorkshop::NewProject(const char *name)
 		sources->SetName("Sources");
 		pProject->AddChild(sources);
 		{
-			TWSProjectItem *src = new TWSProjectItem(this);
+			TWSNewtonScript *src = new TWSNewtonScript(this);
 			src->SetName("test.lyt");
 			sources->AddChild(src);
+			TWSNewtonScript *src2 = new TWSNewtonScript(this);
+			src2->SetName("main.nsc");
+			sources->AddChild(src2);
+		}
+		TWSProjectItemWithChildren *resources = new TWSProjectItemWithChildren(this);
+		resources->SetName("Resources");
+		pProject->AddChild(resources);
+		{
+			TWSProjectItem *icon = new TWSProjectItem(this);
+			icon->SetName("appIcon.png");
+			resources->AddChild(icon);
 		}
 		TWSProjectItemWithChildren *products = new TWSProjectItemWithChildren(this);
 		products->SetName("Products");
 		pProject->AddChild(products);
 		{
-			TWSProjectItem *pkg = new TWSProjectItem(this);
+			TWSPackage *pkg = new TWSPackage(this);
 			pkg->SetName("test.pkg");
 			products->AddChild(pkg);
 		}

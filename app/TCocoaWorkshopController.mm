@@ -170,7 +170,6 @@
 - (NSInteger)outlineView:(NSOutlineView *)outlineView
   numberOfChildrenOfItem:(id)item
 {
-#if 1
 	if (!workshop) return 0;
 	if (item) {
 		TWSProjectItem *it = (TWSProjectItem*)[item pointerValue];
@@ -182,19 +181,6 @@
 			return 0;
 		}
 	}
-#else
-	if (!workshop) return 0;
-	TWSProjectItem *it = (__bridge TWSProjectItem*)item;
-	if (it) {
-		return it->GetNumChildren();
-	} else {
-		if (workshop->GetProject()) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-#endif
 }
 
 
@@ -203,7 +189,6 @@
 - (BOOL)outlineView:(NSOutlineView *)outlineView
    isItemExpandable:(id)item
 {
-#if 1
 	if (!workshop) return 0;
 	if (item) {
 		TWSProjectItem *it = (TWSProjectItem*)[item pointerValue];
@@ -211,20 +196,6 @@
 	} else {
 		return YES;
 	}
-#else
-	if (!workshop) return 0;
-//	TWSProjectItem *it = (__bridge TWSProjectItem*)item;
-	TWSProjectItem *it = (TWSProjectItem*)[item pointerValue];
-	if (it) {
-		return it->CanHaveChildren();
-	} else {
-		if (workshop->GetProject()) {
-			return YES;
-		} else {
-			return NO;
-		}
-	}
-#endif
 }
 
 
@@ -233,69 +204,33 @@
   objectValueForTableColumn:(NSTableColumn *)tableColumn
 					 byItem:(id)item
 {
-#if 0
-	if (!workshop) return 0;
-	TWSProjectItem *it = (__bridge TWSProjectItem*)item;
-	if (it) {
-		return it->GetNumChildren();
-	} else {
-		if (workshop->GetProject()) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-#endif
-
 	if (!workshop) return 0;
 	if (!item) return 0;
 	TWSProjectItem *it = (TWSProjectItem*)[item pointerValue];
 
-//	id target = !item ? schema : item;
-//	return [target valueForKey:[tableColumn identifier]];
-//	return @"Hallo";
-
-//	NSTextAttachment* attachment = [[NSTextAttachment alloc] init];
-//	[(NSCell *) [attachment attachmentCell] setImage:[NSImage imageNamed:@"tree_folder.png"]];
-//	NSMutableAttributedString *aString = [[NSAttributedString attributedStringWithAttachment:attachment] mutableCopy];
-//	[[aString mutableString] appendString:@"Hello, world!"];
-//	return aString;
-
-//	return (NSTableCellView*)0L;
-
-	NSImage* icon = [NSImage imageNamed:@"tree_folder.png"]; //[item objectForKey: @"icon"];
-	//NSString* title = @"TMacWorkshop.mm"; //[item objectForKey: @"title"];
-	NSString* title = [NSString stringWithUTF8String:it->GetName()];
-	id value = nil;
-
-	if (icon) { // 17x17
-		NSTextAttachment* attachment = [[NSTextAttachment alloc] init];
-		[(NSCell *)[attachment attachmentCell] setImage: icon];
-		NSMutableAttributedString *aString = [[NSAttributedString attributedStringWithAttachment:attachment] mutableCopy];
-		[[aString mutableString] appendFormat: @" %@", title]; // myst have space for alignment to work :-(
-		[aString addAttribute: NSBaselineOffsetAttributeName
-						value: [NSNumber numberWithFloat: -5.0]
-						range: NSMakeRange(0, 1 /*aString.length*/)];
-		value = aString;
+	if (it->outlineTextId) {
+		id value = (__bridge id)it->outlineTextId; // TODO: yes, this is a memory leak.
+		return value;
 	} else {
-		value = title;
+		NSImage* icon = [NSImage imageNamed:[NSString stringWithUTF8String:it->GetIcon()]];
+		NSString* title = [NSString stringWithUTF8String:it->GetName()];
+		id value = nil;
+
+		if (icon) { // 17x17
+			NSTextAttachment* attachment = [[NSTextAttachment alloc] init];
+			[(NSCell *)[attachment attachmentCell] setImage: icon];
+			NSMutableAttributedString *aString = [[NSAttributedString attributedStringWithAttachment:attachment] mutableCopy];
+			[[aString mutableString] appendFormat: @" %@", title]; // myst have space for alignment to work :-(
+			[aString addAttribute: NSBaselineOffsetAttributeName
+							value: [NSNumber numberWithFloat: -5.0]
+							range: NSMakeRange(0, 1 /*aString.length*/)];
+			value = aString;
+		} else {
+			value = title;
+		}
+		it->outlineTextId = (__bridge_retained void*)value;
+		return value;
 	}
-
-	return value;
-
-
-//	NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-//	attachment.image = [NSImage imageNamed:@"tree_folder.png"];
-//	CGFloat offsetY = -5.0;
-//	attachment.bounds = CGRectMake(0, offsetY, attachment.image.size.width, attachment.image.size.height);
-//	NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
-//	NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:@""];
-//	[myString appendAttributedString:attachmentString];
-//	NSMutableAttributedString *myString1= [[NSMutableAttributedString alloc] initWithString:@"Workshop"];
-//	[myString appendAttributedString:myString1];
-//	[myString setAlignment:<#(NSTextAlignment)#> range:<#(NSRange)#>]
-//	self.mobileLabel.textAlignment=NSTextAlignmentRight;
-//	self.mobileLabel.attributedText=myString;
 }
 
 
@@ -308,7 +243,6 @@
 			child:(NSInteger)index
 		   ofItem:(id)item
 {
-#if 1
 	TWSProjectItem *parent = 0;
 	TWSProjectItem *child = 0;
 	if (!workshop) return 0;
@@ -330,46 +264,8 @@
 	} else {
 		return 0L;
 	}
-#elif 0
-	if (item) {
-
-		it = (__bridge TWSProjectItem*)item;
-		if (it) {
-			if (!it->outlineId) {
-				id itId = (__bridge id)it;
-				it->outlineId = (__bridge_retained void*)itId;
-			}
-			return (__bridge id)it->outlineId;
-		} else {
-			return 0L;
-		}
-	} else {
-		TWSProject *proj = workshop->GetProject();
-		if (proj) {
-			if (!proj->outlineId) {
-				id projId = (__bridge id)proj;
-				proj->outlineId = (__bridge_retained void*)projId;
-			}
-			return (__bridge id)proj->outlineId;
-		} else {
-			return 0L;
-		}
-	}
-#else
-	if (!workshop) return 0;
-	TWSProjectItem *it = (__bridge TWSProjectItem*)item;
-	if (it) {
-		return (__bridge id)it->GetChild(index);
-	} else {
-		TWSProject *proj = workshop->GetProject();
-		if (proj) {
-			return (__bridge id)proj;
-		} else {
-			return 0L;
-		}
-	}
-#endif
 }
+
 
 - (void)UpdateProjectOutline
 {

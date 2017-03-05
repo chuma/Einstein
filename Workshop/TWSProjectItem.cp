@@ -86,3 +86,29 @@ TWSProject::~TWSProject()
 }
 
 
+
+
+TWSPackage::TWSPackage(TWorkshop *inWorkshop)
+:	TWSProjectItem(inWorkshop)
+{
+}
+
+
+TWSPackage::~TWSPackage()
+{
+}
+
+
+
+
+TWSNewtonScript::TWSNewtonScript(TWorkshop *inWorkshop)
+:	TWSProjectItem(inWorkshop)
+{
+}
+
+
+TWSNewtonScript::~TWSNewtonScript()
+{
+}
+
+
