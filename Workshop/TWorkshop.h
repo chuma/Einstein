@@ -11,16 +11,21 @@
 
 
 class TEmulator;
+class TWSProject;
 
 
 class TWorkshop
 {
 public:
 	TWorkshop(TEmulator *emulator);
-	~TWorkshop();
+	virtual ~TWorkshop();
 	void CompileAndRun();
+	void NewProject(const char *name);
+	TWSProject *GetProject() { return pProject; }
 protected:
+	virtual void UpdateProjectOutline();
 	TEmulator*	pEmulator;
+	TWSProject* pProject;
 };
 
 

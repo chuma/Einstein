@@ -10,12 +10,14 @@
 
 #include "TEmulator.h"
 #include "TPlatformManager.h"
-
+#include "Workshop/TWSProjectItem.h"
 
 #include "Newt0/NewtCore.h"
 #include "Newt0/NewtBC.h"
 #include "Newt0/NewtVM.h"
 #include "Newt0/NewtParser.h"
+#include "Newt0/NewtNSOF.h"
+#include "Newt0/NewtPrint.h"
 #include "Newt0/version.h"
 
 /*
@@ -97,15 +99,50 @@ void yyerror(char * s)
 
 
 
-TWorkshop::TWorkshop(TEmulator* inEmulator) :
-pEmulator(inEmulator)
+TWorkshop::TWorkshop(TEmulator* inEmulator)
+:	pEmulator(inEmulator),
+	pProject(0L)
 {
 }
 
 
 TWorkshop::~TWorkshop()
 {
+	delete pProject;
 }
+
+
+void TWorkshop::NewProject(const char *name)
+{
+	pProject = new TWSProject(this);
+	pProject->SetName("TestProject");
+	{
+		TWSProjectItemWithChildren *sources = new TWSProjectItemWithChildren(this);
+		sources->SetName("Sources");
+		pProject->AddChild(sources);
+		{
+			TWSProjectItem *src = new TWSProjectItem(this);
+			src->SetName("test.lyt");
+			sources->AddChild(src);
+		}
+		TWSProjectItemWithChildren *products = new TWSProjectItemWithChildren(this);
+		products->SetName("Products");
+		pProject->AddChild(products);
+		{
+			TWSProjectItem *pkg = new TWSProjectItem(this);
+			pkg->SetName("test.pkg");
+			products->AddChild(pkg);
+		}
+	}
+	UpdateProjectOutline();
+}
+
+
+void TWorkshop::UpdateProjectOutline()
+{
+	puts("Why are we here?");
+}
+
 
 
 void TWorkshop::CompileAndRun()
@@ -175,7 +212,7 @@ void TWorkshop::CompileAndRun()
 		puts("Sorry!");
 	}
 
-#else
+#elif 0
 
 
 	newtRefVar	result;
@@ -185,11 +222,127 @@ void TWorkshop::CompileAndRun()
 	result = NVMInterpretStr("print(1+1);\n", &err);
 	newt_result_message(result, err);
 	NewtCleanup();
-	
-	
+
+#else
+
+	// /Users/matt/Desktop/Newton/NewtonDev/NewtonDev.1/Sample Code/Drawing and Graphics/Drawing-4/Drawing.pkg
+	newtRefVar	result;
+	newtErr	err = kNErrNone;
+
+	NewtInit(0, 0, 0);
+	uint8_t *data = (uint8_t*)malloc(1024*1024*1);
+	size_t size;
+//	FILE *f = fopen("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.ntk", "rb");
+	FILE *f = fopen("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.lyt", "rb");
+	size = fread(data, 1, 1024*1024*1, f);
+	fclose(f);
+	result = NVMInterpretStr("printDepth := 10;\n", &err);
+	newt_result_message(result, err);
+	result = NewtReadNSOF(data, size);
+	//result = NVMInterpretStr("print(1+1);\n", &err);
+	//newt_result_message(result, kNErrNone);
+	NewtPrintObject(stdout, result);
+	NewtCleanup();
+	free(data);
+
 #endif
 	
 }
+
+
+//	{
+//		layoutSettings: {
+//			ntkPlatform: 1,
+//			ntkVersion: 1.000000,
+//			windowRect: {
+//				left: 55,
+//				top: 64,
+//				bottom: 455,
+//				right: 334
+//			},
+//			layoutName: "",
+//			layoutType: 0,
+//			platformName: "MessagePad",
+//			layoutSize: {
+//				h: 240,
+//				v: 336
+//			},
+//			gridState: NIL,
+//			gridSnap: NIL,
+//			gridSize: {
+//				h: 5,
+//				v: 5
+//			}, ...
+//
+//		},
+//		templateHierarchy: {
+//			__ntObjectPointer: <Binary, class "pointer", length 4>,
+//			value: {
+//				__ntTemplate: {
+//					value: 180,
+//					__ntDatatype: "PROT",
+//					__ntFlags: 16
+//				},
+//				viewBounds: {
+//					value: {
+//						left: -3,
+//						top: 18,
+//						bottom: 136,
+//						right: 215
+//					},
+//					__ntDatatype: "RECT"
+//				},
+//				stepChildren: {
+//					value: [
+//						stepChildren:
+//						{
+//							__ntObjectPointer: <Binary, length 4>,
+//							value: {
+//								__ntTemplate: {
+//								value: 218,
+//								__ntDatatype: "PROT",
+//								__ntFlags: 16
+//							},
+//							text: {
+//								value: "\"Static Text\"",
+//								__ntDatatype: "EVAL"
+//							},
+//							viewBounds: {
+//								value: {
+//									top: 4,
+//									left: 4,
+//									bottom: 104,
+//									right: 214
+//								},
+//								__ntDatatype: "RECT"
+//							},
+//							viewSetupDoneScript: {
+//								value: "func()\rbegin\r\tlocal theText := \"ROM version = \" && Gestalt(kGestalt_SystemInfo).ROMversionstring;\r\tsetValue(self, 'text, theText);\rend",
+//								__ntDatatype: "SCPT",
+//								__ntStatusInfo: {
+//								state: 1,
+//								by: 3709979
+//							}
+//						},
+//						viewJustify: {
+//							value: 0,
+//							__ntDatatype: "NUMB"
+//						},
+//						viewFont: {
+//							value: "ROM_fontSystem10Bold",
+//							__ntDatatype: "EVAL"
+//						}
+//					},
+//					__ntId: 'protoStaticText
+//				}
+//			],
+//			__ntDatatype: "ARAY",
+//			__ntFlags: 64
+//		}
+//	},
+//__ntId: 'protoFloatNGo
+//}
+//}
 
 
 

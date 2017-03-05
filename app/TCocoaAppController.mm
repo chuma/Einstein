@@ -456,7 +456,7 @@ static TCocoaAppController* gInstance = nil;
 #endif
 
 #if EINSTEIN_HAS_WORKSHOP
-	mWorkshop = new TMacWorkshop(mEmulator);
+	mWorkshop = new TMacWorkshop(mWorkshopController, mEmulator);
 	[mWorkshopController setWorkshop:mWorkshop];
 #endif
 

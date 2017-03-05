@@ -17,12 +17,12 @@
 class TMacWorkshop : public TWorkshop
 {
 public:
-	TMacWorkshop(TEmulator *emulator);
-	~TMacWorkshop();
-	void SetController(TCocoaWorkshopController *inController);
+	TMacWorkshop(TCocoaWorkshopController *inWorkshopController, TEmulator *inEmulator);
+	virtual ~TMacWorkshop();
 protected:
+	virtual void UpdateProjectOutline();
 private:
-	TCocoaWorkshopController *controller;
+	TCocoaWorkshopController *workshopController;
 };
 
 

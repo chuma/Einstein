@@ -16,14 +16,19 @@ class TMacWorkshop;
 	IBOutlet NSToolbarItem* compileAndRunToolbarItem;
 //	IBOutlet NSButton* stepIntoButton;
 //	IBOutlet NSButton* stepOverButton;
+	IBOutlet NSOutlineView* projectOutlineView;
 
 	TMacWorkshop* workshop;
 }
+
+- (void)UpdateProjectOutline;
+
 
 //- (void)update;
 
 //- (void)addHistoryLine:(NSString *)line type:(int)type;
 //
+- (IBAction)newProject:(id)sender;
 - (IBAction)compileAndRun:(id)sender;
 //- (IBAction)stepInto:(id)sender;
 //- (IBAction)stepOver:(id)sender;
@@ -32,3 +37,6 @@ class TMacWorkshop;
 - (void)setWorkshop:(TMacWorkshop*)inWorkshop;
 
 @end
+
+void WorkshopControllerUpdateProjectOutline(TCocoaWorkshopController *self);
+

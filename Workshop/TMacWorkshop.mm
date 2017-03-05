@@ -7,10 +7,12 @@
 //
 
 #include "Workshop/TMacWorkshop.h"
+#include "TCocoaWorkshopController.h"
 
 
-TMacWorkshop::TMacWorkshop(TEmulator* inEmulator) :
-TWorkshop(inEmulator)
+TMacWorkshop::TMacWorkshop(TCocoaWorkshopController *inController, TEmulator* inEmulator) :
+	workshopController(inController),
+	TWorkshop(inEmulator)
 {
 }
 
@@ -20,9 +22,13 @@ TMacWorkshop::~TMacWorkshop()
 }
 
 
-void TMacWorkshop::SetController(TCocoaWorkshopController *inController)
+//void TMacWorkshop::SetController(TCocoaWorkshopController *inController)
+//{
+//	controller = inController;
+//}
+
+
+void TMacWorkshop::UpdateProjectOutline()
 {
-	controller = inController;
+	WorkshopControllerUpdateProjectOutline(workshopController);
 }
-
-
