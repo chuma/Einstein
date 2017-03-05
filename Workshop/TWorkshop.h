@@ -12,6 +12,7 @@
 
 class TEmulator;
 class TWSProject;
+class TWSProjectItem;
 
 
 class TWorkshop
@@ -22,6 +23,7 @@ public:
 	void CompileAndRun();
 	void NewProject(const char *name);
 	TWSProject *GetProject() { return pProject; }
+	TWSProjectItem *FindItemById(void *inId);
 protected:
 	virtual void UpdateProjectOutline();
 	TEmulator*	pEmulator;

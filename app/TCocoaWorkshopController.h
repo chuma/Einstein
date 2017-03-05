@@ -17,6 +17,7 @@ class TMacWorkshop;
 //	IBOutlet NSButton* stepIntoButton;
 //	IBOutlet NSButton* stepOverButton;
 	IBOutlet NSOutlineView* projectOutlineView;
+	IBOutlet NSTabView* contentTab;
 
 	TMacWorkshop* workshop;
 }
@@ -30,6 +31,7 @@ class TMacWorkshop;
 //
 - (IBAction)newProject:(id)sender;
 - (IBAction)compileAndRun:(id)sender;
+- (IBAction)selectProjectItem:(id)sender;
 //- (IBAction)stepInto:(id)sender;
 //- (IBAction)stepOver:(id)sender;
 //

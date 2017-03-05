@@ -14,6 +14,7 @@ TWSProjectItem::TWSProjectItem(TWorkshop *inWorkshop)
 :	pWorkshop(inWorkshop),
 	outlineId(0L),
 	outlineTextId(0L),
+	editorId(0L),
 	pName(0L)
 {
 }
@@ -41,6 +42,7 @@ const char *TWSProjectItem::GetName()
 {
 	return pName;
 }
+
 
 
 

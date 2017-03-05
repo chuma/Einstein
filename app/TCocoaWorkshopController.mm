@@ -266,12 +266,54 @@
 	}
 }
 
+/*
+ Add a text view:
+ 
+ NSTextView *text = [[NSTextView alloc] initWithFrame:CGRectMake(...)];
+ text.backgroundColor = [UIColor greenColor];
+ [text setDelegate:self];
+ [self.view addSubView:text];
+
+ -(BOOL)textView ... shouldChangeTextInRange...
+*/
+- (IBAction)selectProjectItem:(id)sender
+{
+	//NSTableView* tableView = (NSTableView*)sender;
+	NSOutlineView *outline = (NSOutlineView*)sender;
+	NSInteger row = [outline clickedRow];
+	if (row==-1) return;
+	id item = [sender itemAtRow:row];
+	TWSProjectItem *it = (TWSProjectItem*)[item pointerValue];
+	if (it) {
+		if (it->editorId) {
+			[contentTab selectTabViewItemWithIdentifier:item];
+		} else {
+			// either we create an editor or do nothing
+			TWSNewtonScript *ns = dynamic_cast<TWSNewtonScript*>(it);
+			if (ns) {
+				// create a source code editor
+				// cretae the tab
+				NSTabViewItem *tab = [[NSTabViewItem alloc] initWithIdentifier:item];
+				[tab setLabel:[NSString stringWithUTF8String:it->GetName()]];
+				[contentTab addTabViewItem:tab];
+				// create the editor
+				NSTextView *textEdit = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, contentTab.bounds.size.width, contentTab.bounds.size.height)];
+				[textEdit setString:[NSString stringWithUTF8String:it->GetName()]];
+				[tab setView:textEdit];
+				// show the Tab
+				[contentTab selectTabViewItem:tab];
+				it->editorId = (__bridge_retained void*)textEdit;
+			} else {
+				// do nothing
+			}
+		}
+	}
+}
 
 - (void)UpdateProjectOutline
 {
 	[projectOutlineView reloadItem:0L reloadChildren:YES];
 }
-
 
 void WorkshopControllerUpdateProjectOutline(TCocoaWorkshopController *self)
 {
