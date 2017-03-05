@@ -8,37 +8,25 @@
 #import <Cocoa/Cocoa.h>
 
 class TMacWorkshop;
-//@class TMacMonitorView;
+class TWSNewtonScript;
 
 @interface TCocoaWorkshopController : NSWindowController <NSTextFieldDelegate, NSWindowDelegate>
 {
-//	IBOutlet TMacMonitorView* view;
 	IBOutlet NSToolbarItem* compileAndRunToolbarItem;
-//	IBOutlet NSButton* stepIntoButton;
-//	IBOutlet NSButton* stepOverButton;
 	IBOutlet NSOutlineView* projectOutlineView;
 	IBOutlet NSTabView* contentTab;
-
 	TMacWorkshop* workshop;
 }
 
 - (void)UpdateProjectOutline;
-
-
-//- (void)update;
-
-//- (void)addHistoryLine:(NSString *)line type:(int)type;
-//
 - (IBAction)newProject:(id)sender;
 - (IBAction)compileAndRun:(id)sender;
 - (IBAction)selectProjectItem:(id)sender;
-//- (IBAction)stepInto:(id)sender;
-//- (IBAction)stepOver:(id)sender;
-//
-//- (void)executeCommand:(NSString*)command;
 - (void)setWorkshop:(TMacWorkshop*)inWorkshop;
+- (void)CreateNewtonScriptEditor:(TWSNewtonScript*)forNewtonScriptItem;
 
 @end
 
 void WorkshopControllerUpdateProjectOutline(TCocoaWorkshopController *self);
+void WorkshopControllerCreateNewtonScriptEditor(TCocoaWorkshopController *self, TWSNewtonScript *inNewtonScriptItem);
 

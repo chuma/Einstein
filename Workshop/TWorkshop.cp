@@ -117,6 +117,10 @@ void TWorkshop::NewProject(const char *name)
 	pProject = new TWSProject(this);
 	pProject->SetName("TestProject");
 	{
+		TWSNewtonScript *src = new TWSNewtonScript(this);
+		src->SetName("test.lyt");
+		pProject->AddChild(src);
+
 		TWSProjectItemWithChildren *sources = new TWSProjectItemWithChildren(this);
 		sources->SetName("Sources");
 		pProject->AddChild(sources);
