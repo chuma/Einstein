@@ -509,6 +509,9 @@
 		C99F255C1E6A9FFD004055D7 /* tree_pkg.png in Resources */ = {isa = PBXBuildFile; fileRef = C99F25581E6A9FFD004055D7 /* tree_pkg.png */; };
 		C99F25611E6B4E5A004055D7 /* TWSProjectItem.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99F255F1E6B4E5A004055D7 /* TWSProjectItem.cp */; };
 		C99F25631E6C3F2F004055D7 /* tree_nsc.png in Resources */ = {isa = PBXBuildFile; fileRef = C99F25621E6C3F2F004055D7 /* tree_nsc.png */; };
+		C99F25721E6E05F1004055D7 /* TWSMacNewtonScriptEditor.mm in Sources */ = {isa = PBXBuildFile; fileRef = C99F256E1E6E05F1004055D7 /* TWSMacNewtonScriptEditor.mm */; };
+		C99F25731E6E05F1004055D7 /* TWSMacNewtonScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99F256F1E6E05F1004055D7 /* TWSMacNewtonScriptView.xib */; };
+		C99F25741E6E05F1004055D7 /* TWSNewtonScriptDocument.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99F25701E6E05F1004055D7 /* TWSNewtonScriptDocument.cp */; };
 		C9B4AB88123D674400D8D2C7 /* TBufferLog.cp in Sources */ = {isa = PBXBuildFile; fileRef = C99E3460111B7C07002165EC /* TBufferLog.cp */; };
 		C9BE33D0133E64F60052EA2F /* TJITPerformance.cp in Sources */ = {isa = PBXBuildFile; fileRef = C9BE33CF133E64F60052EA2F /* TJITPerformance.cp */; };
 		C9CEB43F19601CA3002198A7 /* TJITGenericRetarget.cp in Sources */ = {isa = PBXBuildFile; fileRef = C9CEB43D19601CA3002198A7 /* TJITGenericRetarget.cp */; };
@@ -1283,6 +1286,11 @@
 		C99F255F1E6B4E5A004055D7 /* TWSProjectItem.cp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TWSProjectItem.cp; path = ../../Workshop/TWSProjectItem.cp; sourceTree = "<group>"; };
 		C99F25601E6B4E5A004055D7 /* TWSProjectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWSProjectItem.h; path = ../../Workshop/TWSProjectItem.h; sourceTree = "<group>"; };
 		C99F25621E6C3F2F004055D7 /* tree_nsc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree_nsc.png; sourceTree = "<group>"; };
+		C99F256D1E6E05F1004055D7 /* TWSMacNewtonScriptEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWSMacNewtonScriptEditor.h; path = ../../Workshop/NewtonScript/TWSMacNewtonScriptEditor.h; sourceTree = "<group>"; };
+		C99F256E1E6E05F1004055D7 /* TWSMacNewtonScriptEditor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TWSMacNewtonScriptEditor.mm; path = ../../Workshop/NewtonScript/TWSMacNewtonScriptEditor.mm; sourceTree = "<group>"; };
+		C99F256F1E6E05F1004055D7 /* TWSMacNewtonScriptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWSMacNewtonScriptView.xib; path = ../../Workshop/NewtonScript/TWSMacNewtonScriptView.xib; sourceTree = "<group>"; };
+		C99F25701E6E05F1004055D7 /* TWSNewtonScriptDocument.cp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TWSNewtonScriptDocument.cp; path = ../../Workshop/NewtonScript/TWSNewtonScriptDocument.cp; sourceTree = "<group>"; };
+		C99F25711E6E05F1004055D7 /* TWSNewtonScriptDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWSNewtonScriptDocument.h; path = ../../Workshop/NewtonScript/TWSNewtonScriptDocument.h; sourceTree = "<group>"; };
 		C99FDB7212D40365002FC776 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		C99FDB7312D40365002FC776 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C9B4A5361242E0DE003F7AD5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -1633,6 +1641,7 @@
 			children = (
 				C99451431E68A90C00232589 /* README.txt */,
 				C99451471E68C5FD00232589 /* Newt0 */,
+				C99F25641E6DFF0D004055D7 /* NewtonScript */,
 				C976B1B01E64BBDF0037B6B2 /* TMacWorkshop.mm */,
 				C976B1B31E64BBFB0037B6B2 /* TMacWorkshop.h */,
 				C976B1AC1E64BA750037B6B2 /* TWorkshop.cp */,
@@ -2406,6 +2415,18 @@
 			path = Sound;
 			sourceTree = "<group>";
 		};
+		C99F25641E6DFF0D004055D7 /* NewtonScript */ = {
+			isa = PBXGroup;
+			children = (
+				C99F25701E6E05F1004055D7 /* TWSNewtonScriptDocument.cp */,
+				C99F25711E6E05F1004055D7 /* TWSNewtonScriptDocument.h */,
+				C99F256E1E6E05F1004055D7 /* TWSMacNewtonScriptEditor.mm */,
+				C99F256D1E6E05F1004055D7 /* TWSMacNewtonScriptEditor.h */,
+				C99F256F1E6E05F1004055D7 /* TWSMacNewtonScriptView.xib */,
+			);
+			name = NewtonScript;
+			sourceTree = "<group>";
+		};
 		C9B4AA2B123D474800D8D2C7 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -2866,6 +2887,7 @@
 				C99886921E676C4400BCE585 /* button_backlight.png in Resources */,
 				C99886931E676C4400BCE585 /* toolbar_item_stop.png in Resources */,
 				C99886941E676C4400BCE585 /* button_backlight_on.png in Resources */,
+				C99F25731E6E05F1004055D7 /* TWSMacNewtonScriptView.xib in Resources */,
 				C99886951E676C4400BCE585 /* button_install.png in Resources */,
 				C99886961E676C4400BCE585 /* button_power.png in Resources */,
 				C99F255B1E6A9FFD004055D7 /* tree_folder.png in Resources */,
@@ -3363,6 +3385,7 @@
 				C99886BA1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MoveOp.cp in Sources */,
 				C99886BB1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MRS.cp in Sources */,
 				C99886BC1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_MSR.cp in Sources */,
+				C99F25721E6E05F1004055D7 /* TWSMacNewtonScriptEditor.mm in Sources */,
 				C994519E1E68C63800232589 /* NewtStr.c in Sources */,
 				C99886BD1E676C4400BCE585 /* TJITGeneric_DataProcessingPSRTransfer_TestOp.cp in Sources */,
 				C99886BE1E676C4400BCE585 /* TJITGenericROMPatch.cp in Sources */,
@@ -3375,6 +3398,7 @@
 				C99886C51E676C4400BCE585 /* TJITGeneric_Test.cp in Sources */,
 				C99886C61E676C4400BCE585 /* TJITGenericPage.cp in Sources */,
 				C99451961E68C63800232589 /* NewtIconv.c in Sources */,
+				C99F25741E6E05F1004055D7 /* TWSNewtonScriptDocument.cp in Sources */,
 				C99886C71E676C4400BCE585 /* TJITCache.cp in Sources */,
 				C99886C81E676C4400BCE585 /* TMacWorkshop.mm in Sources */,
 				C99886C91E676C4400BCE585 /* TJITPage.cp in Sources */,

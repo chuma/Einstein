@@ -22,6 +22,7 @@ class TWSProjectItem
 public:
 	TWSProjectItem(TWorkshop*);
 	virtual ~TWSProjectItem();
+	virtual bool CreateEditor(void *inParentView) { return false; }
 	TWSProjectItem *SetName(const char*);
 	const char *GetName();
 	virtual const char *GetIcon() { return "tree_file.png"; }
@@ -66,16 +67,6 @@ public:
 	TWSPackage(TWorkshop*);
 	~TWSPackage();
 	virtual const char *GetIcon() { return "tree_pkg.png"; }
-protected:
-};
-
-
-class TWSNewtonScript : public TWSProjectItem
-{
-public:
-	TWSNewtonScript(TWorkshop*);
-	~TWSNewtonScript();
-	virtual const char *GetIcon() { return "tree_nsc.png"; }
 protected:
 };
 

@@ -103,14 +103,4 @@ TWSPackage::~TWSPackage()
 
 
 
-TWSNewtonScript::TWSNewtonScript(TWorkshop *inWorkshop)
-:	TWSProjectItem(inWorkshop)
-{
-}
-
-
-TWSNewtonScript::~TWSNewtonScript()
-{
-}
-
 

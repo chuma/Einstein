@@ -6,24 +6,14 @@
 //
 
 #import "TCocoaWorkshopController.h"
-//#import "Monitor/TMacMonitor.h"
 #import "TCocoaUserDefaults.h"
 #import "TMacWorkshop.h"
-//#import "TMonitorCore.h"
 
 #include "Workshop/TWSProjectItem.h"
+#include "Workshop/NewtonScript/TWSNewtonScriptDocument.h"
 
-
-@interface TCocoaWorkshopController ()
-//- (void)update;
-@end
 
 @implementation TCocoaWorkshopController
-
-//- (void)addHistoryLine:(NSString *)line type:(int)type
-//{
-//	[view addHistoryLine:line type:type];
-//}
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
@@ -36,31 +26,8 @@
 - (void)awakeFromNib
 {
 	[[self window] setDelegate:self];
-
-//	[view setController:self];
-//
-//	[self update];
-
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillTerminate:) name:NSApplicationWillTerminateNotification object:nil];
 }
-
-
-//- (void)executeCommand:(NSString*)command
-//{
-//	[self addHistoryLine:[NSString stringWithFormat:@"> %@", command] type:MONITOR_LOG_USER_INPUT];
-//
-//	monitor->ExecuteCommand([command UTF8String]);
-//	[self performSelector:@selector(update) withObject:nil afterDelay:0.0];
-//
-//	if ( [command isEqualToString:@"run"] )
-//	{
-//		[stopStartButton setTitle:@"Stop"];
-//	}
-//	else if ( [command isEqualToString:@"stop"] )
-//	{
-//		[stopStartButton setTitle:@"Run"];
-//	}
-//}
 
 
 - (void)setWorkshop:(TMacWorkshop*)inWorkshop
@@ -92,78 +59,11 @@
 }
 
 
-//- (IBAction)stepInto:(id)sender
-//{
-//	monitor->ExecuteCommand("step");
-//	[self performSelector:@selector(update) withObject:nil afterDelay:0.0];
-//}
-
-
-//- (IBAction)stepOver:(id)sender
-//{
-//	monitor->ExecuteCommand("trace");
-//	[self performSelector:@selector(update) withObject:nil afterDelay:0.0];
-//}
-
-//- (void)stopStart:(id)sender
-//{
-//	if ( monitor )
-//	{
-//		if ( monitor->IsHalted() )
-//		{
-//			monitor->ExecuteCommand("run");
-//		}
-//		else
-//		{
-//			monitor->ExecuteCommand("stop");
-//		}
-//
-//		[self performSelector:@selector(update) withObject:nil afterDelay:0.0];
-//	}
-//	else
-//	{
-//		[self performSelector:@selector(update) withObject:nil afterDelay:0.0];
-//	}
-//}
-
-
-//- (void)update
-//{
-//	if ( monitor )
-//	{
-//		[view updateWithMonitor:monitor];
-//
-//		if ( monitor->IsHalted() )
-//		{
-//			[stepIntoButton setEnabled:YES];
-//			[stepOverButton setEnabled:YES];
-//			[stopStartButton setTitle:@"Run"];
-//		}
-//		else
-//		{
-//			[stepIntoButton setEnabled:NO];
-//			[stepOverButton setEnabled:NO];
-//			[stopStartButton setTitle:@"Stop"];
-//		}
-//
-//		[stopStartButton setEnabled:YES];
-//	}
-//	else
-//	{
-//		[stepIntoButton setEnabled:NO];
-//		[stepOverButton setEnabled:NO];
-//		[stopStartButton setEnabled:NO];
-//		[stopStartButton setTitle:@"Run"];
-//	}
-//}
-
-
 - (void)windowWillClose:(NSNotification *)notification
 {
 //	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kOpenWorkshopAtLaunch];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
-
 
 
 // Method returns count of children for given tree node item
@@ -212,6 +112,7 @@
 		id value = (__bridge id)it->outlineTextId; // TODO: yes, this is a memory leak.
 		return value;
 	} else {
+		// FIXME: this way of faking a text entry with icon is just plain wrong
 		NSImage* icon = [NSImage imageNamed:[NSString stringWithUTF8String:it->GetIcon()]];
 		NSString* title = [NSString stringWithUTF8String:it->GetName()];
 		id value = nil;
@@ -233,10 +134,6 @@
 	}
 }
 
-
-
-//NSValue* value = [NSValue valueWithPointer: myPointer];
-//void* myPointer = [value pointerValue];
 
 // Method returns children item for given tree node item by given index
 - (id)outlineView:(NSOutlineView *)outlineView
@@ -289,7 +186,7 @@
 			[contentTab selectTabViewItemWithIdentifier:item];
 		} else {
 			// either we create an editor or do nothing
-			TWSNewtonScript *ns = dynamic_cast<TWSNewtonScript*>(it);
+			TWSNewtonScriptDocument *ns = dynamic_cast<TWSNewtonScriptDocument*>(it);
 			if (ns) {
 				[self CreateNewtonScriptEditor:ns];
 			} else {
@@ -306,104 +203,10 @@
 }
 
 
-- (void)CreateNewtonScriptEditor:(TWSNewtonScript*)ns
+- (void)CreateNewtonScriptEditor:(TWSNewtonScriptDocument*)inDocument
 {
-	// create a source code editor
-	id item = (__bridge id)ns->outlineId;
-
-
-//	NSBundle.mainBundle().loadNibNamed("CustomView", owner: self, options: nil).first as? CustomView {
-//		contentView.addSubview(customView)
-
-
-
-	// cretae the tab
-	NSTabViewItem *tab = [[NSTabViewItem alloc] initWithIdentifier:item];
-	[tab setLabel:[NSString stringWithUTF8String:ns->GetName()]];
-	[contentTab addTabViewItem:tab];
-
-#if 0
-//	NSArray* w = [[NSArray alloc] init];
-//	BOOL found = [[NSBundle mainBundle] loadNibNamed:@"NewtonScriptEditor" owner:self topLevelObjects:&w];
-
-	NSArray* arrayOfViews = [[NSArray alloc] init];
-	BOOL found = [[NSBundle mainBundle] loadNibNamed:@"EinsteinWorkshop"
-														  owner:nil
-														topLevelObjects:&arrayOfViews];
-
-	if ([arrayOfViews count] < 1){
-//		[self release];
-//		return nil;
-	}
-
-//	MyView *newView = [[arrayOfViews objectAtIndex:0] retain];
-//	[newView setFrame:paramFrame];
-//
-//
-//	MyView *myView = [[MyView alloc] initWithFrame:self.view.bounds];
-//	[self.view addSubview:myView];
-//	[myView release];
-#elif 1
-	NSScrollView *scrollview = [[NSScrollView alloc] initWithFrame:[contentTab frame]];
-	NSSize contentSize = [scrollview contentSize];
-	[scrollview setBorderType:NSNoBorder];
-	[scrollview setHasVerticalScroller:YES];
-	[scrollview setHasHorizontalScroller:YES];
-	[scrollview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-
-	NSTextView *theTextView = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, contentSize.width, contentSize.height)];
-	[theTextView setMinSize:NSMakeSize(contentSize.width, contentSize.height)];
-	[theTextView setMaxSize:NSMakeSize(FLT_MAX, FLT_MAX)];
-	[theTextView setVerticallyResizable:YES];
-	[theTextView setHorizontallyResizable:YES];
-	[theTextView setAutoresizingMask:(NSViewWidthSizable|NSViewHeightSizable)];
-	[[theTextView textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];
-	[[theTextView textContainer] setWidthTracksTextView:NO];
-
-//	[[theTextView enclosingScrollView] setHasHorizontalScroller:YES];
-//#	[theTextView setHorizontallyResizable:YES];
-//#	[theTextView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
-//#	[[theTextView textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];
-//#	[[theTextView textContainer] setWidthTracksTextView:NO];
-
-	[scrollview setDocumentView:theTextView];
-//	[theWindow setContentView:scrollview];
-//	[theWindow makeKeyAndOrderFront:nil];
-//	[theWindow makeFirstResponder:theTextView];
-
-	// set the text
-	NSString* text = [NSString stringWithUTF8String:ns->GetName()];
-	NSMutableAttributedString* attrString = [[NSMutableAttributedString alloc] initWithString:text];
-	[attrString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Menlo" size:11.0f] range:NSMakeRange(0, text.length)];
-	//	[attrString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"SF_Mono-Regular" size:11.0f] range:NSMakeRange(0, text.length)];
-	[[theTextView textStorage] appendAttributedString:attrString];
-
-	[tab setView:scrollview];
-	ns->editorId = (__bridge_retained void*)theTextView;
-
-#else
-	// create the editor
-	NSTextView *textEdit = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, contentTab.bounds.size.width, contentTab.bounds.size.height)];
-	[textEdit setAllowsUndo:YES];
-	[textEdit setContinuousSpellCheckingEnabled:NO];
-	[textEdit setAutomaticSpellingCorrectionEnabled:NO];
-	[textEdit setMaxSize:CGSizeMake(FLT_MAX, FLT_MAX)];
-	[textEdit setHorizontallyResizable:YES];
-	[[textEdit textContainer] setWidthTracksTextView:NO];
-	[[textEdit textContainer] setContainerSize:CGSizeMake(FLT_MAX, FLT_MAX)];
-	
-	// set the text
-	NSString* text = [NSString stringWithUTF8String:ns->GetName()];
-	NSMutableAttributedString* attrString = [[NSMutableAttributedString alloc] initWithString:text];
-	[attrString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Menlo" size:11.0f] range:NSMakeRange(0, text.length)];
-//	[attrString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"SF_Mono-Regular" size:11.0f] range:NSMakeRange(0, text.length)];
-	[[textEdit textStorage] appendAttributedString:attrString];
-
-	[tab setView:textEdit];
-	ns->editorId = (__bridge_retained void*)textEdit;
-#endif
-	// show the Tab
-	[contentTab selectTabViewItem:tab];
+	void *parentView = (__bridge void*)contentTab;
+	inDocument->CreateEditor(parentView);
 }
 
 
@@ -411,11 +214,5 @@ void WorkshopControllerUpdateProjectOutline(TCocoaWorkshopController *self)
 {
 	return [(id) self UpdateProjectOutline];
 }
-
-void WorkshopControllerCreateNewtonScriptEditor(TCocoaWorkshopController *self, TWSNewtonScript *inNewtonScriptItem)
-{
-	return [(id) self CreateNewtonScriptEditor:inNewtonScriptItem];
-}
-
 
 @end

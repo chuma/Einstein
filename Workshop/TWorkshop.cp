@@ -11,6 +11,7 @@
 #include "TEmulator.h"
 #include "TPlatformManager.h"
 #include "Workshop/TWSProjectItem.h"
+#include "Workshop/NewtonScript/TWSNewtonScriptDocument.h"
 
 #include "Newt0/NewtCore.h"
 #include "Newt0/NewtBC.h"
@@ -51,6 +52,7 @@
  TODO: Newt/0 must clean up the long pointer hash on NewtCleanup()
  
  TODO: create, load, and store a Newton project file
+	Started the implementation of creating and editing projects...
  
  TODO: create, load, edit, and store Newton Script files inside the project
  
@@ -117,7 +119,7 @@ void TWorkshop::NewProject(const char *name)
 	pProject = new TWSProject(this);
 	pProject->SetName("TestProject");
 	{
-		TWSNewtonScript *src = new TWSNewtonScript(this);
+		TWSNewtonScriptDocument *src = new TWSNewtonScriptDocument(this);
 		src->SetName("test.lyt");
 		pProject->AddChild(src);
 
@@ -125,10 +127,10 @@ void TWorkshop::NewProject(const char *name)
 		sources->SetName("Sources");
 		pProject->AddChild(sources);
 		{
-			TWSNewtonScript *src = new TWSNewtonScript(this);
+			TWSNewtonScriptDocument *src = new TWSNewtonScriptDocument(this);
 			src->SetName("test.lyt");
 			sources->AddChild(src);
-			TWSNewtonScript *src2 = new TWSNewtonScript(this);
+			TWSNewtonScriptDocument *src2 = new TWSNewtonScriptDocument(this);
 			src2->SetName("main.nsc");
 			sources->AddChild(src2);
 		}
