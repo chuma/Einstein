@@ -19,9 +19,11 @@ public:
 	~TWSNewtonScriptDocument();
 	virtual const char *GetIcon() { return "tree_nsc.png"; }
 	virtual bool CreateEditor(void *inParentView);
+	void AssociateFile(const char *inFilename);
+	char *GetText();
 
 protected:
-	void *pEditor;
+	char *pFilename;	// TODO: currently, this is the full path and name. We will need to differentiate this form the project relative filename
 };
 
 

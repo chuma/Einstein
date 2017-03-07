@@ -24,6 +24,7 @@ class TWSNewtonScriptDocument;
 
 +(id)LoadFromNIB:(TWSNewtonScriptDocument*)inDocument;
 -(void)AddTo:(NSTabView*)tabView;
+-(void)LoadDocument;
 
 @end
 

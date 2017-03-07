@@ -182,7 +182,7 @@
 	id item = [sender itemAtRow:row];
 	TWSProjectItem *it = (TWSProjectItem*)[item pointerValue];
 	if (it) {
-		if (it->editorId) {
+		if (it->pEditor) {
 			[contentTab selectTabViewItemWithIdentifier:item];
 		} else {
 			// either we create an editor or do nothing

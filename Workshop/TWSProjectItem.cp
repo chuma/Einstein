@@ -14,7 +14,7 @@ TWSProjectItem::TWSProjectItem(TWorkshop *inWorkshop)
 :	pWorkshop(inWorkshop),
 	outlineId(0L),
 	outlineTextId(0L),
-	editorId(0L),
+	pEditor(0L),
 	pName(0L)
 {
 }

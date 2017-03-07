@@ -91,10 +91,28 @@
 
 -(void)AddTo:(NSTabView*)tabView
 {
-	tabViewItem = [[NSTabViewItem alloc] initWithIdentifier:@"Jo"];
+	tabViewItem = [[NSTabViewItem alloc] initWithIdentifier:(__bridge id)documentBackRef->outlineId];
 	[tabViewItem setView:viewFromNIB];
 	[tabView addTabViewItem:tabViewItem];
-	// TODO: show the tab view
+	[tabView selectTabViewItem:tabViewItem];
+
+	[[textView textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];
+	[[textView textContainer] setWidthTracksTextView:NO];
+	[textView setHorizontallyResizable:YES];
+}
+
+
+/**
+ * Load the document from the associated document manager and show it in the editor
+ */
+-(void)LoadDocument
+{
+	char *script = documentBackRef->GetText();
+	if (!script) script = strdup("");
+	NSString* text = [NSString stringWithUTF8String:script];
+	NSMutableAttributedString* attrString = [[NSMutableAttributedString alloc] initWithString:text];
+	[attrString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Menlo" size:11.0f] range:NSMakeRange(0, text.length)];
+	[[textView textStorage] appendAttributedString:attrString];
 }
 
 @end
@@ -102,18 +120,11 @@
 
 void *NewtonScriptEditorCreate(TWSNewtonScriptDocument *inDocument, void* inParentView)
 {
+	// create the editor using a prototype from the associated nib file
 	NSTabView* contentTab = (__bridge NSTabView*)inParentView;
 	id tab = [TWSNewtonScriptEditor LoadFromNIB:inDocument];
 	[tab AddTo:contentTab];
-#if 0
-	// set the text
-	NSString* text = [NSString stringWithUTF8String:ns->GetName()];
-	NSMutableAttributedString* attrString = [[NSMutableAttributedString alloc] initWithString:text];
-	[attrString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Menlo" size:11.0f] range:NSMakeRange(0, text.length)];
-	[[theTextView textStorage] appendAttributedString:attrString];
-	[tab setView:scrollview];
-	ns->editorId = (__bridge_retained void*)theTextView;
-#endif
+	[tab LoadDocument];
 	return (__bridge_retained void*)tab;
 }
 

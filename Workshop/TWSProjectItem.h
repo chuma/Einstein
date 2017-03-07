@@ -29,7 +29,7 @@ public:
 	virtual int GetNumChildren() { return 0; }
 	virtual TWSProjectItem *GetChild(int i) { return 0L; }
 	virtual bool CanHaveChildren() { return false; }
-	void *outlineId, *outlineTextId, *editorId;
+	void *outlineId, *outlineTextId, *pEditor; // TODO: these variables should ne be here!
 private:
 	TWorkshop*	pWorkshop;
 	char *pName;

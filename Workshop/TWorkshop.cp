@@ -19,6 +19,7 @@
 #include "Newt0/NewtParser.h"
 #include "Newt0/NewtNSOF.h"
 #include "Newt0/NewtPrint.h"
+#include "Newt0/NewtPkg.h"
 #include "Newt0/version.h"
 
 /*
@@ -76,6 +77,27 @@
 
 
 
+void DumpPkg(const char *filename)
+{
+	uint8_t *data;
+	size_t size;
+	newtErr err;
+	newtRefVar pkg;
+
+	FILE *f = fopen(filename, "rb");
+	fseek(f, 0, SEEK_END);
+	size = ftell(f);
+	fseek(f, 0, SEEK_SET);
+	data = (uint8_t*)malloc(size);
+	fread(data, 1, size, f);
+	NewtInit(0, 0, 0);
+	NVMInterpretStr("printDepth := 10;\n", &err);
+	pkg = NewtReadPkg(data, size);
+	NewtPrintObject(stdout, pkg);
+	NewtCleanup();
+	free(data);
+}
+
 
 
 void newt_result_message(newtRefArg r, newtErr err)
@@ -120,7 +142,8 @@ void TWorkshop::NewProject(const char *name)
 	pProject->SetName("TestProject");
 	{
 		TWSNewtonScriptDocument *src = new TWSNewtonScriptDocument(this);
-		src->SetName("test.lyt");
+		src->AssociateFile("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.txt");
+//		src->SetName("test.lyt");
 		pProject->AddChild(src);
 
 		TWSProjectItemWithChildren *sources = new TWSProjectItemWithChildren(this);
@@ -152,6 +175,8 @@ void TWorkshop::NewProject(const char *name)
 		}
 	}
 	UpdateProjectOutline();
+
+	//DumpPkg("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.pkg");
 }
 
 
