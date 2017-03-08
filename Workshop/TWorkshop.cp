@@ -11,6 +11,7 @@
 #include "TEmulator.h"
 #include "TPlatformManager.h"
 #include "Workshop/TWSProjectItem.h"
+#include "Workshop/Project/TWSProject.h"
 #include "Workshop/NewtonScript/TWSNewtonScriptDocument.h"
 
 #include "Newt0/NewtCore.h"
@@ -53,10 +54,11 @@
  TODO: Newt/0 must clean up the long pointer hash on NewtCleanup()
  
  TODO: create, load, and store a Newton project file
-	Started the implementation of creating and editing projects...
+	Started the implementation of creating projects...
  
  TODO: create, load, edit, and store Newton Script files inside the project
- 
+	Started the implementation of creating, loading, and editing scripts...
+
  TODO: compile projects into packages
  
  TODO: UI: the left field is supposed to hold a list of files in the project

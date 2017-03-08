@@ -10,6 +10,7 @@
 #import "TMacWorkshop.h"
 
 #include "Workshop/TWSProjectItem.h"
+#include "Workshop/Project/TWSProject.h"
 #include "Workshop/NewtonScript/TWSNewtonScriptDocument.h"
 
 
@@ -185,13 +186,11 @@
 		if (it->pEditor) {
 			[contentTab selectTabViewItemWithIdentifier:item];
 		} else {
-			// either we create an editor or do nothing
+			// TODO: shall we create an editor for this class? Use a virtual function!
 			TWSNewtonScriptDocument *ns = dynamic_cast<TWSNewtonScriptDocument*>(it);
-			if (ns) {
-				[self CreateNewtonScriptEditor:ns];
-			} else {
-				// do nothing
-			}
+			if (ns) [self CreateNewtonScriptEditor:ns];
+			TWSProject *proj = dynamic_cast<TWSProject*>(it);
+			if (proj) [self CreateProjectEditor:proj];
 		}
 	}
 }
@@ -207,6 +206,13 @@
 {
 	void *parentView = (__bridge void*)contentTab;
 	inDocument->CreateEditor(parentView);
+}
+
+
+- (void)CreateProjectEditor:(TWSProject*)inProject
+{
+	void *parentView = (__bridge void*)contentTab;
+	inProject->CreateEditor(parentView);
 }
 
 

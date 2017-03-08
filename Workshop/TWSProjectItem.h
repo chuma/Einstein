@@ -50,7 +50,7 @@ protected:
 	TWSProjectItemList pChildList;
 };
 
-
+/*
 class TWSProject : public TWSProjectItemWithChildren
 {
 public:
@@ -59,6 +59,7 @@ public:
 	virtual const char *GetIcon() { return "tree_app.png"; }
 protected:
 };
+ */
 
 
 class TWSPackage : public TWSProjectItem

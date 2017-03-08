@@ -76,7 +76,7 @@ void TWSProjectItemWithChildren::AddChild(TWSProjectItem* inChild)
 
 
 
-
+/*
 TWSProject::TWSProject(TWorkshop *inWorkshop)
 :	TWSProjectItemWithChildren(inWorkshop)
 {
@@ -86,7 +86,7 @@ TWSProject::TWSProject(TWorkshop *inWorkshop)
 TWSProject::~TWSProject()
 {
 }
-
+*/
 
 
 

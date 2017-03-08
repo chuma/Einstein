@@ -8,6 +8,7 @@
 #import <Cocoa/Cocoa.h>
 
 class TMacWorkshop;
+class TWSProject;
 class TWSNewtonScriptDocument;
 
 @interface TCocoaWorkshopController : NSWindowController <NSTextFieldDelegate, NSWindowDelegate>
@@ -23,7 +24,8 @@ class TWSNewtonScriptDocument;
 - (IBAction)compileAndRun:(id)sender;
 - (IBAction)selectProjectItem:(id)sender;
 - (void)setWorkshop:(TMacWorkshop*)inWorkshop;
-- (void)CreateNewtonScriptEditor:(TWSNewtonScriptDocument*)forNewtonScriptDocument;
+- (void)CreateNewtonScriptEditor:(TWSNewtonScriptDocument*)inDocument;
+- (void)CreateProjectEditor:(TWSProject*)inProject;
 
 @end
 

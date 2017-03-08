@@ -30,7 +30,7 @@ protected:
 
 // ---- the functions below provide a platform independent interface to create
 //		and manage the UI for NewtonScript Workshop Project Items.
-//		These mustbe implemented in the platform dependen UI file.
+//		These must be implemented in the platform specific UI file.
 
 typedef void (*TWSNewtonScriptEditorCallback)(void *inEditor);
 
