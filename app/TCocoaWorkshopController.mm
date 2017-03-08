@@ -100,6 +100,13 @@
 }
 
 
+- (id)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(nullable NSTableColumn *)tableColumn item:(nonnull id)item
+{
+	NSTableCellView *cell = [outlineView makeViewWithIdentifier:tableColumn.identifier owner:self];
+	[cell.textField setStringValue:[NSString stringWithUTF8String:"Hello"]];
+	return cell;
+}
+
 // Method returns value to be shown for given column of the tree node item
 - (id)outlineView:(NSOutlineView *)outlineView
   objectValueForTableColumn:(NSTableColumn *)tableColumn
@@ -113,6 +120,7 @@
 		id value = (__bridge id)it->outlineTextId; // TODO: yes, this is a memory leak.
 		return value;
 	} else {
+#if 1
 		// FIXME: this way of faking a text entry with icon is just plain wrong
 		NSImage* icon = [NSImage imageNamed:[NSString stringWithUTF8String:it->GetIcon()]];
 		NSString* title = [NSString stringWithUTF8String:it->GetName()];
@@ -132,6 +140,32 @@
 		}
 		it->outlineTextId = (__bridge_retained void*)value;
 		return value;
+#elif 0
+		NSTableCellView *cell = [outlineView makeViewWithIdentifier:tableColumn.identifier owner:self];
+		if(cell == nil) {
+//			NSTableCellView* cell = [[NSTableCellView alloc] init];
+			NSTableCellView *cell = [[NSTableCellView alloc] initWithFrame:[outlineView frame]];
+			cell.identifier = [tableColumn identifier];
+		}
+		[[cell imageView] setImage:[NSImage imageNamed:[NSString stringWithUTF8String:it->GetIcon()]]];
+		[[cell textField] setIdentifier:[NSString stringWithUTF8String:it->GetName()]];
+//		NSTextField *textfield = [[NSTextField alloc]initWithFrame:NSMakeRect(0, 0, 100, 30)];
+//		[textfield setStringValue:predictate_search[row]];
+//		[textfield setBackgroundColor:[NSColor redColor]];
+//		[view addSubview:textfield];
+//		[view setNeedsDisplay:YES];
+		return cell;
+#else
+//		NSTableCellView* cell = [[NSTableCellView alloc] init];
+//		NSTableCellView* cell = [outlineView makeViewWithIdentifier: column.identifier owner: self];
+		NSTableCellView* cell = [outlineView
+								 makeViewWithIdentifier:[NSString stringWithUTF8String:it->GetIcon()]
+								 owner:self];
+		cell.textField.stringValue
+		[[cell imageView] setImage:[NSImage imageNamed:[NSString stringWithUTF8String:it->GetIcon()]]];
+		[[cell textField] setIdentifier:[NSString stringWithUTF8String:it->GetName()]];
+		return cell;
+#endif
 	}
 }
 
