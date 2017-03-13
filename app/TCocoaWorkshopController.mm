@@ -100,73 +100,22 @@
 }
 
 
-- (id)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(nullable NSTableColumn *)tableColumn item:(nonnull id)item
-{
-	NSTableCellView *cell = [outlineView makeViewWithIdentifier:tableColumn.identifier owner:self];
-	[cell.textField setStringValue:[NSString stringWithUTF8String:"Hello"]];
-	return cell;
-}
-
 // Method returns value to be shown for given column of the tree node item
-- (id)outlineView:(NSOutlineView *)outlineView
-  objectValueForTableColumn:(NSTableColumn *)tableColumn
-					 byItem:(id)item
+- (NSView*)outlineView:(NSOutlineView *)outlineView
+	viewForTableColumn:(nullable NSTableColumn *)tableColumn
+				  item:(nonnull id)item
 {
 	if (!workshop) return 0;
 	if (!item) return 0;
 	TWSProjectItem *it = (TWSProjectItem*)[item pointerValue];
-
-	if (it->outlineTextId) {
-		id value = (__bridge id)it->outlineTextId; // TODO: yes, this is a memory leak.
-		return value;
-	} else {
-#if 1
-		// FIXME: this way of faking a text entry with icon is just plain wrong
-		NSImage* icon = [NSImage imageNamed:[NSString stringWithUTF8String:it->GetIcon()]];
-		NSString* title = [NSString stringWithUTF8String:it->GetName()];
-		id value = nil;
-
-		if (icon) { // 17x17
-			NSTextAttachment* attachment = [[NSTextAttachment alloc] init];
-			[(NSCell *)[attachment attachmentCell] setImage: icon];
-			NSMutableAttributedString *aString = [[NSAttributedString attributedStringWithAttachment:attachment] mutableCopy];
-			[[aString mutableString] appendFormat: @" %@", title]; // myst have space for alignment to work :-(
-			[aString addAttribute: NSBaselineOffsetAttributeName
-							value: [NSNumber numberWithFloat: -5.0]
-							range: NSMakeRange(0, 1 /*aString.length*/)];
-			value = aString;
-		} else {
-			value = title;
-		}
-		it->outlineTextId = (__bridge_retained void*)value;
-		return value;
-#elif 0
-		NSTableCellView *cell = [outlineView makeViewWithIdentifier:tableColumn.identifier owner:self];
-		if(cell == nil) {
-//			NSTableCellView* cell = [[NSTableCellView alloc] init];
-			NSTableCellView *cell = [[NSTableCellView alloc] initWithFrame:[outlineView frame]];
-			cell.identifier = [tableColumn identifier];
-		}
-		[[cell imageView] setImage:[NSImage imageNamed:[NSString stringWithUTF8String:it->GetIcon()]]];
-		[[cell textField] setIdentifier:[NSString stringWithUTF8String:it->GetName()]];
-//		NSTextField *textfield = [[NSTextField alloc]initWithFrame:NSMakeRect(0, 0, 100, 30)];
-//		[textfield setStringValue:predictate_search[row]];
-//		[textfield setBackgroundColor:[NSColor redColor]];
-//		[view addSubview:textfield];
-//		[view setNeedsDisplay:YES];
-		return cell;
-#else
-//		NSTableCellView* cell = [[NSTableCellView alloc] init];
-//		NSTableCellView* cell = [outlineView makeViewWithIdentifier: column.identifier owner: self];
-		NSTableCellView* cell = [outlineView
-								 makeViewWithIdentifier:[NSString stringWithUTF8String:it->GetIcon()]
-								 owner:self];
-		cell.textField.stringValue
-		[[cell imageView] setImage:[NSImage imageNamed:[NSString stringWithUTF8String:it->GetIcon()]]];
-		[[cell textField] setIdentifier:[NSString stringWithUTF8String:it->GetName()]];
-		return cell;
-#endif
+	NSTableCellView *cell = [outlineView makeViewWithIdentifier:tableColumn.identifier owner:self];
+	if(cell == nil) {
+		NSTableCellView *cell = [[NSTableCellView alloc] initWithFrame:[outlineView frame]];
+		cell.identifier = [tableColumn identifier];
 	}
+	[[cell imageView] setImage:[NSImage imageNamed:[NSString stringWithUTF8String:it->GetIcon()]]];
+	[[cell textField] setStringValue:[NSString stringWithUTF8String:it->GetName()]];
+	return cell;
 }
 
 
