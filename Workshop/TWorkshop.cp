@@ -141,6 +141,7 @@ TWorkshop::~TWorkshop()
 void TWorkshop::NewProject(const char *name)
 {
 	pProject = new TWSProject(this);
+#if 0
 	pProject->SetName("TestProject");
 	{
 		TWSNewtonScriptDocument *src = new TWSNewtonScriptDocument(this);
@@ -176,8 +177,13 @@ void TWorkshop::NewProject(const char *name)
 			products->AddChild(pkg);
 		}
 	}
+#else
+	//DumpPkg("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.pkg");
+	pProject->SetName("ROMVersion.pkg");
+	pProject->ImportWinNTK("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.ntk",
+						   "/Users/matt/dev/Workshop/ROMVersion/");
+#endif
 	UpdateProjectOutline();
-
 	//DumpPkg("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.pkg");
 }
 

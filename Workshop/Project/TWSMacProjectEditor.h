@@ -17,13 +17,53 @@ class TWSProject;
 {
 	IBOutlet NSTabViewItem* tabViewItem;
 	IBOutlet NSView* viewFromNIB;
+	
+	IBOutlet NSTextField* languageTextField;
+	IBOutlet NSPopUpButton* platformPopUp;
+	IBOutlet NSButton* debugBuildButton;
+	IBOutlet NSButton* ignoreNativeButton;
+	IBOutlet NSButton* checkGlobalFunctionsButton;
+	IBOutlet NSButton* oldBuildRulesButton;
+	IBOutlet NSButton* useStepChildrenButton;
+	IBOutlet NSButton* suppressByteCodesButton;
+	IBOutlet NSButton* fasterFunctionsButton;
+
+	IBOutlet NSTextField* applicationNameTextField;
+	IBOutlet NSTextField* applicationSymbolTextField;
+	//IBOutlet NSTextField* partTypeTextField;
+	IBOutlet NSTextField* topFrameExpressionTextField;
+	IBOutlet NSButton* autoCloseButton;
+	//IBOutlet NSTextField* customPartTypeTextField;
+	IBOutlet NSButton* fasterSoupsButton;
+	// TODO: icon
+
+	// -- package settings
+	IBOutlet NSTextField* packageNameTextField;
+	//IBOutlet NSTextField* versionTextField;
+	IBOutlet NSTextField* copyrightTextField;
+	//IBOutlet NSButton* optimizeSpeedButton;
+	IBOutlet NSButton* copyProtectButton;
+	IBOutlet NSButton* deleteOnDownloadButton;
+	//IBOutlet NSButton* dispatchOnlyButton;
+	IBOutlet NSButton* fourByteAlignmentButton;
+	IBOutlet NSButton* zippyCompressionButton;
+	IBOutlet NSButton* newton20OnlyButton;
+
+	// -- profiler settings
+	//IBOutlet NSButton* profileMemoryButton;
+	//IBOutlet NSButton* profilePercentButton;
+	IBOutlet NSButton* compileForProfilingButton;
+	//IBOutlet NSButton* compileForSpeedButton;
+	//IBOutlet NSButton* detailedSystemCallsButton;
+	//IBOutlet NSButton* detailedUserFunctionsButton;
 
 	TWSProject* project;
 }
 
 +(id)LoadFromNIB:(TWSProject*)inProject;
 -(void)AddTo:(NSTabView*)tabView;
--(void)LoadProject;
+-(void)UpdateUIFromProjectData;
+-(void)UpdateProjectDataFromUI;
 
 @end
 
