@@ -29,7 +29,6 @@
                 <outlet property="newton20OnlyButton" destination="6Gt-r3-kbG" id="yPA-jq-zw7"/>
                 <outlet property="oldBuildRulesButton" destination="Wvl-fw-55P" id="hQ1-kn-Ixo"/>
                 <outlet property="packageNameTextField" destination="nnK-r8-tI0" id="RRJ-hZ-vig"/>
-                <outlet property="packageNameextField" destination="nnK-r8-tI0" id="cQy-sk-LJJ"/>
                 <outlet property="platformPopUp" destination="rwm-ao-jc6" id="CZv-9x-qyu"/>
                 <outlet property="suppressByteCodesButton" destination="x3F-3b-IzP" id="ctu-19-yH0"/>
                 <outlet property="topFrameExpressionTextField" destination="y3q-al-44Y" id="43C-7N-uq9"/>

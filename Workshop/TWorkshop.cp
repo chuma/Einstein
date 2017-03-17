@@ -286,7 +286,11 @@ void TWorkshop::CompileAndRun()
 	FILE *f = fopen("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.lyt", "rb");
 	size = fread(data, 1, 1024*1024*1, f);
 	fclose(f);
-	result = NVMInterpretStr("printDepth := 10;\n", &err);
+
+//	INITSYM(printLength);
+//	INITSYM(printBinaries);
+
+	result = NVMInterpretStr("printDepth := 999; printLength := 999; printBinaries := 1;\n", &err);
 	newt_result_message(result, err);
 	result = NewtReadNSOF(data, size);
 	//result = NVMInterpretStr("print(1+1);\n", &err);

@@ -199,7 +199,7 @@ newtRefVar TWSProject::GetFrameInFrame(newtRefArg inFrame, newtRefArg inSymbol)
 	if (ix==-1)
 		return kNewtRefNIL;
 	newtRefVar slot = NewtGetFrameSlot(inFrame, ix);
-	if (!NewtRefIsFrame(slot))
+	if (!NewtRefIsFrameOrArray(slot))
 		return kNewtRefNIL;
 	return slot;
 }
@@ -301,9 +301,44 @@ int TWSProject::ImportWinNTK(const char *inSourceFile, const char *inDestination
 		newtRef projectItems = GetFrameInFrame(newtProject, NSSYM(projectItems));
 		if (projectItems!=kNewtRefNIL)
 		{
-			newtRef items = GetFrameInFrame(newtProject, NSSYM(items));
+			newtRef items = GetFrameInFrame(projectItems, NSSYM(items));
 			if (items!=kNewtRefNIL)
 			{
+				int n = NewtArrayLength(items);
+				for (int i=0; i<n; i++) {
+					newtRefVar item = NewtGetArraySlot(items, i);
+					int type;
+					SetFromNewtFrame(item, NSSYM(type), type, -1);
+					switch (type) {
+						case 0: // 0 Layout file (also used for user-proto and print layout files)
+							fprintf(stderr, "Layout files not supported yet\n");
+							break;
+						case 1: // 1 Bitmap file
+							fprintf(stderr, "Bitmap files not supported yet\n");
+							break;
+						case 3: // 3 Sound file
+							fprintf(stderr, "Sound files not supported yet\n");
+							break;
+						case 4: // 4 Book file (deprecated in favor of script items)
+							fprintf(stderr, "Book files not supported yet\n");
+							break;
+						case 5: // 5 Script file (NewtonScript source file)
+							fprintf(stderr, "Script files not supported yet\n");
+							break;
+						case 6: // 6 Package file
+							fprintf(stderr, "Package files not supported yet\n");
+							break;
+						case 7: // 7 Stream file
+							fprintf(stderr, "Stream files not supported yet\n");
+							break;
+						case 8: // 8 Native C++ code module file
+							fprintf(stderr, "Native C++ files not supported yet\n");
+							break;
+						default:
+							fprintf(stderr, "Unexpected item type in project item list: %d\n", type);
+							break;
+					}
+				}
 				// TODO: loop through all items in the array and create some reference
 				// These can be layouts, scripts, etc.
 				// file: {
