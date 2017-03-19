@@ -312,6 +312,7 @@ int TWSProject::ImportWinNTK(const char *inSourceFile, const char *inDestination
 					switch (type) {
 						case 0: // 0 Layout file (also used for user-proto and print layout files)
 							fprintf(stderr, "Layout files not supported yet\n");
+							// TWSLayoutDocument
 							break;
 						case 1: // 1 Bitmap file
 							fprintf(stderr, "Bitmap files not supported yet\n");
@@ -324,6 +325,7 @@ int TWSProject::ImportWinNTK(const char *inSourceFile, const char *inDestination
 							break;
 						case 5: // 5 Script file (NewtonScript source file)
 							fprintf(stderr, "Script files not supported yet\n");
+							// TWSNewtonScriptDocument
 							break;
 						case 6: // 6 Package file
 							fprintf(stderr, "Package files not supported yet\n");
