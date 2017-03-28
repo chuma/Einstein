@@ -24,6 +24,11 @@ public:
 	void NewProject(const char *name);
 	TWSProject *GetProject() { return pProject; }
 	TWSProjectItem *FindItemById(void *inId);
+
+	int CreateMinimalProject(const char *path, const char *filename, const char *name, const char *sig, int nFiles, ...);
+	int CreateMinimalScript(const char *path, const char *filename, const char *name, const char *sig);
+	int Load(const char *path, const char *filename);
+
 protected:
 	virtual void UpdateProjectOutline();
 	TEmulator*	pEmulator;

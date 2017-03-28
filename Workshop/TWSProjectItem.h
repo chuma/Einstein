@@ -50,18 +50,6 @@ protected:
 	TWSProjectItemList pChildList;
 };
 
-/*
-class TWSProject : public TWSProjectItemWithChildren
-{
-public:
-	TWSProject(TWorkshop*);
-	~TWSProject();
-	virtual const char *GetIcon() { return "tree_app.png"; }
-protected:
-};
- */
-
-
 class TWSPackage : public TWSProjectItem
 {
 public:

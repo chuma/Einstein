@@ -9,6 +9,7 @@
 #include "TWorkshop.h"
 
 #include "TEmulator.h"
+#include "TPathHelper.h"
 #include "TPlatformManager.h"
 #include "Workshop/TWSProjectItem.h"
 #include "Workshop/Project/TWSProject.h"
@@ -23,6 +24,8 @@
 #include "Newt0/NewtPkg.h"
 #include "Newt0/version.h"
 
+#include <sys/stat.h>
+
 /*
  Comments by Matthias:
  
@@ -33,9 +36,12 @@
  of MacOS 8 and the hellish NTK and even hellisherer MPW. Using Eckhar köppens
  "tntk" on OS X works well, but requires a steep command line learning curve.
  
- The EInstein Workshop shall eventually provide a simple "it's just there"
+ The Einstein Workshop shall eventually provide a simple "it's just there"
  interface to write and test small and medium size Newton apps without the need 
  to install any additional tools.
+ 
+ March 28th, 2017: I decided to change the implementation a bit. TWSProject
+ shall contain all information required to build a multipart package
 
  DONE:
 	Even though I do know nothing about Cocoa or ObjectiveC, I managed to got a
@@ -55,13 +61,17 @@
  
  TODO: create, load, and store a Newton project file
 	Started the implementation of creating projects...
+	Started the implementation of MSWindows NTK project import
  
  TODO: create, load, edit, and store Newton Script files inside the project
 	Started the implementation of creating, loading, and editing scripts...
 
+ TODO: create, load, edit, and store Newton Layout files inside the project
+	Started the implementation of creating, loading, and editing scripts...
+
  TODO: compile projects into packages
  
- TODO: UI: the left field is supposed to hold a list of files in the project
+ DONE: UI: the left field is supposed to hold a list of files in the project
  
  TODO: UI: the top field should be a syntax highlighting editor
 
@@ -138,6 +148,24 @@ TWorkshop::~TWorkshop()
 }
 
 
+int TWorkshop::CreateMinimalProject(const char *path, const char *filename, const char *name, const char *sig, int nFiles, ...)
+{
+	return -1;
+}
+
+
+int TWorkshop::CreateMinimalScript(const char *path, const char *filename, const char *name, const char *sig)
+{
+	return -1;
+}
+
+
+int TWorkshop::Load(const char *path, const char *filename)
+{
+	return -1;
+}
+
+
 void TWorkshop::NewProject(const char *name)
 {
 	pProject = new TWSProject(this);
@@ -177,11 +205,43 @@ void TWorkshop::NewProject(const char *name)
 			products->AddChild(pkg);
 		}
 	}
-#else
+#elif 0
 	//DumpPkg("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.pkg");
 	pProject->SetName("ROMVersion.pkg");
 	pProject->ImportWinNTK("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.ntk",
 						   "/Users/matt/dev/Workshop/ROMVersion/");
+#elif 1
+	std::string path = TPathHelper::GetSerialPipeBasePath();
+	path.append("Workshop/");
+	::mkdir(path.c_str(), 0777);
+	path.append("Test/");
+	::mkdir(path.c_str(), 0777);
+	// TODO: generate ntk project file
+	CreateMinimalProject(path.c_str(), "test.newtonprojet", "Test", "EinsteinWS", 1, "test.newtonscript");
+	// TODO: generate minimal script
+	CreateMinimalScript(path.c_str(), "test.newtonscript", "Test", "EinsteinWS");
+	// TODO: load all that as the current project
+	Load(path.c_str(), "test.newtonprojet");
+#else
+	pProject->SetName("Hello");
+	{
+		TWSNewtonScriptDocument *src = new TWSNewtonScriptDocument(this);
+		src->AssociateFile("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.txt");
+		//		src->SetName("test.lyt");
+		pProject->AddChild(src);
+
+		TWSProjectItemWithChildren *sources = new TWSProjectItemWithChildren(this);
+		sources->SetName("Sources");
+		pProject->AddChild(sources);
+		{
+			TWSNewtonScriptDocument *src = new TWSNewtonScriptDocument(this);
+			src->SetName("test.lyt");
+			sources->AddChild(src);
+			TWSNewtonScriptDocument *src2 = new TWSNewtonScriptDocument(this);
+			src2->SetName("main.nsc");
+			sources->AddChild(src2);
+		}
+	}
 #endif
 	UpdateProjectOutline();
 	//DumpPkg("/Users/matt/Desktop/Newton/NewtonDev/ROMVersion/ROMVersion.pkg");
@@ -310,341 +370,159 @@ void TWorkshop::CompileAndRun()
 	
 }
 
-#if 0
 
-Adding ROM patch: Avoid screen calibration
-Adding ROM patch: BeaconDetect (1/2)
-Adding ROM patch: BeaconDetect (2/2)
-Adding ROM patch: gDebugger patch
-Adding ROM patch: gNewtConfig patch
-Creating image from ROM and REX...
-PATCHING THE ROM
-1/19300 patches added 0.01%.
-Removing 'extr' serial port driver from REx.
-Checksum-0: 4B0119CA
-Checksum-1: 1875D677
-Checksum-2: 68481A07
-Checksum-3: BBB55D42
-Checksum-4: 2E7911DC
-Checksum-5: 47558A61
-Checksum-6: FFFFFFFF
-Checksum-7: FFFFFFFF
-Checksum-8: FFFFFFFF
-Checksum-9: FFFFFFFF
-Read 52817 symbols
-0x0000618000638fe0
-Compile and Run the current Project
-{
-	layoutSettings: {
-		ntkPlatform: 1, 
-		ntkVersion: 1.000000, 
-		windowRect: {
-			left: 55, 
-			top: 64, 
-			bottom: 455, 
-			right: 334
-		}, 
-		layoutName: "", 
-		layoutType: 0, 
-		platformName: "MessagePad", 
-		layoutSize: {
-			h: 240, 
-			v: 336
-		}, 
-		gridState: NIL, 
-		gridSnap: NIL, 
-		gridSize: {
-			h: 5, 
-			v: 5
-		}, 
-		previewState: NIL, 
-		arrowKeyUnit: 1, 
-		shiftKeyUnit: 5, 
-		linkedTo: {
-			class: 'fileReference, 
-			projectPath: "D:\Newton\Newton Toolkit\DotClock 01s\", 
-			deltaFromProject: ""
-		}
-	}, 
-	templateHierarchy: {
-		__ntObjectPointer: MakeBinaryFromHex("4CC2E200", 'pointer), 
-		value: {
-			__ntTemplate: {
-				value: 180, 
-				__ntDatatype: "PROT", 
-				__ntFlags: 16
-			}, 
-			viewBounds: {
-				value: {
-					left: -3, 
-					top: 18, 
-					bottom: 136, 
-					right: 215
-				}, 
-				__ntDatatype: "RECT"
-			}, 
-			stepChildren: {
-				value: [
-					stepChildren: 
-					{
-						__ntObjectPointer: MakeBinaryFromHex("ACC2E200", NIL), 
-						value: {
-							__ntTemplate: {
-								value: 218, 
-								__ntDatatype: "PROT", 
-								__ntFlags: 16
-							}, 
-							text: {
-								value: "\"Static Text\"", 
-								__ntDatatype: "EVAL"
-							}, 
-							viewBounds: {
-								value: {
-									top: 4, 
-									left: 4, 
-									bottom: 104, 
-									right: 214
-								}, 
-								__ntDatatype: "RECT"
-							}, 
-							viewSetupDoneScript: {
-								value: "func()\rbegin\r\tlocal theText := \"ROM version = \" && Gestalt(kGestalt_SystemInfo).ROMversionstring;\r\tsetValue(self, 'text, theText);\rend", 
-								__ntDatatype: "SCPT", 
-								__ntStatusInfo: {
-									state: 1, 
-									by: 3709979
-								}
-							}, 
-							viewJustify: {
-								value: 0, 
-								__ntDatatype: "NUMB"
-							}, 
-							viewFont: {
-								value: "ROM_fontSystem10Bold", 
-								__ntDatatype: "EVAL"
-							}
-						}, 
-						__ntId: 'protoStaticText
-					}
-				], 
-				__ntDatatype: "ARAY", 
-				__ntFlags: 64
-			}
-		}, 
-		__ntId: 'protoFloatNGo
-	}
-}
-
-//-----------------
-
-Adding ROM patch: Avoid screen calibration
-Adding ROM patch: BeaconDetect (1/2)
-Adding ROM patch: BeaconDetect (2/2)
-Adding ROM patch: gDebugger patch
-Adding ROM patch: gNewtConfig patch
-Creating image from ROM and REX...
-PATCHING THE ROM
-1/19300 patches added 0.01%.
-Removing 'extr' serial port driver from REx.
-Checksum-0: 4B0119CA
-Checksum-1: 1875D677
-Checksum-2: 68481A07
-Checksum-3: BBB55D42
-Checksum-4: 2E7911DC
-Checksum-5: 47558A61
-Checksum-6: FFFFFFFF
-Checksum-7: FFFFFFFF
-Checksum-8: FFFFFFFF
-Checksum-9: FFFFFFFF
-Read 52817 symbols
-0x0000608000c232a0
-Compile and Run the current Project
-*** PkgReader: PkgReadBinaryObject - unknown class 'mask
-*** PkgReader: PkgReadBinaryObject - unknown class 'pointer
-{
-	class: 'PackageHeader, 
-	type: 2021161080, 
-	pkg_version: 0, 
-	version: 1, 
-	copyright: "\uffffffc2ffffffa9\u2001 Frank Gruendel", 
-	name: "ROMVersion:SIG", 
-	flags: 268435456, 
-	parts: [
-		{
-			class: 'PackagePart, 
-			info: MakeBinaryFromHex("41204E6577746F6E20546F6F6C6B6974206170706C69636174696F6E", 'binary), 
-			flags: 129, 
-			type: 1718579821, 
-			data: {
-				app: '|ROMVersion:FGSoft|, 
-				text: "ROMVersion", 
-				icon: {
-					bits: MakeBinaryFromHex("000000000004000000000000001B0018000000000000000000001C0000003F00000033001FFF7B003FFF6E003000CE0037FCCC0037FD9C0034059800355338003403300035567000340660003554E000340CC000354FC000340B8000360F000037FE800037FD8000300B8000180300001FFF00000FFE000000000000", 'bits), 
-					mask: MakeBinaryFromHex("000000000004000000000000001B0018000000000000000000001C0000003F0000003F001FFF7F003FFF7E003FFFFE003FFFFC003FFFFC003FFFF8003FFFF8003FFFF0003FFFF0003FFFE0003FFFE0003FFFC0003FFFC0003FFF80003FFF00003FFF80003FFF80003FFF80001FFF00001FFF00000FFE000000000000", 'mask), 
-					bounds: {
-						left: 0, 
-						top: 0, 
-						bottom: 27, 
-						right: 24
-					}
-				}, 
-				theForm: {
-					viewBounds: {
-						left: 1073741821, 
-						top: 18, 
-						bottom: 136, 
-						right: 215
-					}, 
-					stepChildren: {
-						value: [
-							stepChildren: 
-							{
-								__ntObjectPointer: MakeBinaryFromHex("3C828B00", 'pointer), 
-								value: {
-									text: "Static Text", 
-									viewBounds: {
-										left: 4, 
-										top: 4, 
-										right: 214, 
-										bottom: 104
-									}, 
-									viewSetupDoneScript: {
-										class: 'CodeBlock, 
-										instructions: MakeBinaryFromHex("18191A1B291C911D8BC70016A3031E7B1F00072B02", 'instructions), 
-										literals: [
-											literals: 
-											"ROM version = ", 
-											" ", 
-											16777219, 
-											'Gestalt, 
-											'romVersionString, 
-											'array, 
-											'text, 
-											'SetValue
-										], 
-										argFrame: {
-											_nextArgFrame: {
-												_nextArgFrame: NIL, 
-												_parent: NIL, 
-												_implementor: NIL
-											}, 
-											_parent: NIL, 
-											_implementor: NIL, 
-											theText: NIL
-										}, 
-										numArgs: 0
-									}, 
-									viewJustify: 0, 
-									viewFont: @88, 
-									_proto: @218
-								}, 
-								__ntId: 'protoStaticText
-							}
-						], 
-						__ntDatatype: "ARAY", 
-						__ntFlags: 64
-					}, 
-					_proto: @180, 
-					viewChildren: [
-						viewChildren: 
-						{
-							text: "Static Text", 
-							viewBounds: {
-								left: 4, 
-								top: 4, 
-								right: 214, 
-								bottom: 104
-							}, 
-							viewSetupDoneScript: {
-								class: 'CodeBlock, 
-								instructions: MakeBinaryFromHex("18191A1B291C911D8BC70016A3031E7B1F00072B02", 'instructions), 
-								literals: [
-									literals: 
-									"ROM version = ", 
-									" ", 
-									16777219, 
-									'Gestalt, 
-									'romVersionString, 
-									'array, 
-									'text, 
-									'SetValue
-								], 
-								argFrame: {
-									_nextArgFrame: {
-										_nextArgFrame: NIL, 
-										_parent: NIL, 
-										_implementor: NIL
-									}, 
-									_parent: NIL, 
-									_implementor: NIL, 
-									theText: NIL
-								}, 
-								numArgs: 0
-							}, 
-							viewJustify: 0, 
-							viewFont: @88, 
-							_proto: @218
-						}
-					], 
-					appSymbol: '|ROMVersion:FGSoft|
-				}, 
-				installScript: {
-					class: 'CodeBlock, 
-					instructions: MakeBinaryFromHex("20A4701991A57D1A296F00497D22C70011A700075F003C7F000724C2A67E1B917B1B91C46F003827000C1C1D1E281F00073B00225F0044007F0007057F0007066F00172222A70007007B1F00081F00092A6F00617B7B1F000839007B1F000822987B1F000A229902", 'instructions), 
-					literals: [
-						literals: 
-						'vars, 
-						'extras, 
-						'IsArray, 
-						'app, 
-						"Extras Drawer", 
-						"The application you just installed conflicts with another application. Please contact the application vendor for an updated version.", 
-						'GetRoot, 
-						'Notify, 
-						'devInstallScript, 
-						'HasSlot, 
-						'installScript
-					], 
-					argFrame: {
-						_nextArgFrame: {
-							_nextArgFrame: NIL, 
-							_parent: NIL, 
-							_implementor: NIL
-						}, 
-						_parent: NIL, 
-						_implementor: NIL, 
-						P: NIL, 
-						i: NIL, 
-						extras: NIL, 
-						one: NIL, 
-						|one\|iter|: NIL
-					}, 
-					numArgs: 1
-				}, 
-				removeScript: {
-					class: 'CodeBlock, 
-					instructions: MakeBinaryFromHex("7B18192A6F000E7B7B18395F000F2202", 'instructions), 
-					literals: [
-						literals: 
-						'devRemoveScript, 
-						'HasSlot
-					], 
-					argFrame: {
-						_nextArgFrame: {
-							_nextArgFrame: NIL, 
-							_parent: NIL, 
-							_implementor: NIL
-						}, 
-						_parent: NIL, 
-						_implementor: NIL, 
-						P: NIL
-					}, 
-					numArgs: 1
-				}
-			}
-		}
-	]
-}
-
-
-#endif
+const char pkg[] =
+"{\n\
+	class: 'PackageHeader,\n\
+	type: 2021161080,\n\
+	pkg_version: 0,\n\
+	version: 1,\n\
+	copyright: \"\uffffffc2ffffffa9\u2001 Frank Gruendel\",\n\
+	name: \"ROMVersion:SIG\",\n\
+	flags: 268435456,\n\
+	parts: [\n\
+		{\n\
+			class: 'PackagePart,\n\
+			info:\n\
+			MakeBinaryFromHex(\"41204E6577746F6E20546F6F6C6B6974206170706C69636174696F6E\", 'binary),\n\
+			flags: 129,\n\
+			type: 1718579821,\n\
+			data: {\n\
+						  app: '|ROMVersion:FGSoft|,\n\
+						  text: \"ROMVersion\",\n\
+						  icon: {\n\
+						  bits:\n\
+							  MakeBinaryFromHex(\"000000000004000000000000001B0018000000000000000000001C0000003F00000033001FFF7B003FFF6E003000CE0037FCCC0037FD9C0034059800355338003403300035567000340660003554E000340CC000354FC000340B8000360F000037FE800037FD8000300B8000180300001FFF00000FFE000000000000\",\n\
+												'bits),\n\
+												mask:\n\
+												MakeBinaryFromHex(\"000000000004000000000000001B0018000000000000000000001C0000003F0000003F001FFF7F003FFF7E003FFFFE003FFFFC003FFFFC003FFFF8003FFFF8003FFFF0003FFFF0003FFFE0003FFFE0003FFFC0003FFFC0003FFF80003FFF00003FFF80003FFF80003FFF80001FFF00001FFF00000FFE000000000000\",\n\
+																  'mask),\n\
+																  bounds: {\n\
+																  left: 0,\n\
+																  top: 0,\n\
+																  bottom: 27,\n\
+																  right: 24\n\
+																  }\n\
+																  },\n\
+																  theForm: {\n\
+																  viewBounds: {\n\
+																  left: 1073741821,\n\
+																  top: 18,\n\
+																  bottom: 136,\n\
+																  right: 215\n\
+																  },\n\
+																  stepChildren: [\n\
+																				 stepChildren:\n\
+																				 {\n\
+																				 text: \"Static Text\",\n\
+																				 viewBounds: {\n\
+																				 left: 4,\n\
+																				 top: 4,\n\
+																				 right: 214,\n\
+																				 bottom: 104\n\
+																				 },\n\
+																				 viewSetupDoneScript: {\n\
+																				 class:\n\
+																				 'CodeBlock,\n\
+																				 instructions:\n\
+																				 MakeBinaryFromHex(\"18191A1B291C911D8BC70016A3031E7B1F00072B02\",\n\
+																								   'instructions),\n\
+																								   literals: [\n\
+																											  literals:\n\
+																											  \"ROM version = \",\n\
+																											  \" \",\n\
+																											  16777219,\n\
+																											  'Gestalt,\n\
+																											  'romVersionString,\n\
+																											  'array,\n\
+																											  'text,\n\
+																											  'SetValue\n\
+																											  ],\n\
+																								   argFrame: {\n\
+																								   _nextArgFrame:\n\
+																									   {\n\
+																									   _nextArgFrame:\n\
+																										   NIL,\n\
+																									   _parent:\n\
+																										   NIL,\n\
+																									   _implementor:\n\
+																										   NIL\n\
+																									   },\n\
+																								   _parent:\n\
+																									   NIL,\n\
+																								   _implementor:\n\
+																									   NIL,\n\
+																								   theText:\n\
+																									   NIL\n\
+																								   },\n\
+																								   numArgs: 0\n\
+																								   },\n\
+																								   viewJustify: 0,\n\
+																								   viewFont: @88,\n\
+																								   _proto: @218\n\
+																								   }\n\
+																								   ],\n\
+																								   _proto: @180,\n\
+																								   appSymbol: '|ROMVersion:FGSoft|\n\
+																								   },\n\
+																								   installScript: {\n\
+																									   class: 'CodeBlock,\n\
+																								   instructions:\n\
+																									   MakeBinaryFromHex(\"20A4701991A57D1A296F00497D22C70011A700075F003C7F000724C2A67E1B917B1B91C46F003827000C1C1D1E281F00073B00225F0044007F0007057F0007066F00172222A70007007B1F00081F00092A6F00617B7B1F000839007B1F000822987B1F000A229902\",\n\
+																														 'instructions), \n\
+																														 literals: [\n\
+																																	literals:\n\
+																																	'vars, \n\
+																																	'extras, \n\
+																																	'IsArray, \n\
+																																	'app, \n\
+																																	\"Extras Drawer\", 
+																																	\"The application you just installed conflicts with another application. Please contact the application vendor for an updated version.\",\n\
+																																	'GetRoot, \n\
+																																	'Notify, \n\
+																																	'devInstallScript,\n\
+																																	'HasSlot, \n\
+																																	'installScript\n\
+																																	], \n\
+																														 argFrame: {\n\
+																														 _nextArgFrame: {\n\
+																														 _nextArgFrame: NIL,\n\
+																														 _parent: NIL, \n\
+																														 _implementor: NIL\n\
+																														 }, \n\
+																														 _parent: NIL,\n\
+																														 _implementor: NIL,\n\
+																														 P: NIL, \n\
+																														 i: NIL, \n\
+																														 extras: NIL, \n\
+																														 one: NIL, \n\
+																															 |one\|iter|: NIL\n\
+																														 }, \n\
+																														 numArgs: 1\n\
+																														 }, \n\
+																														 removeScript: {\n\
+																															 class: 'CodeBlock,\n\
+																														 instructions:\n\
+																															 MakeBinaryFromHex(\"7B18192A6F000E7B7B18395F000F2202\", 'instructions),\n\
+																																			   literals: [\n\
+																																						  literals:\n\
+																																						  'devRemoveScript,\n\
+																																						  'HasSlot\n\
+																																						  ], \n\
+																																			   argFrame: {\n\
+																																			   _nextArgFrame: {\n\
+																																			   _nextArgFrame: NIL,\n\
+																																			   _parent: NIL, \n\
+																																			   _implementor: NIL\n\
+																																			   }, \n\
+																																			   _parent: NIL,\n\
+																																			   _implementor: NIL,\n\
+																																			   P: NIL\n\
+																																			   }, \n\
+																																			   numArgs: 1\n\
+																																			   }\n\
+																																			   }\n\
+																																			   }\n\
+																																			   ]\n\
+																																			   }\n\
+";
