@@ -75,17 +75,6 @@ void TWSProjectItemWithChildren::AddChild(TWSProjectItem* inChild)
 }
 
 
-TWSPackage::TWSPackage(TWorkshop *inWorkshop)
-:	TWSProjectItem(inWorkshop)
-{
-}
-
-
-TWSPackage::~TWSPackage()
-{
-}
-
-
 
 
 

@@ -17,6 +17,9 @@ class TWSProjectItem;
 typedef std::vector<TWSProjectItem*> TWSProjectItemList;
 
 
+/**
+ \brief A class that holds any item in the editing tree.
+ */
 class TWSProjectItem
 {
 public:
@@ -48,15 +51,6 @@ public:
 	void AddChild(TWSProjectItem* inChild);
 protected:
 	TWSProjectItemList pChildList;
-};
-
-class TWSPackage : public TWSProjectItem
-{
-public:
-	TWSPackage(TWorkshop*);
-	~TWSPackage();
-	virtual const char *GetIcon() { return "tree_pkg.png"; }
-protected:
 };
 
 

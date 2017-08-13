@@ -4421,7 +4421,7 @@ newtRef NewtGetEnv(const char * s)
 #ifdef POINTER_CONVERSION_BY_LUT
 /*
  * This code stores long pointers in a fixed size table. Short pointers are an
- * index into the table. Converting a short pointer into a lon pointer is
+ * index into the table. Converting a short pointer into a long pointer is
  * very fast. Converting a long pointer into a short pointer is slow and gets
  * slower as the lookup table grows.
  */

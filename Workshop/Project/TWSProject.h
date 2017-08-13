@@ -137,6 +137,22 @@ public:
 	bool UseDetailedUserFunctions() { return pDetailedUserFunctions; }
 	void SetDetailedUserFunctions(bool v) { pDetailedUserFunctions = v; }
 
+	// -- compile into package
+	int Compile();
+	int Upload();
+	int Run();
+	void ClearCode();
+	void AppendCode(const char *code);
+	void AppendFormattedCode(const char *format, ...);
+	int AppendAppPart();
+	int CompileCodeToPackage();
+	int WritePackage(const char *filename);
+	newtRefVar BuildDefaultIcon();
+	newtRefVar defaultInstallScript();
+	newtRefVar defaultRemoveScript();
+
+
+
 protected:
 	char *pFilename;	// TODO: currently, this is the full path and name. We will need to differentiate this form the project relative filename
 
@@ -181,6 +197,9 @@ protected:
 	bool pDetailedSystemCalls;
 	bool pDetailedUserFunctions;
 
+	// -- compile into package
+	char *pCode;
+	int pnCode, pNCode;
 };
 
 // ---- the functions below provide a platform independent interface to create

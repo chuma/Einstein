@@ -12,6 +12,7 @@
 #include "Workshop/TWSProjectItem.h"
 #include "Workshop/Project/TWSProject.h"
 #include "Workshop/NewtonScript/TWSNewtonScriptDocument.h"
+#include "Workshop/Package/TWSPackage.h"
 
 
 @implementation TCocoaWorkshopController
@@ -172,6 +173,8 @@
 			// TODO: shall we create an editor for this class? Use a virtual function!
 			TWSNewtonScriptDocument *ns = dynamic_cast<TWSNewtonScriptDocument*>(it);
 			if (ns) [self CreateNewtonScriptEditor:ns];
+			TWSPackage *pkg = dynamic_cast<TWSPackage*>(it);
+			if (pkg) [self CreatePackageEditor:pkg];
 			TWSProject *proj = dynamic_cast<TWSProject*>(it);
 			if (proj) [self CreateProjectEditor:proj];
 		}
@@ -186,6 +189,13 @@
 
 
 - (void)CreateNewtonScriptEditor:(TWSNewtonScriptDocument*)inDocument
+{
+	void *parentView = (__bridge void*)contentTab;
+	inDocument->CreateEditor(parentView);
+}
+
+
+- (void)CreatePackageEditor:(TWSPackage*)inDocument
 {
 	void *parentView = (__bridge void*)contentTab;
 	inDocument->CreateEditor(parentView);

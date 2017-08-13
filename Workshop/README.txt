@@ -21,7 +21,7 @@ See: https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.
 Newt/0 lives as a fork on GitHub. I used this command to link Einstein and Newt:
 	$ git remote add -f newt0 https://github.com/MatthiasWM/NEWT0.git
 
-Prepare to recorde the result as a merge:
+Prepare to record the result as a merge:
 	$ git merge -s ours --no-commit newt0/master
 
 Read "master" branch of Newt/0 to the subdirectory "Workshop/Newt0/":
@@ -45,7 +45,7 @@ Newt/0 to compile and package Newton Script applocations which can then be
 installed in the Einstein emulator or distributed as .pkg files for Apple
 Newton MessagePads.
 
-TODO: more documentation on the integrattion of Newt/0
+TODO: more documentation on the integration of Newt/0
 
 
   3. Workshop
@@ -55,3 +55,5 @@ Workshop will eventually be an Integrated Developer Environment for Newton
 Script applications that uses the Einstein emulator for testing and debugging.
 
 TODO: more documentation on the concept of Workshop
+
+

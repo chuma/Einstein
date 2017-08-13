@@ -111,6 +111,9 @@
 		C932824711D0CF0A003B93C3 /* button_network_in.png in Resources */ = {isa = PBXBuildFile; fileRef = C932824511D0CF0A003B93C3 /* button_network_in.png */; };
 		C932824811D0CF0A003B93C3 /* button_network.png in Resources */ = {isa = PBXBuildFile; fileRef = C932824611D0CF0A003B93C3 /* button_network.png */; };
 		C932C4C211A1AB5D00F6A7E4 /* TNE2000Card.cp in Sources */ = {isa = PBXBuildFile; fileRef = C932C4C011A1AB5D00F6A7E4 /* TNE2000Card.cp */; };
+		C93DE0451E9032FF00016604 /* TWSMacPackageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C93DE03E1E9032F000016604 /* TWSMacPackageView.xib */; };
+		C93DE0461E90330200016604 /* TWSMacPackageEditor.mm in Sources */ = {isa = PBXBuildFile; fileRef = C93DE03F1E9032F000016604 /* TWSMacPackageEditor.mm */; };
+		C93DE0471E90330700016604 /* TWSPackage.cp in Sources */ = {isa = PBXBuildFile; fileRef = C93DE0401E9032F000016604 /* TWSPackage.cp */; };
 		C945F6731E53180C002505E9 /* TVoyagerManagedSerialPort.cp in Sources */ = {isa = PBXBuildFile; fileRef = C945F6711E53180C002505E9 /* TVoyagerManagedSerialPort.cp */; };
 		C955C6511E55D06900F0BFFA /* TVoyagerManagedSerialPort.cp in Sources */ = {isa = PBXBuildFile; fileRef = C945F6711E53180C002505E9 /* TVoyagerManagedSerialPort.cp */; };
 		C958F0571E67744B000CA017 /* EinsteinWorkshop.xib in Resources */ = {isa = PBXBuildFile; fileRef = C958F0551E67744B000CA017 /* EinsteinWorkshop.xib */; };
@@ -888,6 +891,11 @@
 		C932824611D0CF0A003B93C3 /* button_network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_network.png; sourceTree = "<group>"; };
 		C932C4C011A1AB5D00F6A7E4 /* TNE2000Card.cp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TNE2000Card.cp; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 		C932C4C111A1AB5D00F6A7E4 /* TNE2000Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNE2000Card.h; sourceTree = "<group>"; };
+		C93DE03D1E9032F000016604 /* TWSMacPackageEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWSMacPackageEditor.h; path = ../../Workshop/Package/TWSMacPackageEditor.h; sourceTree = "<group>"; };
+		C93DE03E1E9032F000016604 /* TWSMacPackageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWSMacPackageView.xib; path = ../../Workshop/Package/TWSMacPackageView.xib; sourceTree = "<group>"; };
+		C93DE03F1E9032F000016604 /* TWSMacPackageEditor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TWSMacPackageEditor.mm; path = ../../Workshop/Package/TWSMacPackageEditor.mm; sourceTree = "<group>"; };
+		C93DE0401E9032F000016604 /* TWSPackage.cp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TWSPackage.cp; path = ../../Workshop/Package/TWSPackage.cp; sourceTree = "<group>"; };
+		C93DE0411E9032F000016604 /* TWSPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWSPackage.h; path = ../../Workshop/Package/TWSPackage.h; sourceTree = "<group>"; };
 		C945F6711E53180C002505E9 /* TVoyagerManagedSerialPort.cp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TVoyagerManagedSerialPort.cp; sourceTree = "<group>"; };
 		C945F6721E53180C002505E9 /* TVoyagerManagedSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVoyagerManagedSerialPort.h; sourceTree = "<group>"; };
 		C94ADB37123E9ADD00406839 /* iEinsteinAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = iEinsteinAppDelegate.mm; path = Classes/iEinsteinAppDelegate.mm; sourceTree = "<group>"; tabWidth = 4; };
@@ -1651,6 +1659,18 @@
 			name = Layout;
 			sourceTree = "<group>";
 		};
+		C93DE03C1E90325A00016604 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				C93DE0401E9032F000016604 /* TWSPackage.cp */,
+				C93DE0411E9032F000016604 /* TWSPackage.h */,
+				C93DE03D1E9032F000016604 /* TWSMacPackageEditor.h */,
+				C93DE03F1E9032F000016604 /* TWSMacPackageEditor.mm */,
+				C93DE03E1E9032F000016604 /* TWSMacPackageView.xib */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
 		C962429411B69A6E00EE66F3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -1672,6 +1692,7 @@
 				C99F25751E6F7804004055D7 /* Project */,
 				C92BC2FB1E7D7D1F009BD115 /* Layout */,
 				C99F25641E6DFF0D004055D7 /* NewtonScript */,
+				C93DE03C1E90325A00016604 /* Package */,
 				C976B1B01E64BBDF0037B6B2 /* TMacWorkshop.mm */,
 				C976B1B31E64BBFB0037B6B2 /* TMacWorkshop.h */,
 				C976B1AC1E64BA750037B6B2 /* TWorkshop.cp */,
@@ -2948,6 +2969,7 @@
 				C998869F1E676C4400BCE585 /* Einstein.rex in Resources */,
 				C99F255A1E6A9FFD004055D7 /* tree_file.png in Resources */,
 				C92BC3051E7D7DB1009BD115 /* TWSMacLayoutView.xib in Resources */,
+				C93DE0451E9032FF00016604 /* TWSMacPackageView.xib in Resources */,
 				C99886A01E676C4400BCE585 /* button_network_in.png in Resources */,
 				C99886A11E676C4400BCE585 /* button_network.png in Resources */,
 			);
@@ -3447,6 +3469,7 @@
 				C99886C71E676C4400BCE585 /* TJITCache.cp in Sources */,
 				C99886C81E676C4400BCE585 /* TMacWorkshop.mm in Sources */,
 				C99886C91E676C4400BCE585 /* TJITPage.cp in Sources */,
+				C93DE0471E90330700016604 /* TWSPackage.cp in Sources */,
 				C99886CA1E676C4400BCE585 /* TFileLog.cp in Sources */,
 				C99886CB1E676C4400BCE585 /* TLog.cp in Sources */,
 				C99886CC1E676C4400BCE585 /* TFileManager.cp in Sources */,
@@ -3468,6 +3491,7 @@
 				C99886DA1E676C4400BCE585 /* TFlatROMImageWithREX.cp in Sources */,
 				C99886DB1E676C4400BCE585 /* TROMImage.cp in Sources */,
 				C99886DC1E676C4400BCE585 /* CocoaScreenProxy.mm in Sources */,
+				C93DE0461E90330200016604 /* TWSMacPackageEditor.mm in Sources */,
 				C99886DD1E676C4400BCE585 /* TCocoaPowerButtonNSView.mm in Sources */,
 				C99886DE1E676C4400BCE585 /* TCocoaScreenGlue.mm in Sources */,
 				C99451911E68C63800232589 /* NewtBC.c in Sources */,

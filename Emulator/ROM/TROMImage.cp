@@ -187,8 +187,9 @@ TROMImage::CreateImage(
 	}
 	
 	// Fill with zeroes.
-	bzero(theImagePtr, sizeof(theImagePtr));
-	
+//	bzero(theImagePtr, sizeof(theImagePtr));
+	bzero(theImagePtr, theImageFile.GetSize());
+
 	// inBuffer contains 16 MB consisting of the ROM followed by the REX.
 	// Write this at the start of the image.
 	

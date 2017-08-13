@@ -18,6 +18,11 @@
 #include "NewtType.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+	
 /* マクロ */
 /// addr <--> integer　時のシフト
 //#define NOBJ_ADDR_SHIFT		2
@@ -32,7 +37,7 @@
 #if __x86_64__
 extern uintptr_t NewtShortToLongPointer(uint32_t);
 extern uint32_t NewtLongToShortPointer(uintptr_t);
-#define	NewtRefToPointer(r)			(newtObjRef)NewtShortToLongPointer((uint32_t)r - 1)		///< オブジェクト参照をポインタに変換
+#define	NewtRefToPointer(r)			(newtObjRef)NewtShortToLongPointer((uint32_t)(r-1))		///< オブジェクト参照をポインタに変換
 #define	NewtMakePointer(v)			(newtRef)(NewtLongToShortPointer(v) + 1)		///< ポインタオブジェクトを作成
 #else
 #define	NewtRefToPointer(r)			(newtObjRef)((uint32_t)r - 1)		///< オブジェクト参照をポインタに変換
@@ -121,11 +126,6 @@ typedef void(*newt_install_t)(void);
 
 
 /* 関数プロトタイプ */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 uint32_t	NewtSymbolHashFunction(const char * name);
 newtRef		NewtLookupSymbol(newtRefArg r, const char * name, uint32_t hash, int32_t st);
