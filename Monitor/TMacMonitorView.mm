@@ -10,6 +10,9 @@
 #import "TMacMonitorView.h"
 #import "TMacMonitor.h"
 
+const int historyVisible = 32;
+const int historySize = 1024;
+
 @interface TMacMonitorView ()
 {
 	BOOL started;
@@ -30,7 +33,8 @@
 	NSString *ic3;
 	NSString *symbol;
 	NSAttributedString *disasm[5];
-	NSAttributedString *history[32];
+	NSAttributedString *history[historySize];
+	CGFloat historyOffset;
 	NSMutableString *command;
 	
 	TCocoaMonitorController *controller;
@@ -141,6 +145,8 @@
 #endif
 		
 		command = [[NSMutableString alloc] init];
+
+		historyOffset = (CGFloat)(historySize - historyVisible);
 	}
 	
 	return self;
@@ -155,11 +161,14 @@
 
 - (void)addHistoryLine:(NSString *)line type:(int)type
 {
+	// Reset scrolling history to bottom line
+	historyOffset = (CGFloat)(historySize - historyVisible);
+
 	// Scroll up
 #if !__has_feature(objc_arc)
 	[history[0] release];
 #endif
-	for ( int i = 1; i < 32; ++i )
+	for ( int i = 1; i < historySize; ++i )
 	{
 		history[i - 1] = history[i];
 	}
@@ -168,19 +177,19 @@
 	
 	if ( type == MONITOR_LOG_ERROR )
 	{
-		history[31] = [[NSAttributedString alloc] initWithString:line attributes:errorAttrs];
+		history[historySize-1] = [[NSAttributedString alloc] initWithString:line attributes:errorAttrs];
 	}
 	else if ( type == MONITOR_LOG_CODE )
 	{
-		history[31] = [[NSAttributedString alloc] initWithString:line attributes:disasmBaseAttrs];
+		history[historySize-1] = [[NSAttributedString alloc] initWithString:line attributes:disasmBaseAttrs];
 	}
 	else if ( type == MONITOR_LOG_USER_INPUT )
 	{
-		history[31] = [[NSAttributedString alloc] initWithString:line attributes:labelAttrs];
+		history[historySize-1] = [[NSAttributedString alloc] initWithString:line attributes:labelAttrs];
 	}
 	else
 	{
-		history[31] = [[NSAttributedString alloc] initWithString:line attributes:valueAttrs];
+		history[historySize-1] = [[NSAttributedString alloc] initWithString:line attributes:valueAttrs];
 	}
 }
 
@@ -411,9 +420,9 @@
 		textPoint.x += 4 + (FONT_WIDTH * 19);
 		textPoint.y = textPoint.y + frame.size.height - FONT_HEIGHT - 1;
 
-		for ( int i = 0; i < 32; ++ i)
+		for ( int i = 0; i < historyVisible; ++ i)
 		{
-			[history[i] drawAtPoint:textPoint];
+			[history[i+(int)historyOffset] drawAtPoint:textPoint];
 			textPoint.y -= FONT_HEIGHT;
 		}
 
@@ -496,6 +505,23 @@
 	}
 }
 
+- (void)scrollWheel:(NSEvent *)event
+{
+	if ( !started || !halted )
+		return;
+
+	CGFloat dy = [event scrollingDeltaY];
+	if ([event hasPreciseScrollingDeltas])
+		dy /= FONT_HEIGHT;
+	if (dy!=0.0) {
+		CGFloat prevOffset = historyOffset;
+		historyOffset -= dy;
+		if (historyOffset<0.0) historyOffset = 0.0;
+		if (historyOffset>(int)(historySize-historyVisible))
+			historyOffset = (CGFloat)(historySize-historyVisible);
+		if (prevOffset!=historyOffset) [self setNeedsDisplay:YES];
+	}
+}
 
 - (void)setController:(TCocoaMonitorController *)inController
 {
