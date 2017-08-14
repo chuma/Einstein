@@ -36,9 +36,9 @@ const int historySize = 1024;
 	NSAttributedString *history[historySize];
 	CGFloat historyOffset;
 	NSMutableString *command;
-	
+
 	TCocoaMonitorController *controller;
-	
+
 	NSFont *font;
 	NSDictionary *labelAttrs;
 	NSDictionary *symbolAttrs;
@@ -66,89 +66,89 @@ const int historySize = 1024;
 #if !__has_feature(objc_arc)
 		[font retain];
 #endif
-		
+
 		labelAttrs =
 		@{
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.22 green:0.75 blue:1.0 alpha:1.0]
-		};
+		  NSFontAttributeName: font,
+		  NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.22 green:0.75 blue:1.0 alpha:1.0]
+		  };
 #if !__has_feature(objc_arc)
 		[labelAttrs retain];
 #endif
 
 		symbolAttrs =
 		@{
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.8 green:0.8 blue:0.22 alpha:1.0]
-		};
+		  NSFontAttributeName: font,
+		  NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.8 green:0.8 blue:0.22 alpha:1.0]
+		  };
 #if !__has_feature(objc_arc)
 		[symbolAttrs retain];
 #endif
 		valueAttrs =
 		@{
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.7 green:0.7 blue:0.7 alpha:1.0]
-		};
+		  NSFontAttributeName: font,
+		  NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.7 green:0.7 blue:0.7 alpha:1.0]
+		  };
 #if !__has_feature(objc_arc)
 		[valueAttrs retain];
 #endif
 		changedValueAttrs =
 		@{
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0]
-		};
+		  NSFontAttributeName: font,
+		  NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.0]
+		  };
 
 #if !__has_feature(objc_arc)
 		[changedValueAttrs retain];
 #endif
-		
+
 		disasmAddrAttrs =
 		@{
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.5 green:0.7 blue:0.3 alpha:1.0]
-		};
+		  NSFontAttributeName: font,
+		  NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.5 green:0.7 blue:0.3 alpha:1.0]
+		  };
 #if !__has_feature(objc_arc)
 		[disasmAddrAttrs retain];
 #endif
 		disasmBaseHighlightedAttrs =
 		@{
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.8 green:1.0 blue:0.6 alpha:1.0],
-		};
+		  NSFontAttributeName: font,
+		  NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.8 green:1.0 blue:0.6 alpha:1.0],
+		  };
 #if !__has_feature(objc_arc)
 		[disasmBaseHighlightedAttrs retain];
 #endif
 		disasmBaseAttrs =
 		@{
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.1 green:0.7 blue:0.1 alpha:1.0]
-		};
+		  NSFontAttributeName: font,
+		  NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.1 green:0.7 blue:0.1 alpha:1.0]
+		  };
 #if !__has_feature(objc_arc)
 		[disasmBaseAttrs retain];
 #endif
 		disasmStatusAttrs =
 		@{
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.8 green:0.5 blue:0.2 alpha:1.0]
-		};
-		
+		  NSFontAttributeName: font,
+		  NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.8 green:0.5 blue:0.2 alpha:1.0]
+		  };
+
 #if !__has_feature(objc_arc)
 		[disasmStatusAttrs retain];
 #endif
 		errorAttrs =
 		@{
-			NSFontAttributeName: font,
-			NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.8 green:0.2 blue:0.2 alpha:1.0]
-		};
+		  NSFontAttributeName: font,
+		  NSForegroundColorAttributeName: [NSColor colorWithCalibratedRed:0.8 green:0.2 blue:0.2 alpha:1.0]
+		  };
 #if !__has_feature(objc_arc)
 		[errorAttrs retain];
 #endif
-		
+
 		command = [[NSMutableString alloc] init];
 
 		historyOffset = (CGFloat)(historySize - historyVisible);
 	}
-	
+
 	return self;
 }
 
@@ -172,9 +172,9 @@ const int historySize = 1024;
 	{
 		history[i - 1] = history[i];
 	}
-	
+
 	// Add new
-	
+
 	if ( type == MONITOR_LOG_ERROR )
 	{
 		history[historySize-1] = [[NSAttributedString alloc] initWithString:line attributes:errorAttrs];
@@ -203,18 +203,18 @@ const int historySize = 1024;
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[super drawRect:dirtyRect];
-	
+
 	NSRect frame = [self frame];
-	
+
 	[[NSColor blackColor] set];
 	NSRectFill(frame);
-	
+
 	if ( halted )
 	{
 		NSPoint textPoint = frame.origin;
 		textPoint.x += 4;
 		textPoint.y = textPoint.y + frame.size.height - FONT_HEIGHT - 1;
-		
+
 		[@"  R0" drawAtPoint:textPoint withAttributes:labelAttrs];
 		textPoint.y -= FONT_HEIGHT;
 
@@ -265,7 +265,7 @@ const int historySize = 1024;
 
 		[@"CPSR" drawAtPoint:textPoint withAttributes:labelAttrs];
 		textPoint.y -= FONT_HEIGHT;
-	
+
 		[@"SPSR" drawAtPoint:textPoint withAttributes:labelAttrs];
 		textPoint.y -= FONT_HEIGHT;
 
@@ -312,7 +312,7 @@ const int historySize = 1024;
 		textPoint.y -= FONT_HEIGHT;
 
 		// Disassembly
-		
+
 		// blank
 		textPoint.y -= FONT_HEIGHT;
 
@@ -320,7 +320,7 @@ const int historySize = 1024;
 		textPoint.y -= FONT_HEIGHT;
 
 		textPoint.x += FONT_WIDTH * 5;
-		
+
 		for ( int i = 0; i < 5; ++i )
 		{
 			NSMutableAttributedString *tempStr = [[NSMutableAttributedString alloc] initWithAttributedString:disasm[i]];
@@ -333,7 +333,7 @@ const int historySize = 1024;
 			{
 				[tempStr setAttributes:disasmBaseAttrs range:NSMakeRange(0, [tempStr length])];
 			}
-			
+
 			[tempStr setAttributes:disasmAddrAttrs range:NSMakeRange(0, 8)];
 
 			NSRange statusRange = [[tempStr string] rangeOfString:@"  ="];
@@ -355,9 +355,9 @@ const int historySize = 1024;
 
 			textPoint.y -= FONT_HEIGHT;
 		}
-		
+
 		// Register values
-		
+
 		textPoint = frame.origin;
 		textPoint.x += 4 + (FONT_WIDTH * 5);
 		textPoint.y = textPoint.y + frame.size.height - FONT_HEIGHT - 1;
@@ -371,16 +371,16 @@ const int historySize = 1024;
 
 			textPoint.y -= FONT_HEIGHT;
 		}
-		
+
 		[cpsr drawAtPoint:textPoint withAttributes:valueAttrs];
 		textPoint.y -= FONT_HEIGHT;
 
 		[spsr drawAtPoint:textPoint withAttributes:valueAttrs];
 		textPoint.y -= FONT_HEIGHT;
-		
+
 		// Skip down to Tmr
 		textPoint.y -= FONT_HEIGHT;
-		
+
 		[frozenTimer drawAtPoint:textPoint withAttributes:valueAttrs];
 		textPoint.y -= FONT_HEIGHT;
 
@@ -413,9 +413,9 @@ const int historySize = 1024;
 
 		[ic3 drawAtPoint:textPoint withAttributes:valueAttrs];
 		textPoint.y -= FONT_HEIGHT;
-		
+
 		// History
-		
+
 		textPoint = frame.origin;
 		textPoint.x += 4 + (FONT_WIDTH * 19);
 		textPoint.y = textPoint.y + frame.size.height - FONT_HEIGHT - 1;
@@ -427,7 +427,7 @@ const int historySize = 1024;
 		}
 
 		// Command line
-		
+
 		textPoint = frame.origin;
 		textPoint.x += 4;
 		textPoint.y = textPoint.y + frame.size.height - (FONT_HEIGHT * 41) - 1;
@@ -435,15 +435,15 @@ const int historySize = 1024;
 		[[NSString stringWithFormat:@"> %@_", command] drawAtPoint:textPoint withAttributes:labelAttrs];
 
 		// Separator lines
-		
+
 		[[NSColor colorWithCalibratedRed:0.25 green:0.25 blue:0.25 alpha:1.0] set];
-		
+
 		// Vertical, between registers and history
-		
+
 		[NSBezierPath strokeLineFromPoint:NSMakePoint(FONT_WIDTH * 18, frame.size.height - (FONT_HEIGHT * 32.5)) toPoint:NSMakePoint(FONT_WIDTH * 18, frame.size.height)];
 
 		// Horizontal, between SPSR and Tmr
-		
+
 		[NSBezierPath strokeLineFromPoint:NSMakePoint(0, frame.size.height - (FONT_HEIGHT * 18.5)) toPoint:NSMakePoint(FONT_WIDTH * 18, frame.size.height - (FONT_HEIGHT * 18.5))];
 
 		// Horizontal, between registers and disassembly
@@ -459,7 +459,7 @@ const int historySize = 1024;
 		NSPoint textPoint = frame.origin;
 		textPoint.x += 20;
 		textPoint.y += 20;
-		
+
 		if ( started )
 		{
 			[@"Emulator is running. Click Stop to stop it." drawAtPoint:textPoint withAttributes:labelAttrs];
@@ -476,7 +476,7 @@ const int historySize = 1024;
 {
 	if ( !started || !halted )
 		return;
-	
+
 	if ( [[theEvent characters] characterAtIndex:0] == '\r' )
 	{
 		if ( [command length] > 0 )
@@ -532,11 +532,11 @@ const int historySize = 1024;
 - (void)updateWithMonitor:(TMacMonitor *)monitor
 {
 	started = YES;
-	
+
 	[self setNeedsDisplay:YES];
 
-	halted = monitor->IsHalted(); 
-	
+	halted = monitor->IsHalted();
+
 	for ( int i = 0; i < 16; ++i )
 	{
 		NSString* newRegVal = [monitor->GetRegister(i) copy];
