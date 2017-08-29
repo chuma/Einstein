@@ -854,7 +854,7 @@ TVoyagerManagedSerialPort::RunDMA()
 //  * HandleDMA()
 //		This endless loop watches DMA registers as they are changed by the
 //		OS, and read and writes data via the outside communication ports.
-//		It can also trigger interrupts when buffers empty, filll, or overflow.
+//		It can also trigger interrupts when buffers empty, fill, or overflow.
 // -------------------------------------------------------------------------- //
 void
 TVoyagerManagedSerialPort::HandleDMA()
