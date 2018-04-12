@@ -110,7 +110,7 @@ TFileManager::descriptor_for_newton_name( const char *name )
 			return cursor;
 		}
 	}
-	
+
 	return NULL;
 }
 
@@ -139,7 +139,7 @@ TFileManager::new_descriptor_with_name( const char *name )
 void
 TFileManager::open_listener( const char *name, KUInt32 desc )
 {
-	
+
 }
 
 // -------------------------------------------------------------------------- //
@@ -148,7 +148,7 @@ TFileManager::open_listener( const char *name, KUInt32 desc )
 void
 TFileManager::close_listener( KUInt32 desc )
 {
-	
+
 }
 
 // -------------------------------------------------------------------------- //
@@ -181,9 +181,9 @@ TFileManager::do_sys_open( const char *name, const char *mode )
 	if (mLog) {
 		mLog->LogLine( "do_sys_open" );
 	}
-	
+
 	SFileDescriptors *desc = NULL;
-	
+
 	if (strlen(name) > 0 && name[0] == '%') {
 		desc = descriptor_for_newton_name(name);
 		if (desc == NULL) {
@@ -195,17 +195,17 @@ TFileManager::do_sys_open( const char *name, const char *mode )
 		if (mPath.length() == 0) {
 			return -1;
 		}
-		
+
 		std::string file = mPath + "/" + name;
 		FILE *fp = ::fopen(file.c_str(), mode);
 		if (fp == NULL) {
 			return -1;
 		}
-		
+
 		desc = new_descriptor_with_name(name);
 		desc->fHostFile = fp;
 	}
-	
+
 	return desc->fNewtDesc;
 }
 
@@ -221,7 +221,7 @@ TFileManager::do_sys_close( KUInt32 fp )
 	if (mLog) {
 		mLog->LogLine( "do_sys_close" );
 	}
-	
+
 	SFileDescriptors* desc = descriptor_for_newton_desc(fp);
 	if (desc->fHostFile != NULL) {
 		::fflush(desc->fHostFile);
@@ -230,11 +230,11 @@ TFileManager::do_sys_close( KUInt32 fp )
 	else {
 		close_listener(fp);
 	}
-	
+
 	if (desc->fName != NULL) {
 		::free(desc->fName);
 	}
-	
+
 	desc->fNewtDesc = 0;
 	desc->fNotifyAddr = 0;
 	desc->fHostFile = NULL;
@@ -420,4 +420,3 @@ TFileManager::set_listener_has_input( KUInt32 fp, bool has_input )
 		mMemory->Write(desc->fNotifyAddr, (has_input ? 1 : 0));
 	}
 }
-

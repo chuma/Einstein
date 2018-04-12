@@ -1,19 +1,19 @@
 #  ==============================
 #  File:			Jamfile
 #  Project:			Einstein
-# 
+#
 #  Copyright 2003-2007 by Paul Guyot (pguyot@kallisys.net).
-# 
+#
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
 #  the Free Software Foundation; either version 2 of the License, or
 #  (at your option) any later version.
-# 
+#
 #  This program is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
-# 
+#
 #  You should have received a copy of the GNU General Public License along
 #  with this program; if not, write to the Free Software Foundation, Inc.,
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -169,7 +169,7 @@ if $(compiler) = "gcc"
 # On garde les .o
 KEEPOBJS = 1 ;
 
-# Répertoire pour les binaires et les objets.
+# Build destination sub-directory
 LOCATE_TARGET = "build.$(OS)$(SUBTARGET:E=)" ;
 
 # Compilateur ObjC++
@@ -298,6 +298,11 @@ COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_trace.c" ;
 MACOSX_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_mac/pa_mac_hostapis.c" ;
 MACOSX_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_mac_core/pa_mac_core.c" ;
 
+if $(fltkapp:E="no") = "yes"
+{
+    FLTK_CPP_SOURCES    += "$(BASE)Emulator/Screen/TFLScreenManager.cp" ;
+}
+
 X11_CPP_SOURCES		+= "$(BASE)Emulator/Screen/TX11ScreenManager.cp" ;
 FBDEV_CPP_SOURCES	+= "$(BASE)Emulator/Screen/TFBScreenManager.cp" ;
 
@@ -333,16 +338,24 @@ APP_BASE			= "$(BASE)app/" ;
 SubDirHdrs "$(APP_BASE)" ;
 
 APP_SOURCES			= ;
-APP_SOURCES			+= "$(APP_BASE)einstein.cp" ;
-APP_SOURCES			+= "$(APP_BASE)TCLIApp.cp" ;
+if $(fltkapp:E="no") = "yes"
+{
+    APP_SOURCES         += "$(APP_BASE)TFLApp.cp" ;
+    APP_SOURCES         += "$(APP_BASE)TFLSettings-stubbed.cp" ;
+}
+else
+{
+    APP_SOURCES			+= "$(APP_BASE)einstein.cp" ;
+    APP_SOURCES			+= "$(APP_BASE)TCLIApp.cp" ;
+}
 
 # --------------------------------------------------------------------------------------- #
 
-# Préfixe, inclusions additionelles et paramètres supplémentaires.
+# Prï¿½fixe, inclusions additionelles et paramï¿½tres supplï¿½mentaires.
 
 if $(OS) = "MACOSX"
 {
-	# Spécificités OS X
+	# Spï¿½cificitï¿½s OS X
 	# use g++ 4.0 for both compiling and linking
 	if $(compiler) = "gcc"
 	{
@@ -353,14 +366,14 @@ if $(OS) = "MACOSX"
 	local _frameworks ;
 	if $(compiler) = "xlc"
 	{
-		underscoreFOption = "-qframeworkdir=" ;		
+		underscoreFOption = "-qframeworkdir=" ;
 	} else {
 		underscoreFOption = "-F" ;
 	}
 	_frameworks += "$(underscoreFOption)/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks" ;
 	_frameworks += "$(underscoreFOption)/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks" ;
 	_frameworks += "$(underscoreFOption)/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks" ;
-	
+
 	local _link_frameworks ;
 	_link_frameworks += -framework CoreServices ;
 	_link_frameworks += -framework IOKit ;
@@ -397,7 +410,7 @@ if $(OS) = "MACOSX"
 			_commonflags += -g ;
 		}
 	}
-	
+
 	if $(debug:E=no) = "no"
 	{
 		_commonflags += -DRELEASE=1 ;
@@ -410,22 +423,22 @@ if $(OS) = "MACOSX"
 
 		# Define CPU
 		_commonflags += -DTARGET_CPU_PPC=1 ;
-		
+
 		# Define architecture.
 		_commonflags += -DTARGET_RT_MAC_MACHO ;
 
 		# Define Endianness
 		_commonflags += -DTARGET_RT_BIG_ENDIAN=1 ;
 		_commonflags += -DTARGET_RT_LITTLE_ENDIAN=0 ;
-		
+
 		# We don't use exceptions or rtti.
 		_commonflags += -qnounwind ;
 		_commonflags += -qnoeh ;
 		_commonflags += -qnortti ;
-		
+
 		_commonflags += -qnopic ;
 	}
-	
+
 	if $(optimize:E=no) = "yes"
 	{
 		if $(compiler) = "xlc"
@@ -447,7 +460,7 @@ if $(OS) = "MACOSX"
 
 	# darwinports (ffi)
 	_commonflags += -I/opt/local/include ;
-	
+
 	local _linkflags ;
 	_linkflags += -L/usr/X11R6/lib/ ;
 	_linkflags += -L/opt/local/lib/ ;
@@ -478,7 +491,7 @@ if $(OS) = "MACOSX"
 	OBJC++FLAGS += $(_commonflags) ;
 	LINKFLAGS += $(_frameworks) $(_link_frameworks) $(_linkflags) ;
 
-	# Fichiers source spécifiques à OS X
+	# Fichiers source spï¿½cifiques ï¿½ OS X
 	CPP_SOURCES += $(MACOS_CPP_SOURCES) ;
 	CPP_SOURCES += $(MACOSX_CPP_SOURCES) ;
 	CPP_SOURCES += $(X11_CPP_SOURCES) ;
@@ -505,7 +518,7 @@ if $(OS) = "MACOSX"
 	_commonflags += -Wwrite-strings ;
 	_commonflags += -Wconversion ;
 
-        if $(target:E="unknown") = "raspberry-pi" 
+        if $(target:E="unknown") = "raspberry-pi"
         {
 		_commonflags += -DHAS_C99_LONGLONG=1 ;
 		_commonflags += -DRASPBERRY_PI=1 ;
@@ -528,7 +541,7 @@ if $(OS) = "MACOSX"
 		if $(compiler) = "gcc"
 		{
 			_commonflags += -g ;
-		}		
+		}
 	}
 	if $(optimize:E=no) = "yes"
 	{
@@ -559,7 +572,7 @@ if $(OS) = "MACOSX"
 			LINKFLAGS += -m32 ;
 		}
 
-		if $(target:E="unknown") = "raspberry-pi" 
+		if $(target:E="unknown") = "raspberry-pi"
 		{
 			LINKFLAGS += -L/usr/local/lib ;
 		}
@@ -573,9 +586,14 @@ if $(OS) = "MACOSX"
 			LibFFI += -ldl ;
 		}
 
-		X11Libs = -lX11 -lXau ;
-	}
-	LINKLIBS += $(KLIBS_BASE)/_Build_/Jam/$(LOCATE_TARGET)/libk.a -lstdc++ -lm -lpthread $(LibFFI) $(X11Libs) ;
+		X11Libs = -lX11 -lXau -lfltk ;
+    }
+
+    # This line if you built K library with Jam
+    LINKLIBS += $(KLIBS_BASE)/_Build_/Jam/$(LOCATE_TARGET)/libk.a -lstdc++ -lm -lpthread $(LibFFI) $(X11Libs) $(LibSound) ;
+    # This line if you built (and installed) K library with CMake
+    #LINKLIBS += $(KLIBS_BASE)lib.$(OS)/libk.a -lstdc++ -lm -lpthread $(LibFFI) $(X11Libs) $(LibSound) ;
+    LINKFLAGS += -L$(KLIBS_BASE)../ ;
 
 	CCFLAGS += $(_commonflags) ;
 	CCFLAGS += -Wmissing-declarations ;
@@ -585,6 +603,7 @@ if $(OS) = "MACOSX"
 	CPP_SOURCES += $(LINUX_CPP_SOURCES) ;
 	CPP_SOURCES += $(POSIX_CPP_SOURCES) ;
 	CPP_SOURCES += $(X11_CPP_SOURCES) ;
+    CPP_SOURCES += $(FLTK_CPP_SOURCES) ;
 	C_SOURCES += $(LINUX_C_SOURCES) ;
 	C_SOURCES += $(POSIX_C_SOURCES) ;
 
@@ -614,7 +633,7 @@ if $(OS) = "MACOSX"
 		if $(compiler) = "gcc"
 		{
 			_commonflags += -g ;
-		}		
+		}
 	}
 	if $(optimize:E=no) = "yes"
 	{
@@ -638,7 +657,7 @@ if $(OS) = "MACOSX"
 	_commonflags += -DSIZEOF_SHORT=2 ;
 	_commonflags += -DSIZEOF_INT=4 ;
 	_commonflags += -DSIZEOF_LONG=4 ;
-	
+
 	local _linkflags ;
 
 	# libffi
@@ -665,7 +684,7 @@ if $(OS) = "MACOSX"
 
 } else if $(OS) = "NETBSD" || $(OS) = "FREEBSD" {
 
-	# Spécificité *BSD
+	# Spï¿½cificitï¿½ *BSD
 
 	# Drapeaux pour gcc/g++
 	local _commonflags ;
@@ -722,7 +741,7 @@ if $(OS) = "MACOSX"
 
 	local _linkflags ;
 	_linkflags += -Wl,--stack,8388608 ;
-	_linkflags += -Wl,--warn-once ; 
+	_linkflags += -Wl,--warn-once ;
 	_linkflags += -L/usr/X11R6/lib/ ;
 	LINKLIBS += $(KLIBS_BASE)/_Build_/Jam/$(LOCATE_TARGET)/libk.a -lstdc++ -lm -lpthread -lX11 $(LibFFI) ;
 
@@ -780,12 +799,12 @@ SOURCES = $(CPP_SOURCES) $(ASM_SOURCES) $(C_SOURCES) $(OBJC_SOURCES) ;
 
 # --------------------------------------------------------------------------------------- #
 
-# ==== Correction des règles de Jam pour s'adapter aux conventions de la DCL ====
+# ==== Correction des rï¿½gles de Jam pour s'adapter aux conventions de la DCL ====
 
-# L'idée est: (a) de gérer les espaces dans les noms et (b) de rajouter un suffixe
+# L'idï¿½e est: (a) de gï¿½rer les espaces dans les noms et (b) de rajouter un suffixe
 # au lieu de juste le remplacer.
 
-# Correction de la règle Library.
+# Correction de la rï¿½gle Library.
 rule Library
 {
 	local _source ;
@@ -795,12 +814,12 @@ rule Library
 	{
 		_objects += $(_source:B)$(_source:S)$(SUFOBJ) ;
 	}
-	
+
 	LibraryFromObjects $(<) : $(_objects) ;
 	Objects $(>) ;
 }
 
-# Idem pour la règle Main.
+# Idem pour la rï¿½gle Main.
 rule Main
 {
 	MainFromObjects $(<) : [ FGristObjectFiles $(>) ] ;
@@ -838,8 +857,8 @@ rule ObjectHdrs
 	CCHDRS on $(s) = [ on $(s) FIncludes $(HDRS) ] ;
 }
 
-# Correction de la règle Objects pour ajouter un suffixe (au lieu d'en remplacer un)
-# et pour gérer un chemin relatif (qui descend)
+# Correction de la rï¿½gle Objects pour ajouter un suffixe (au lieu d'en remplacer un)
+# et pour gï¿½rer un chemin relatif (qui descend)
 rule Objects
 {
 	local _source ;
@@ -852,7 +871,7 @@ rule Objects
 	}
 }
 
-# Guillements pour la règle FIncludes
+# Guillements pour la rï¿½gle FIncludes
 if $(UNIX)
 {
 	rule FIncludes { return -I\"$(<)\" ; }
@@ -862,7 +881,7 @@ if $(NT)
 	rule FIncludes { return -I\"$(<)\" ; }
 }
 
-# Récupère les fichiers objets.
+# Rï¿½cupï¿½re les fichiers objets.
 rule FGristObjectFiles
 {
 	local _source ;
@@ -876,7 +895,7 @@ rule FGristObjectFiles
 	return $(_objects) ;
 }
 
-# Définition de la règle pour .cp et pour .mm
+# Dï¿½finition de la rï¿½gle pour .cp et pour .mm
 rule UserObject
 {
 	switch $(>:S)
@@ -887,13 +906,13 @@ rule UserObject
 	}
 }
 
-# Correction de la règle C++ (ajout de guillemets)
+# Correction de la rï¿½gle C++ (ajout de guillemets)
 actions C++
 {
 	$(C++) -c -o "$(<)" $(C++FLAGS) $(CCDEFS) $(CCHDRS) "$(>)"
 }
 
-# Nouvelle règle pour ObjC++.
+# Nouvelle rï¿½gle pour ObjC++.
 rule ObjC++
 {
 	Depends $(<) : $(>) ;
