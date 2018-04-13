@@ -3,6 +3,7 @@
 #  Project:			Einstein
 #
 #  Copyright 2003-2007 by Paul Guyot (pguyot@kallisys.net).
+#  Copyright 2018 by Victor Rehorst (victor@chuma.org)
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -24,6 +25,15 @@
 # Syntax:
 # jam -starget=<TARGET> [-sK=<path_to_k>] [-sjittarget=<JITTARGET>]
 
+# target platforms: linux, arm-linux, nokia, nokia2006, linux-2.3.2, raspberry-pi
+#
+# sound options:
+#   -sportaudio=yes (default:yes)       : enable PortAudio sound
+#   -snativeportaudio=yes (default:no)  : use system PortAudio library and header
+#   -spulseaudio=yes (default:no)       : enable PulseAudio sound output
+#
+# NB: on Linux, portaudio and libao almost certainly require ALSA (libasound), so it is included
+#
 # Platform selectors.
 
 # OpenZaurus 3.4.5
@@ -107,8 +117,30 @@ if $(target:E="unknown") = "linux"
 {
         OS = "LINUX" ;
         CROSS = "no" ;
-#        LIBFFIPrefix = libffi-armlinux/ ;
-#        C++FLAGS += -I/usr/local/lib/libffi-3.99999/include ;
+        LIBFFIPrefix = /usr ;
+        C++FLAGS += -I/usr/include ;
+}
+
+LibSound = ;
+
+if $(portaudio:E="yes") = "yes"
+{
+    C++FLAGS += -DAUDIO_PORTAUDIO=1 ;
+    LibSound += -lasound ;
+}
+
+if $(nativeportaudio:E="no") = "yes"
+{
+    # Use native portaudio library
+    LibSound += -lportaudio ;
+    # C++FLAGS += -DAUDIO_PORTAUDIO=1 ;
+}
+
+if $(pulseaudio:E="no") = "yes"
+{
+    # LibSound += -lpulse-simple ;
+    LibSound += -lpulse ;
+    C++FLAGS += -DAUDIO_PULSEAUDIO=1 ;
 }
 
 # Determine the compiler used here.
@@ -169,7 +201,7 @@ if $(compiler) = "gcc"
 # On garde les .o
 KEEPOBJS = 1 ;
 
-# Build destination sub-directory
+# Location of build binaries and objects
 LOCATE_TARGET = "build.$(OS)$(SUBTARGET:E=)" ;
 
 # Compilateur ObjC++
@@ -182,7 +214,11 @@ BASE = "../../" ;
 KLIBS_BASE = $(K:E="../../K/") ;
 PORTAUDIO_BASE = $(PA:E="$(BASE)portaudio/") ;
 SubDirHdrs "$(KLIBS_BASE)" ;
-SubDirHdrs "$(PORTAUDIO_BASE)/pa_common/" ;
+
+if $(nativeportaudio:E="no") = "no" && $(portaudio:E="yes") = "yes"
+{
+    SubDirHdrs "$(PORTAUDIO_BASE)/pa_common/" ;
+}
 
 SubDirHdrs "$(BASE)" ;
 SubDirHdrs "$(BASE)Emulator/" ;
@@ -207,7 +243,7 @@ COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Files/TFileManager.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Host/THostInfo.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/JIT/Generic/TJITGeneric.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/JIT/Generic/TJITGenericRetarget.cp" ;
-COMMON_CPP_SOURCES      += "$(BASE)Emulator/JIT/Generic/TJITGenericRetargetMap.cpp" ;
+COMMON_CPP_SOURCES  += "$(BASE)Emulator/JIT/Generic/TJITGenericRetargetMap.cpp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/JIT/Generic/TJITGenericROMPatch.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/JIT/TJITCache.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/JIT/TJITPage.cp" ;
@@ -217,7 +253,7 @@ COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Log/TStdOutLog.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Log/TBufferLog.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/NativeCalls/TNativeCalls.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/NativeCalls/TVirtualizedCalls.cp" ;
-COMMON_CPP_SOURCES      += "$(BASE)Emulator/NativeCalls/TVirtualizedCallsPatches.cp" ;
+COMMON_CPP_SOURCES  += "$(BASE)Emulator/NativeCalls/TVirtualizedCallsPatches.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/PCMCIA/TLinearCard.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/PCMCIA/TPCMCIACard.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/PCMCIA/TNE2000Card.cp" ;
@@ -231,11 +267,18 @@ COMMON_CPP_SOURCES	+= "$(BASE)Emulator/ROM/TROMImage.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Serial/TVoyagerSerialPort.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Sound/TSoundManager.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Sound/TBufferedSoundManager.cp" ;
-COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Sound/TPortAudioSoundManager.cp" ;
+if $(portaudio:E="yes") = "yes"
+{
+    COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Sound/TPortAudioSoundManager.cp" ;
+}
+if $(pulseaudio:E="no") = "yes"
+{
+    COMMON_CPP_SOURCES += "$(BASE)Emulator/Sound/TPulseAudioSoundManager.cp" ;
+}
 MACOSX_CPP_SOURCES	+= "$(BASE)Emulator/Sound/TCoreAudioSoundManager.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Sound/TNullSoundManager.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Screen/TScreenManager.cp" ;
-COMMON_CPP_SOURCES      += "$(BASE)Emulator/Screen/TNullScreenManager.cp" ;
+COMMON_CPP_SOURCES  += "$(BASE)Emulator/Screen/TNullScreenManager.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Network/TNetworkManager.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Emulator/Network/TUsermodeNetwork.cp" ;
 COMMON_CPP_SOURCES	+= "$(BASE)Monitor/TMonitor.cp" ;
@@ -285,18 +328,23 @@ JITARMLE_CPP_SOURCES	+= "$(BASE)Emulator/JIT/Generic/TJITGeneric_Other.cp" ;
 JITARMLE_CPP_SOURCES	+= "$(BASE)Emulator/JIT/Generic/TJITGeneric_Test.cp" ;
 JITARMLE_ASM_SOURCES	+= "$(BASE)Emulator/JIT/ARMLE/JITARMLEGlue.s" ;
 
-COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_allocation.c" ;
-COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_converters.c" ;
-COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_cpuload.c" ;
-COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_dither.c" ;
-COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_front.c" ;
-COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_process.c" ;
-COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_skeleton.c" ;
-COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_stream.c" ;
-COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_trace.c" ;
-
-MACOSX_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_mac/pa_mac_hostapis.c" ;
-MACOSX_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_mac_core/pa_mac_core.c" ;
+if $(nativeportaudio:E="no") = "no" && $(portaudio:E="yes") = "yes"
+{
+    COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_allocation.c" ;
+    COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_converters.c" ;
+    COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_cpuload.c" ;
+    COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_dither.c" ;
+    COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_front.c" ;
+    COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_process.c" ;
+    COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_skeleton.c" ;
+    COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_stream.c" ;
+    COMMON_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_common/pa_trace.c" ;
+    POSIX_C_SOURCES		+= "$(PORTAUDIO_BASE)/pa_unix/pa_unix_util.c" ;
+    LINUX_C_SOURCES		+= "$(PORTAUDIO_BASE)/pa_unix/pa_unix_hostapis.c" ;
+    LINUX_C_SOURCES     += "$(PORTAUDIO_BASE)/pa_linux_alsa/pa_linux_alsa.c" ;
+    MACOSX_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_mac/pa_mac_hostapis.c" ;
+    MACOSX_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_mac_core/pa_mac_core.c" ;
+}
 
 if $(fltkapp:E="no") = "yes"
 {
@@ -306,8 +354,6 @@ if $(fltkapp:E="no") = "yes"
 X11_CPP_SOURCES		+= "$(BASE)Emulator/Screen/TX11ScreenManager.cp" ;
 FBDEV_CPP_SOURCES	+= "$(BASE)Emulator/Screen/TFBScreenManager.cp" ;
 
-POSIX_C_SOURCES		+= "$(PORTAUDIO_BASE)/pa_unix/pa_unix_util.c" ;
-LINUX_C_SOURCES		+= "$(PORTAUDIO_BASE)/pa_unix/pa_unix_hostapis.c" ;
 
 CPP_SOURCES = $(COMMON_CPP_SOURCES) ;
 
@@ -518,8 +564,13 @@ if $(OS) = "MACOSX"
 	_commonflags += -Wwrite-strings ;
 	_commonflags += -Wconversion ;
 
+<<<<<<< HEAD
         if $(target:E="unknown") = "raspberry-pi"
         {
+=======
+    if $(target:E="unknown") = "raspberry-pi"
+    {
+>>>>>>> master
 		_commonflags += -DHAS_C99_LONGLONG=1 ;
 		_commonflags += -DRASPBERRY_PI=1 ;
 	}
@@ -538,9 +589,10 @@ if $(OS) = "MACOSX"
 	{
 		_commonflags += -DRELEASE=1 ;
 	} else {
+        _commonflags += -DPA_ENABLE_DEBUG_OUTPUT=1 ;
 		if $(compiler) = "gcc"
 		{
-			_commonflags += -g ;
+			_commonflags += -g -DDEBUG_SOUND=1 ;
 		}
 	}
 	if $(optimize:E=no) = "yes"
@@ -552,8 +604,10 @@ if $(OS) = "MACOSX"
 	}
 
 	# flags for portaudio.
+    _commonflags += -DPA_USE_ALSA=1 ;
 	_commonflags += -DPA_USE_COREAUDIO=0 ;
 	_commonflags += -DPA_LITTLE_ENDIAN=1 ;
+    _commonflags += -DTARGET_RT_LITTLE_ENDIAN=1 ;
 	_commonflags += -DWORDS_LITTLEENDIAN=1 ;
 	_commonflags += -DSIZEOF_SHORT=2 ;
 	_commonflags += -DSIZEOF_INT=4 ;
@@ -577,8 +631,8 @@ if $(OS) = "MACOSX"
 			LINKFLAGS += -L/usr/local/lib ;
 		}
 
-		LINKFLAGS += -L/usr/X11R6/lib/ -L/usr/lib/i386-linux-gnu/ ;
-		_commonflags += -I/usr/include/i686-linux-gnu/ ;
+		LINKFLAGS += -L/usr/X11R6/lib/ ;
+
 		LibFFI = -lffi ;
 
 		if $(target:E="unknown") = "raspberry-pi" || $(target:E="unknown") = "linux"
