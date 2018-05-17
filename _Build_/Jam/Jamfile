@@ -346,11 +346,6 @@ if $(nativeportaudio:E="no") = "no" && $(portaudio:E="yes") = "yes"
     MACOSX_C_SOURCES	+= "$(PORTAUDIO_BASE)/pa_mac_core/pa_mac_core.c" ;
 }
 
-if $(fltkapp:E="no") = "yes"
-{
-    FLTK_CPP_SOURCES    += "$(BASE)Emulator/Screen/TFLScreenManager.cp" ;
-}
-
 X11_CPP_SOURCES		+= "$(BASE)Emulator/Screen/TX11ScreenManager.cp" ;
 FBDEV_CPP_SOURCES	+= "$(BASE)Emulator/Screen/TFBScreenManager.cp" ;
 
@@ -384,16 +379,8 @@ APP_BASE			= "$(BASE)app/" ;
 SubDirHdrs "$(APP_BASE)" ;
 
 APP_SOURCES			= ;
-if $(fltkapp:E="no") = "yes"
-{
-    APP_SOURCES         += "$(APP_BASE)TFLApp.cp" ;
-    APP_SOURCES         += "$(APP_BASE)TFLSettings-stubbed.cp" ;
-}
-else
-{
-    APP_SOURCES			+= "$(APP_BASE)einstein.cp" ;
-    APP_SOURCES			+= "$(APP_BASE)TCLIApp.cp" ;
-}
+APP_SOURCES			+= "$(APP_BASE)einstein.cp" ;
+APP_SOURCES			+= "$(APP_BASE)TCLIApp.cp" ;
 
 # --------------------------------------------------------------------------------------- #
 
@@ -563,14 +550,9 @@ if $(OS) = "MACOSX"
 	_commonflags += -Wpointer-arith ;
 	_commonflags += -Wwrite-strings ;
 	_commonflags += -Wconversion ;
-
-<<<<<<< HEAD
-        if $(target:E="unknown") = "raspberry-pi"
-        {
-=======
     if $(target:E="unknown") = "raspberry-pi"
     {
->>>>>>> master
+
 		_commonflags += -DHAS_C99_LONGLONG=1 ;
 		_commonflags += -DRASPBERRY_PI=1 ;
 	}
@@ -640,7 +622,7 @@ if $(OS) = "MACOSX"
 			LibFFI += -ldl ;
 		}
 
-		X11Libs = -lX11 -lXau -lfltk ;
+		X11Libs = -lX11 -lXau ;
     }
 
     # This line if you built K library with Jam
@@ -657,7 +639,7 @@ if $(OS) = "MACOSX"
 	CPP_SOURCES += $(LINUX_CPP_SOURCES) ;
 	CPP_SOURCES += $(POSIX_CPP_SOURCES) ;
 	CPP_SOURCES += $(X11_CPP_SOURCES) ;
-    CPP_SOURCES += $(FLTK_CPP_SOURCES) ;
+
 	C_SOURCES += $(LINUX_C_SOURCES) ;
 	C_SOURCES += $(POSIX_C_SOURCES) ;
 

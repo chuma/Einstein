@@ -44,13 +44,13 @@ class TSymbolList;
 /// \author Paul Guyot <pguyot@kallisys.net>
 /// \version $Revision: 113 $
 ///
-/// \test	aucun test dï¿½fini.
+/// \test	aucun test dŽfini.
 ///
 class TCLIApp
 {
 public:
 	///
-	/// Constructeur par dï¿½faut.
+	/// Constructeur par dŽfaut.
 	///
 	TCLIApp( void );
 
@@ -60,7 +60,7 @@ public:
 	~TCLIApp( void );
 
 	///
-	/// Point d'entrï¿½e.
+	/// Point d'entrŽe.
 	///
 	void Run( int argc, char* argv[] );
 
@@ -68,14 +68,14 @@ private:
 	///
 	/// Constructeur par copie volontairement indisponible.
 	///
-	/// \param inCopy		objet ï¿½ copier
+	/// \param inCopy		objet ˆ copier
 	///
 	TCLIApp( const TCLIApp& inCopy );
 
 	///
-	/// Opï¿½rateur d'assignation volontairement indisponible.
+	/// OpŽrateur d'assignation volontairement indisponible.
 	///
-	/// \param inCopy		objet ï¿½ copier
+	/// \param inCopy		objet ˆ copier
 	///
 	TCLIApp& operator = ( const TCLIApp& inCopy );
 
@@ -83,7 +83,7 @@ private:
 	/// Affiche un message d'erreur sur la syntaxe et sort.
 	///
 	void SyntaxError( void );
-
+	
 	///
 	/// Affiche un message d'erreur sur la syntaxe (une option en particulier)
 	/// et sort.
@@ -91,38 +91,38 @@ private:
 	/// \param inBadOption	bad option
 	///
 	void SyntaxError( const char* inBadOption );
-
+	
 	///
 	/// Affiche l'aide et sort.
 	///
 	void Help( void );
-
+	
 	///
 	/// Affiche la version et sort.
 	///
 	void Version( void );
-
+	
 	///
-	/// Crï¿½e le gestionnaire de son.
+	/// CrŽe le gestionnaire de son.
 	///
 	void CreateSoundManager( const char* inClass );
-
+	
 	///
-	/// Crï¿½e le gestionnaire d'ï¿½cran.
+	/// CrŽe le gestionnaire d'Žcran.
 	///
 	void CreateScreenManager(
 				const char* inClass,
 				int inPortraitWidth,
 				int inPortraitHeight,
 				Boolean inFullScreen);
-
+	
 	///
-	/// Crï¿½e le log.
+	/// CrŽe le log.
 	///
 	void CreateLog( const char* inPath );
-
+	
 	///
-	/// Point d'entrï¿½e du processus lï¿½ger.
+	/// Point d'entrŽe du processus lŽger.
 	///
 	static void* SThreadEntry( void* inUserData )
 		{
@@ -131,7 +131,7 @@ private:
 		}
 
 	///
-	/// Point d'entrï¿½e du processus lï¿½ger.
+	/// Point d'entrŽe du processus lŽger.
 	///
 	void ThreadEntry( void );
 
@@ -173,7 +173,7 @@ private:
 	TEmulator*			mEmulator;			///< Emulateur.
 	TNetworkManager*	mNetworkManager;	///< Network Manager.
 	TSoundManager*		mSoundManager;		///< Gestionnaire de son.
-	TScreenManager*		mScreenManager;		///< Gestionnaire d'ï¿½cran.
+	TScreenManager*		mScreenManager;		///< Gestionnaire d'Žcran.
 	TPlatformManager*	mPlatformManager;	///< Reference to the platform manager.
 	TLog*				mLog;				///< Log.
 	TMonitor*			mMonitor;			///< Monitor.
